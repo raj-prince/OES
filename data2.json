@@ -8,12 +8,7 @@
       "firstName":"chandler",
       "lastName":"bing",
       "exam":[
-          {
-            "id":1
-          },
-          {
-            "id":2
-          }
+          1,2
       ]
       
     },
@@ -25,13 +20,7 @@
       "firstName":"Monica",
       "lastName":"Geller",
       "exam":[
-          {
-            "id":1
-          },
-          {
-              "id":2
-
-          }
+          1,2
       ]
        
     }
