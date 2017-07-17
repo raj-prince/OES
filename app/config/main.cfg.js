@@ -3,7 +3,7 @@ angular.module("main_module",["customer_module","authentication_module","ngRoute
 angular.module("main_module").config(function($routeProvider,$locationProvider){   // no need of a name ;bcz this is the starting point
     $routeProvider
     .when('/',{
-        templateUrl:'app/page/student.html'
+        templateUrl:'app/page/login.html'
     })
     .when('/login',{
            templateUrl:'app/page/login.html',

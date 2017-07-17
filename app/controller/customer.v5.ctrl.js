@@ -43,8 +43,12 @@ app.controller("LoginController",function($scope,AuthenticationService){
     AuthenticationService.getUsers().then(function(result) {
       var users = result.data;
       var i =0;
+      console.log($scope.username);
+      console.log($scope.password);
       for(i = 0;i<users.length;i++) {
-        if(users.email == $scope.username && users.password == $scope.password) {
+        console.log(users[i].email);
+        console.log(users[i].password);
+        if(users[i].email == $scope.username && users[i].password == $scope.password) {
           break;
         }
       }
