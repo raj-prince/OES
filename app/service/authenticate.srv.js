@@ -26,12 +26,14 @@
         return deferred.promise;
 
 		}
-		this.setCredentials = function(username) {
+		this.setCredentials = function(userId,firstName,emailId) {
 			$rootScope.globals = {
-							username : username
+							userId : userId,
+							firstName : firstName,
+							email : emailId
 			};
 
-			$cookieStore.put('globals', username); //not angular specific ;instead of cookie jwt (json web token ) can be used ;jwt-one time generation ;keeps timestamps too;jwt is more secure than cookie for session handling 
+			$cookieStore.put('globals', userId); //not angular specific ;instead of cookie jwt (json web token ) can be used ;jwt-one time generation ;keeps timestamps too;jwt is more secure than cookie for session handling 
 		}
 
 		this.clearCredentials = function() {

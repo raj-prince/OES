@@ -1,11 +1,11 @@
 (function(){
 	var app=angular.module("customer_module",["directive_module","service_module","authentication_module"]);               
 
-app.controller("StudentExamListController",function($scope,StudentService){ 
+app.controller("StudentExamListController",function($scope,$rootScope,StudentService){ 
 
     $scope.dashBoard = false;
     $scope.showDashboard = function() {
-      console.log("dmskdnks");
+      console.log($rootScope.globals.userId);
       $scope.dashBoard = true;
 
     }
@@ -66,6 +66,7 @@ app.controller("LoginController",function($scope,$location,AuthenticationService
         else {
           $location.path("/student");
         }
+        AuthenticationService.setCredentials(users[i].id,users[i].firstName,users[i].email);
       }
 
     });
