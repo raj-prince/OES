@@ -26,6 +26,12 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
            },
            controllerAs :'vm'   //vm is an object of type controller 
     })
+    .when('/student',{
+      templateUrl:'app/page/student.html'
+    })
+    .when('/dashboard',{
+      templateUrl:'app/page/dashboard.html'
+    })
     }).run(check);
     function check($cookieStore,$location,$rootScope,$http){
         $rootScope.$on("$locationChangeStart",function(event,next,current){

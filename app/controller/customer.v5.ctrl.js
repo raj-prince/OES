@@ -38,25 +38,28 @@ app.controller("StudentExamListController",function($scope,StudentService){
 
 });
 
-app.controller("LoginController",function($scope,AuthenticationService){
+app.controller("LoginController",function($scope,$location,AuthenticationService){
   $scope.login = function() {
     AuthenticationService.getUsers().then(function(result) {
       var users = result.data;
       var i =0;
-      console.log($scope.username);
-      console.log($scope.password);
       for(i = 0;i<users.length;i++) {
-        console.log(users[i].email);
-        console.log(users[i].password);
         if(users[i].email == $scope.username && users[i].password == $scope.password) {
           break;
         }
       }
       if(i== users.length) {
         alert("INCORRECT EMAIL OR PASSWORD!!");
+        
       }
       else {
         alert("logging in ")
+        if(users[i].type == "admin") {
+          console.log("admin");
+        }
+        else {
+          $location.path("/student");
+        }
       }
 
     });
