@@ -3,6 +3,12 @@
 
 app.controller("StudentExamListController",function($scope,StudentService){ 
 
+    $scope.dashBoard = false;
+    $scope.showDashboard = function() {
+      console.log("dmskdnks");
+      $scope.dashBoard = true;
+
+    }
    // $scope.examsId=examsId=[];
    // $scope.user=user=[];
    //      StudentService.getStudent().then(function(result){
