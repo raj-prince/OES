@@ -1,0 +1,22 @@
+<div class="card" style="width: 20rem;">
+  
+  <div class="card-block">
+    <div class="cardHeader">
+      {{examName}}
+    <img class="card-img-top"  id="statusImg" class="close" ng-src="image/{{status}}.png" alt="Card image cap"></div>
+    <!--<div class="cardBody">{{examDetail}}</div>-->
+  </div>
+  <ul class="list-group list-group-flush">
+     <li class="list-group-item"> {{examDetail}}</li> 
+      <li class="list-group-item"> 
+        Start Date : {{startDate}}</br>
+        End Date:{{endDate}}</br>
+        Duration : {{duration}}</br>
+        Status : {{status}}</br> 
+        <div ng-show="status=='pending'">
+           <a href="#" class="card-link">Take Assessment</a>
+        </div>
+        </li> 
+     </ul>
+  </div>
+

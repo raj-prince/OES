@@ -1,0 +1,60 @@
+{
+  "user": [
+    {
+      "id": 2,
+      "email": "Chandler@abc",
+      "password": "Bing",
+      "type": "admin",
+      "firstName":"chandler",
+      "lastName":"bing",
+      "exam":[
+          {
+            "id":1
+          },
+          {
+            "id":2
+          }
+      ]
+      
+    },
+    {
+      "id": 3,
+      "email": "Monica@abc",
+      "password": "Geller",
+      "type": "student",
+      "firstName":"Monica",
+      "lastName":"Geller",
+      "exam":[
+          {
+            "id":1
+          },
+          {
+              "id":2
+
+          }
+      ]
+       
+    }
+  ],
+
+  "exam": [
+    {
+      "id": 1,
+      "examName": "Assignment 1",
+      "examDetail":"Java Script Test",
+      "startDate": 34,
+      "endDate": 23,
+      "duration":6,
+      "status":"pending"
+    },
+    {
+     "id": 2,
+      "examName": "Assignment 2",
+      "examDetail":"Angular JS Test",
+      "startDate": 37,
+      "endDate": 20,
+      "duration":4,
+      "status":"complete"
+    }
+  ]
+}

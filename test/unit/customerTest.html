@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../lib/jasmine-core/lib/jasmine-core/jasmine.css">
+<script src="../../lib/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+<script type="text/javascript" src="../../lib/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+<script type="text/javascript" src="../../lib/jasmine-core/lib/jasmine-core/boot.js"></script>
+<script type="text/javascript" src="../../lib/angular/angular.js"></script>
+<script type="text/javascript" src="../../lib/angular-mocks/angular-mocks.js"></script>
+<script type="text/javascript" src="../../app/controller/customer.v1.ctrl.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+    describe('Customer App unit tests',function(){
+    var scope, controller;
+    beforeEach(module("customer_module"));   //ng-app
+    beforeEach(inject(function($controller,$rootScope){   //these two are services 1 used to instatntiate controller and 2 to intantiate scope objects for controllers 
+scope=$rootScope.$new();
+controller=$controller("CustomerListController",{
+    $scope:scope
+});
+    }));
+it("should have 5 customers",function(){
+    var customerList=scope.customers;
+expect(customerList.length).toEqual(5);
+});
+
+
+it("should delete a customer",function(){
+    scope.deleteCustomer(2);
+     var customerList=scope.customers;
+//customerList.get(2).element(by.css('.close')).click();
+expect(customerList.length).toEqual(4);
+});
+
+});
+</script>
+</body>
+</html>
