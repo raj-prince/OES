@@ -26,6 +26,25 @@
         return deferred.promise;
 
 		}
+		this.registerUser = function(email,pwd,firstName,lastName) {
+			var dataObj = {
+      "email": email,
+      "password": pwd,
+      "type": "student",
+      "firstName":firstName,
+      "lastName":lastName,
+      "exam":[]
+		};	
+		var res = $http.post('http://localhost:3000/user/', dataObj);
+		res.success(function(data, status, headers, config) {
+			
+			console.log("successfully registered");
+		});
+		res.error(function(data, status, headers, config) {
+			alert( "failure message: " + JSON.stringify({data: data}));
+		});	
+		}
+
 		this.setCredentials = function(userId,firstName,emailId) {
 			$rootScope.globals = {
 							userId : userId,

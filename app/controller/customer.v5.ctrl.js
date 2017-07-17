@@ -72,6 +72,21 @@ app.controller("LoginController",function($scope,$location,AuthenticationService
     });
   }
 
+  $scope.signUp = function() {
+    $location.path("/signup");
+  }
+
+});
+
+app.controller("SignUpController",function($scope,$location,AuthenticationService){
+  $scope.register = function() {
+    AuthenticationService.registerUser($scope.email,$scope.password,$scope.firstName,$scope.lastName);
+    $location.path('/');
+    
+  }
+
+  
+
 });
 
 

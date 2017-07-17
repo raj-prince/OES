@@ -5,45 +5,80 @@
       "email": "Chandler@abc",
       "password": "Bing",
       "type": "admin",
-      "firstName":"chandler",
-      "lastName":"bing",
-      "exam":[
-          1,2
+      "firstName": "chandler",
+      "lastName": "bing",
+      "exam": [
+        1,
+        2
       ]
-      
     },
     {
       "id": 3,
       "email": "Monica@abc",
       "password": "Geller",
       "type": "student",
-      "firstName":"Monica",
-      "lastName":"Geller",
-      "exam":[
-          1,2
+      "firstName": "Monica",
+      "lastName": "Geller",
+      "exam": [
+        1,
+        2
       ]
-       
+    },
+    {
+      "id": 4,
+      "email": "som@ad",
+      "password": "1234",
+      "type": "student",
+      "firstName": "abhishek",
+      "lastName": "sinha",
+      "exam": []
+    },
+    {
+      "id": 6,
+      "email": "a1@adobe.com",
+      "password": "1234",
+      "type": "student",
+      "firstName": "anjn",
+      "lastName": "nsa",
+      "exam": []
+    },
+    {
+      "email": "2121",
+      "password": "2121212",
+      "type": "student",
+      "firstName": "sa",
+      "lastName": "12",
+      "exam": [],
+      "id": 7
+    },
+    {
+      "email": "dlkfjlsf",
+      "password": "dfslkjfds",
+      "type": "student",
+      "firstName": "prinde",
+      "lastName": "dkjfls",
+      "exam": [],
+      "id": 8
     }
   ],
-
   "exam": [
     {
       "id": 1,
       "examName": "Assignment 1",
-      "examDetail":"Java Script Test",
-      "startDate": 1500287205 ,
-      "endDate": 1600493255 ,
-      "duration":6,
-      "status":"pending"
+      "examDetail": "Java Script Test",
+      "startDate": 1500287205,
+      "endDate": 1600493255,
+      "duration": 6,
+      "status": "pending"
     },
     {
-     "id": 2,
+      "id": 2,
       "examName": "Assignment 2",
-      "examDetail":"Angular JS Test",
-      "startDate": 1500287205 ,
-      "endDate": 1500287205 ,
-      "duration":4,
-      "status":"complete"
+      "examDetail": "Angular JS Test",
+      "startDate": 1500287205,
+      "endDate": 1500287205,
+      "duration": 4,
+      "status": "complete"
     }
   ]
 }

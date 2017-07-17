@@ -5,6 +5,9 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
     .when('/',{
         templateUrl:'app/page/login.html'
     })
+    .when('/signup',{
+        templateUrl:'app/page/signup.html'
+    })
     .when('/login',{
            templateUrl:'app/page/login.html',
            controller: function(AuthenticationService,$location){   //without using $scope ;
@@ -46,14 +49,14 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
   //       });
   $rootScope.$on("$locationChangeStart",function(event,next,current) {
     if(current == 'http://localhost:3000/') {
-    if($cookieStore.get('globals')) {
+    // if($cookieStore.get('globals')) {
       
-      $location.path('/student');
-    }
-    else {
+    //   $location.path('/student');
+    // }
+    // else {
       
-      $location.path('/');
-    }
+    //   $location.path('/');
+    // }
   } 
   });
     }
