@@ -1,3 +1,30 @@
+<div id="wrapper">
+   <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <img src="image/user.png" class="img">
+                </li>
+                <li  ng-controller="StudentExamListController" ng-repeat="usr in user">
+                    <p>{{usr.firstName}}</p>
+                </li>
+                <li>
+                    <a href="#/">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Profile</a>
+                </li>
+                 <li>
+                    <a href="#">Exam</a>
+                </li>
+                <li>
+                    <a href="#">Result</a>
+                </li>
+                
+              
+            </ul>
+        </div></div>
+        
 <div class="container" ng-controller="StudentExamListController">
       <!-- {{customers}}-->
        <div class="row">

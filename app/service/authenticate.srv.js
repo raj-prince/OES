@@ -1,6 +1,6 @@
 ﻿(function() {
 	var app = angular.module('authentication_module', [ 'ngCookies' ]);
-	app.service('AuthenticationService', function($http, $cookieStore,
+	app.service('AuthenticationService', function($http, $q,$cookieStore,
 			$rootScope) {
 		this.login = function(username, password, callback) {
 			if (username !== 'test' && password !== 'password') {
@@ -15,7 +15,17 @@
 			}
 			callback(response);
 		}
+		this.getUsers = function() {
+			var deferred= $q.defer();
+			$http.get("http://localhost:3000/user").then(function(result){
+				deferred.resolve(result);
+			},
+			function(result){
+            deferred.reject(result);
+        });
+        return deferred.promise;
 
+		}
 		this.setCredentials = function(username) {
 			$rootScope.globals = {
 							username : username

@@ -1,5 +1,5 @@
 (function(){
-	var app=angular.module("customer_module",["directive_module","service_module"]);               //[] used for injecting modules
+	var app=angular.module("customer_module",["directive_module","service_module","authentication_module"]);               
 
 app.controller("StudentExamListController",function($scope,StudentService){ 
 
@@ -37,4 +37,28 @@ app.controller("StudentExamListController",function($scope,StudentService){
         // $scope.examsToShow=examsToShow;
 
 });
+
+app.controller("LoginController",function($scope,AuthenticationService){
+  $scope.login = function() {
+    AuthenticationService.getUsers().then(function(result) {
+      var users = result.data;
+      var i =0;
+      for(i = 0;i<users.length;i++) {
+        if(users.email == $scope.username && users.password == $scope.password) {
+          break;
+        }
+      }
+      if(i== users.length) {
+        alert("INCORRECT EMAIL OR PASSWORD!!");
+      }
+      else {
+        alert("logging in ")
+      }
+
+    });
+  }
+
+});
+
+
 })();
