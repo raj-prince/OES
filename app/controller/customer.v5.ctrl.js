@@ -88,7 +88,7 @@ app.controller("SignUpController",function($scope,$location,AuthenticationServic
 
 });
 
-app.controller('AdminController', function($scope, $rootScope, UsersService){
+app.controller('AdminController', function($scope, $rootScope, UsersService, $http){
   $scope.upload = true;
   $scope.result = false;
   $scope.schedule = false;
@@ -102,21 +102,67 @@ app.controller('AdminController', function($scope, $rootScope, UsersService){
   UsersService.getUserById($rootScope.globals.userId).then(function(result) {
   $scope.firstName= result.data.firstName
   console.log($scope.firstName)
-});
+  });
 
-  $scope.addQP = function() {
+  $scope.add = function() {
     console.log('here')
     var f = document.getElementById('file').files[0],
         r = new FileReader();
-
+    var listOfQuestions=[]
     r.onloadend = function(e) {
       var data = e.target.result;
+      // console.log(data)
+      // console.log($scope.examName)
+
+      var lines = data.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
+      for(var i = 1; i < lines.length; i++) { 
+      var line=lines[i].split(',')
+      $scope.addQuestion(line[0], line[1], line[2], line[3], [])
+    }
       //send your binary data via $http or $resource or do anything else with it
     }
 
-    r.readAsBinaryString(f);
+    r.readAsText(f);
+    
     console.log('read')
-}
+  }
+
+  $scope.addExam=function(examName, listOfQuestions) {
+      var dataObj = {
+      "examName": examName,
+      "startDate": 0, 
+      "endDate": 0, 
+      "duration":0,
+      "listOfQuestions":listOfQuestions
+    };  
+    var res = $http.post('http://localhost:3000/exam/', dataObj);
+    res.success(function(data, status, headers, config) {
+      console.log(data)
+      console.log("successfully registered");
+    });
+    res.error(function(data, status, headers, config) {
+      alert( "failure message: " + JSON.stringify({data: data}));
+    }); 
+    }
+
+  $scope.addQuestion=function(qtext,type, marks, correctAnswer, listOfChoices){
+    var dataObj = {
+      "questionText": qtext,
+      "marks":marks,
+      "correctAnswer": correctAnswer, 
+      "listOfChoices": listOfChoices, 
+      "type" : type
+    }
+    var res = $http.post('http://localhost:3000/question/', dataObj);
+    res.success(function(data, status, headers, config) {
+      console.log(data + 'hoduahofa')
+      console.log("successfully registered");
+    });
+    res.error(function(data, status, headers, config) {
+      alert( "failure message: " + JSON.stringify({data: data}));
+    }); 
+    }
+  
   
 })
 

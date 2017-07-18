@@ -35,11 +35,11 @@
     <link rel="stylesheet" href="css/app.css" />
   </head>
   <body>
- -->    <form class="form-horizontal" >
+ -->    <form class="form-horizontal" role="form" ng-submit='addQP()'>
       <div class="form-group">
         <label for="examName" class="col-sm-2 control-label">Exam Name</label>
         <div class="col-sm-4">
-          <input class="form-control" id="inputName3" placeholder="Enter the Exam Name">
+          <input class="form-control" id="examName" placeholder="Enter the Exam Name" ng-model='examName'>
         </div>
       </div>
       <div class="form-group">
@@ -53,7 +53,7 @@
       
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button ng-click='addQP()'>Upload</button>
+          <button >Upload</button>
         </div>
       </div>
     </form>
