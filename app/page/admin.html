@@ -5,14 +5,14 @@
                 <li class="sidebar-brand">
                     <img src="image/user.png" class="img">
                 </li>
-                <li  ng-controller="AdminController" ng-repeat="usr in user">
-                    <p>{{usr.firstName}}</p>
+                <li  ng-controller="AdminController">
+                    <!-- <p>{{usr.firstName}}</p> -->
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#/">Dashboard</a>
-                </li>
+                </li> -->
                 <li>
-                    <a href="#">Upload Questions</a>
+                    <a href="http://localhost:3000/uploadQuestions.html">Upload Questions</a>
                 </li>
                  <li>
                     <a href="#">Schedule Assesment</a>
@@ -25,18 +25,3 @@
             </ul>
         </div></div>
         
-<div class="container" ng-controller="StudentExamListController">
-      <!-- {{customers}}-->
-       <div class="row">
-           <div class="col-md-4 col-lg-3 card" ng-repeat="exam in exams">
-              <studentcard-view
-        exam-name="exam.examName"  
-        exam-detail="exam.examDetail"
-        start-date="exam.startDate"
-        end-date="exam.endDate"
-        duration="exam.duration"
-        status="exam.status"
-        >
-              </studentcard-view>
-    </div>
-    </div>

@@ -1,5 +1,5 @@
 (function(){
-	var app=angular.module("customer_module",["directive_module","service_module","authentication_module"]);               
+	var app=angular.module("customer_module",["directive_module","service_module","authentication_module", 'users_module']);               
 
 app.controller("StudentExamListController",function($scope,$rootScope,StudentService){ 
 
@@ -62,6 +62,7 @@ app.controller("LoginController",function($scope,$location,AuthenticationService
         alert("logging in ")
         if(users[i].type == "admin") {
           console.log("admin");
+          $location.path('/admin')
         }
         else {
           $location.path("/student");
@@ -89,11 +90,12 @@ app.controller("SignUpController",function($scope,$location,AuthenticationServic
 
 });
 
-app.controller('AdminController', function($scope, $rootScope){
-  $scope.allUsers= UsersService.getUsers()
-  $scope.firstName= $scope.allUsers[$rootScope.globals[username]][firstName]
-  // $scope.lastName= UsersService.getLastName()
+app.controller('AdminController', function($scope, $rootScope, UsersService){
+  UsersService.getUserById($rootScope.globals.userId).then(function(result) {
+  $scope.firstName= result.data.firstName
   console.log($scope.firstName)
+});
+  
 })
 
 
