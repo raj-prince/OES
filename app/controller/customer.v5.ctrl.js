@@ -60,5 +60,12 @@ app.controller("LoginController",function($scope,AuthenticationService){
 
 });
 
+app.controller('AdminController', function($scope, $rootScope){
+  $scope.allUsers= UsersService.getUsers()
+  $scope.firstName= $scope.allUsers[$rootScope.globals[username]][firstName]
+  // $scope.lastName= UsersService.getLastName()
+  console.log($scope.firstName)
+})
+
 
 })();

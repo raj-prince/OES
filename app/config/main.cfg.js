@@ -5,11 +5,15 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
     .when('/',{
         templateUrl:'app/page/student.html'
     })
+
+    .when('/admin',{
+        templateUrl:'app/page/admin.html'
+    })
     .when('/login',{
            templateUrl:'app/page/login.html',
            controller: function(AuthenticationService,$location){   //without using $scope ;
-               this.username="";
-               this.password="";
+               // this.username="";
+               // this.password="";
            this.login =function(){
                user=this.username;
            AuthenticationService.login(this.username,this.password,function(response){

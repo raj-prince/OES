@@ -14,6 +14,10 @@
         return deferred.promise;
     };
 
+    // this.getFirstName=function(){
+        
+    // }
+
 });
 
 })();	
