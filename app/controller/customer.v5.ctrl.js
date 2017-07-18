@@ -109,6 +109,10 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, $ht
   console.log($scope.firstName)
   });
 
+  $scope.Schedule = function() {
+    console.log("yo");
+    alert($scope.examDate);
+  }
   $scope.add = function() {
     console.log('here')
     var f = document.getElementById('file').files[0],
