@@ -10,7 +10,8 @@ return {
         startDate:'=',
         endDate:'=',
         duration:'=',
-        status:'='  //& is used for behavior 
+        status:'=' ,
+        showExamLink:'&'//& is used for behavior 
        
     }
 }

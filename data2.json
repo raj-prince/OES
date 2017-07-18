@@ -65,12 +65,11 @@
     {
       "id": 1,
       "examName": "Assignment 1",
-
       "examDetail": "Java Script Test",
       "startDate": 1500287205,
       "endDate": 1600493255,
-      "duration": 6,
-      "status": "pending"
+      "duration": 6
+      
     },
     {
       "id": 2,
@@ -78,8 +77,17 @@
       "examDetail": "Angular JS Test",
       "startDate": 1500287205,
       "endDate": 1500287205,
-      "duration": 4,
-      "status": "complete"
+      "duration": 4
+      
+    },
+    {
+      "id": 3,
+      "examName": "Assignment 3",
+      "examDetail": "Angular JS Test",
+      "startDate": 1500287205,
+      "endDate":1500287205 ,
+      "duration": 4
+      
     }
   ]
 }
