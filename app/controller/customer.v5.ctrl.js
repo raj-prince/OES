@@ -59,7 +59,7 @@ app.controller("LoginController",function($scope,$location,AuthenticationService
         
       }
       else {
-        alert("logging in ")
+        // alert("logging in ")
         if(users[i].type == "admin") {
           // console.log("admin");
           $location.path('/admin')
