@@ -12,6 +12,9 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
     .when('/admin',{
         templateUrl:'app/page/admin.html'
     })
+    .when('/uploadQuestions',{
+      templateUrl: 'app/page/uploadQuestion.html'
+    })
     .when('/login',{
            templateUrl:'app/page/login.html',
            controller: function(AuthenticationService,$location){   //without using $scope ;
