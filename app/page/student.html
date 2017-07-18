@@ -1,3 +1,4 @@
+<div class = "outer" ng-controller = "StudentExamListController" >
 <div id="wrapper">
    <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -5,11 +6,11 @@
                 <li class="sidebar-brand">
                     <img src="image/user.png" class="img">
                 </li>
-                <li  ng-controller="StudentExamListController" ng-repeat="usr in user">
+                <li ng-repeat="usr in user">
                     <p>{{usr.firstName}}</p>
                 </li>
                 <li>
-                    <a href="#/">Dashboard</a>
+                    <a ng-click = "showDashboard()">Dashboard</a>
                 </li>
                 <li>
                     <a href="#">Profile</a>
@@ -24,11 +25,11 @@
               
             </ul>
         </div></div>
-        
-<div class="container" ng-controller="StudentExamListController">
+
+<div class="container" ng-show = "dashBoard">
       <!-- {{customers}}-->
        <div class="row">
-           <div class="col-md-4 col-lg-3 card" ng-repeat="exam in exams">
+           <div class="col-md-4 col-lg-4 card" ng-repeat="exam in exams">
               <studentcard-view
         exam-name="exam.examName"  
         exam-detail="exam.examDetail"
@@ -40,3 +41,5 @@
               </studentcard-view>
     </div>
     </div>
+    </div>
+</div>

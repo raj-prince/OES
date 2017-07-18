@@ -1,8 +1,14 @@
 (function(){
 	var app=angular.module("customer_module",["directive_module","service_module","authentication_module"]);               
 
-app.controller("StudentExamListController",function($scope,StudentService){ 
+app.controller("StudentExamListController",function($scope,$rootScope,StudentService){ 
 
+    $scope.dashBoard = false;
+    $scope.showDashboard = function() {
+      console.log($rootScope.globals.userId);
+      $scope.dashBoard = true;
+
+    }
    // $scope.examsId=examsId=[];
    // $scope.user=user=[];
    //      StudentService.getStudent().then(function(result){
@@ -38,25 +44,48 @@ app.controller("StudentExamListController",function($scope,StudentService){
 
 });
 
-app.controller("LoginController",function($scope,AuthenticationService){
+app.controller("LoginController",function($scope,$location,AuthenticationService){
   $scope.login = function() {
     AuthenticationService.getUsers().then(function(result) {
       var users = result.data;
       var i =0;
       for(i = 0;i<users.length;i++) {
-        if(users.email == $scope.username && users.password == $scope.password) {
+        if(users[i].email == $scope.username && users[i].password == $scope.password) {
           break;
         }
       }
       if(i== users.length) {
         alert("INCORRECT EMAIL OR PASSWORD!!");
+        
       }
       else {
         alert("logging in ")
+        if(users[i].type == "admin") {
+          console.log("admin");
+        }
+        else {
+          $location.path("/student");
+        }
+        AuthenticationService.setCredentials(users[i].id,users[i].firstName,users[i].email);
       }
 
     });
   }
+
+  $scope.signUp = function() {
+    $location.path("/signup");
+  }
+
+});
+
+app.controller("SignUpController",function($scope,$location,AuthenticationService){
+  $scope.register = function() {
+    AuthenticationService.registerUser($scope.email,$scope.password,$scope.firstName,$scope.lastName);
+    $location.path('/');
+    
+  }
+
+  
 
 });
 

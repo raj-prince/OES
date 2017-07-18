@@ -26,12 +26,33 @@
         return deferred.promise;
 
 		}
-		this.setCredentials = function(username) {
+		this.registerUser = function(email,pwd,firstName,lastName) {
+			var dataObj = {
+      "email": email,
+      "password": pwd,
+      "type": "student",
+      "firstName":firstName,
+      "lastName":lastName,
+      "exam":[]
+		};	
+		var res = $http.post('http://localhost:3000/user/', dataObj);
+		res.success(function(data, status, headers, config) {
+			
+			console.log("successfully registered");
+		});
+		res.error(function(data, status, headers, config) {
+			alert( "failure message: " + JSON.stringify({data: data}));
+		});	
+		}
+
+		this.setCredentials = function(userId,firstName,emailId) {
 			$rootScope.globals = {
-							username : username
+							userId : userId,
+							firstName : firstName,
+							email : emailId
 			};
 
-			$cookieStore.put('globals', username); //not angular specific ;instead of cookie jwt (json web token ) can be used ;jwt-one time generation ;keeps timestamps too;jwt is more secure than cookie for session handling 
+			$cookieStore.put('globals', userId); //not angular specific ;instead of cookie jwt (json web token ) can be used ;jwt-one time generation ;keeps timestamps too;jwt is more secure than cookie for session handling 
 		}
 
 		this.clearCredentials = function() {
