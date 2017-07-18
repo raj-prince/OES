@@ -9,39 +9,37 @@ app.controller("StudentExamListController",function($scope,$rootScope,StudentSer
       $scope.dashBoard = true;
 
     }
-   // $scope.examsId=examsId=[];
-   // $scope.user=user=[];
-   //      StudentService.getStudent().then(function(result){
-   //         $scope.examsId=examsId=result.data.exam;
-   //         console.log(examsId)
-   //         $scope.user=result.data;
+   $scope.examsId=examsId=[];
+   $scope.user=user=[];
+        StudentService.getStudent($rootScope.globals.userId).then(function(result){
+           $scope.examsId=examsId=result.data.exam;
+           $scope.user=result.data;
            
-   //      });
-   //  $scope.examsId=examsId;
-   //  $scope.user=user;
+        });
+    $scope.examsId=examsId;
+    $scope.user=user;
 
-   // $scope.examsToShow=examsToShow=[];
     $scope.exams=exams=[];
     StudentService.getExams().then(function(result){
-            $scope.exams=exams=result.data;
-            // console.log(exams)
-        // for(var i=0;i<exams.length;i++){
-          // for(var j=0;j<examsId.length;j++){
-            // console.log(exams[i].id, examsId[j])
-            // if(exams[i].id==examsId[j]){
-              // examsToShow.push(exams[i]);
-              // examsId[j]=-1;
-            // }
-          // }
-        // }
-   
-
-        });
-        // console.log('hehid')
-        $scope.exams=exams;
-        // console.log(exams, examsToShow)
-        // $scope.examsToShow=examsToShow;
-
+        $scope.exams=exams=result.data;
+        for(var i=0;i<exams.length;i++){
+          $scope.exams[i].status="Not registered";
+          for(var j=0;j<examsId.length;j++){
+            console.log(exams[i].id, examsId[j])
+            if(exams[i].id==examsId[j]){
+              $scope.exams[i].status="Registered";
+            }
+          }
+        }
+         });
+      $scope.now = new Date();
+      $scope.now.toISOString();
+      $scope.showExamLink = function(date) {
+       var d=new Date(date*1000);
+       d.toISOString();
+      return (d > $scope.now );
+     }
+       
 });
 
 app.controller("LoginController",function($scope,$location,AuthenticationService){
