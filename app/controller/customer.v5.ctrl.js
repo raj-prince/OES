@@ -8,7 +8,7 @@ app.controller("StudentExamListController",function($scope,$rootScope,StudentSer
       console.log($rootScope.globals.userId);
       $scope.dashBoard = true;
 
-    }
+     }
    $scope.examsId=examsId=[];
    $scope.user=user=[];
         StudentService.getStudent($rootScope.globals.userId).then(function(result){
@@ -124,10 +124,25 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, $ht
       // console.log($scope.examName)
 
       var lines = data.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
-      for(var i = 1; i < lines.length; i++) { 
+      for(var i = 1; i < lines.length-1; i++) { 
       var line=lines[i].split(',')
-      $scope.addQuestion(line[0], line[1], line[2], line[3], [])
+      // var endIndex=line.length
+      var options=[]
+        for (var j=4;j<line.length;j++){
+          if (line[j].length>0) options.push(line[j])
+        }
+      // qid=
+      // console.log('hiodasoi')
+      res=$scope.addQuestion(line[0], line[1], line[2], line[3], options)
+      res.success(function(data, status, headers, config) {
+        listOfQuestions.push(data.id)
+      })
+      
     }
+    res.success(function(data, status, headers, config) {
+        $scope.addExam($scope.examName, listOfQuestions)
+      })
+    
       //send your binary data via $http or $resource or do anything else with it
     }
 
@@ -163,9 +178,11 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, $ht
       "type" : type
     }
     var res = $http.post('http://localhost:3000/question/', dataObj);
+    return res
     res.success(function(data, status, headers, config) {
-      console.log(data + 'hoduahofa')
+      console.log(data.id + 'hoduahofa')
       console.log("successfully registered");
+      return data.id
     });
     res.error(function(data, status, headers, config) {
       alert( "failure message: " + JSON.stringify({data: data}));
