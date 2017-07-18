@@ -82,6 +82,16 @@
       "startDate": 1500287205,
       "endDate": 1500287205,
       "duration": 4
+    },
+    {
+      "examName": "eXAM1",
+      "startDate": 0,
+      "endDate": 0,
+      "duration": 0,
+      "listOfQuestions": [
+        0
+      ],
+      "id": 4
     }
   ],
   "question": [
@@ -97,6 +107,18 @@
         "d"
       ],
       "type": "Multi"
+    },
+    {
+      "questionText": "hello worl",
+      "marks": "4",
+      "correctAnswer": "c",
+      "listOfChoices": [
+        "opa",
+        "opb",
+        "opc"
+      ],
+      "type": "Multi",
+      "id": 0
     }
   ]
 }
