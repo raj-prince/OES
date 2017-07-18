@@ -98,6 +98,11 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, $ht
     $scope.schedule = false;
   }
 
+  $scope.scheduleExam = function() {
+    $scope.upload = false;
+    $scope.result = false;
+    $scope.schedule = true;
+  }
 
   UsersService.getUserById($rootScope.globals.userId).then(function(result) {
   $scope.firstName= result.data.firstName
