@@ -8,7 +8,7 @@ app.controller("StudentExamListController",function($scope,$rootScope,StudentSer
       console.log($rootScope.globals.userId);
       $scope.dashBoard = true;
 
-    }
+     }
    $scope.examsId=examsId=[];
    $scope.user=user=[];
         StudentService.getStudent($rootScope.globals.userId).then(function(result){

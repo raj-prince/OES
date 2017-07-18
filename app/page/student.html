@@ -1,4 +1,4 @@
-<div class = "outer" ng-controller = "StudentExamListController" >
+<div class = "outer" ng-app= "customer_module" ng-controller = "StudentExamListController" >
 <div id="wrapper">
    <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -26,26 +26,28 @@
                     <a href="#">Exam</a>
                 </li> -->
                 <li>
-                    <a href="#">Result</a>
+                    <a ng-click = "showResult()">Result</a>
                 </li>
-                
               
             </ul>
         </div></div>
 
-<div class="container" ng-show = "dashBoard">
+<div class="container">
       <!-- {{customers}}-->
        <div class="row">
            <div class="col-md-4 col-lg-4 card" ng-repeat="exam in exams">
-              <studentcard-view
+              <studentcard-view  
         exam-name="exam.examName"  
         exam-detail="exam.examDetail"
         start-date="exam.startDate"
         end-date="exam.endDate"
         duration="exam.duration"
         status="exam.status"
+        show-exam-link="showExamLink(exam.endDate)"
         >
               </studentcard-view>
+              
+
     </div>
     </div>
     </div>
