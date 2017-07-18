@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="css/app.css" />
   </head>
   <body>
- -->    <form class="form-horizontal" role="form">
+ -->    <form class="form-horizontal" >
       <div class="form-group">
         <label for="examName" class="col-sm-2 control-label">Exam Name</label>
         <div class="col-sm-4">
@@ -45,14 +45,15 @@
       <div class="form-group">
         <label for="examPath" class="col-sm-2 control-label">Upload Question Paper <br>in Excel Sheet</label>
         <div class="col-sm-4">
-          <input type="file" id="file" name="file"/>
+          <!-- <input type="file" id="file" name="file"/> -->
+          <input class="form-control" id="filePath" type="file">
 			<!-- <button ng-click="add()">Add</button> -->
         </div>
       </div>
       
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-success" ng-click='add()'>Upload</button>
+          <button ng-click='addQP()'>Upload</button>
         </div>
       </div>
     </form>

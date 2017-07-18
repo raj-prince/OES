@@ -94,7 +94,8 @@ app.controller('AdminController', function($scope, $rootScope, UsersService){
   console.log($scope.firstName)
 });
 
-  $scope.add = function() {
+  $scope.addQP = function() {
+    console.log('here')
     var f = document.getElementById('file').files[0],
         r = new FileReader();
 
