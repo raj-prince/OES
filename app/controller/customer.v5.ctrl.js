@@ -89,6 +89,16 @@ app.controller("SignUpController",function($scope,$location,AuthenticationServic
 });
 
 app.controller('AdminController', function($scope, $rootScope, UsersService){
+  $scope.upload = true;
+  $scope.result = false;
+  $scope.schedule = false;
+  $scope.uploadQuestion = function() {
+    $scope.upload = true;
+    $scope.result = false;
+    $scope.schedule = false;
+  }
+
+
   UsersService.getUserById($rootScope.globals.userId).then(function(result) {
   $scope.firstName= result.data.firstName
   console.log($scope.firstName)

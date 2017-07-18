@@ -1,27 +1,44 @@
-<div id="wrapper">
-   <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <img src="image/user.png" class="img">
-                </li>
-                <li  ng-controller="AdminController">
-                    <!-- <p>{{usr.firstName}}</p> -->
-                </li>
-                <!-- <li>
-                    <a href="#/">Dashboard</a>
-                </li> -->
-                <li>
-                    <a href="#/uploadQuestions">Upload Questions</a>
-                </li>
-                 <li>
-                    <a href="#">Schedule Assesment</a>
-                </li>
-                <li>
-                    <a href="#">View Results</a>
-                </li>
-                
-              
-            </ul>
-        </div></div>
-        
+<div class = "outer_admin" ng-controller = "AdminController">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" >Admin page</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a ng-click = "uploadQuestion()">Upload Questions</a></li>
+      <li><a ng-click = "Schedule()">Schedule Assesment</a></li>
+      <li><a ng-click = "ViewResult()">View Results</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class = "upload_question " ng-show = "upload">
+<center>
+<h2>UPLOAD QUESTION PAPER</h2>
+</center>
+</br>
+</br>
+<form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="examName" class="col-sm-2 control-label">Exam Name</label>
+        <div class="col-sm-4">
+          <input class="form-control" id="inputName3" placeholder="Enter the Exam Name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="examPath" class="col-sm-2 control-label">Upload Question Paper <br>in Excel Sheet</label>
+        <div class="col-sm-4">
+          <input type="file" id="file" name="file"/>
+            <!-- <button ng-click="add()">Add</button> -->
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-success" ng-click='add()'>Upload</button>
+        </div>
+      </div>
+    </form>
+    
+</div>
+</div>
