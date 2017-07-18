@@ -3,7 +3,7 @@
 
 app.controller("StudentExamListController",function($scope,$rootScope,StudentService){ 
 
-    $scope.dashBoard = false;
+    $scope.dashBoard = true;
     $scope.showDashboard = function() {
       console.log($rootScope.globals.userId);
       $scope.dashBoard = true;

@@ -6,10 +6,17 @@
                 <li class="sidebar-brand">
                     <img src="image/user.png" class="img">
                 </li>
-                <li ng-repeat="usr in user">
-                    <p>{{usr.firstName}}</p>
+                <li >
+                    <p>UserId &nbsp; {{globals.userId}}</p>
                 </li>
                 <li>
+                <p>{{globals.firstName}}</p>
+                </li>
+                <li>
+                <p>{{globals.email}}</p>
+                </li>
+                
+                <!-- <li>
                     <a ng-click = "showDashboard()">Dashboard</a>
                 </li>
                 <li>
@@ -17,7 +24,7 @@
                 </li>
                  <li>
                     <a href="#">Exam</a>
-                </li>
+                </li> -->
                 <li>
                     <a href="#">Result</a>
                 </li>
