@@ -42,6 +42,9 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
     .when('/dashboard',{
       templateUrl:'app/page/dashboard.html'
     })
+    .when('/assessment',{
+      templateUrl:'app/page/assessment.html'
+    })
     }).run(check);
     function check($cookieStore,$location,$rootScope,$http){
   //       $rootScope.$on("$locationChangeStart",function(event,next,current){

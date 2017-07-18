@@ -67,7 +67,8 @@
       "examName": "Assignment 1",
       "startDate": 1500287205,
       "endDate": 1600493255,
-      "duration": 6
+      "duration": 6,
+      "listOfQuestions" = [1, 2]
     },
     {
       "id": 2,
@@ -96,9 +97,9 @@
   ],
   "question": [
     {
-      "id": -1,
+      "id": 1,
       "questionText": "demo",
-      "marks": 0,
+      "marks": 1,
       "correctAnswer": "A",
       "listOfChoices": [
         "a",
@@ -119,6 +120,7 @@
       ],
       "type": "Multi",
       "id": 0
+
     }
   ]
 }

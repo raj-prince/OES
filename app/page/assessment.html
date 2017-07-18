@@ -1,0 +1,28 @@
+<div class = "outer" ng-controller = "AssessmentController" >
+    <!-- <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <img src="image/user.png" class="img">
+                </li>
+                <li >
+                    <p>UserId &nbsp; {{globals.userId}}</p>
+                </li>
+                <li>
+                <p>{{globals.firstName}}</p>
+                </li>
+                <li>
+                <p>{{globals.email}}</p>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+
+    <div ng-show = "showStartButton">
+        <button type="button" class="btn btn-primary" ng-click="startAssessment()">Start</button>
+    </div>
+
+    <div ng-show = "displayQuestion">
+        <h4> Question No. 1</h4>
+    </div>
+</div>

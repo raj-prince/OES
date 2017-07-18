@@ -81,11 +81,7 @@ app.controller("SignUpController",function($scope,$location,AuthenticationServic
   $scope.register = function() {
     AuthenticationService.registerUser($scope.email,$scope.password,$scope.firstName,$scope.lastName);
     $location.path('/');
-    
   }
-
-  
-
 });
 
 app.controller('AdminController', function($scope, $rootScope, UsersService, $http){
@@ -187,6 +183,27 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, $ht
   
   
 })
+
+// Assessment Controller Begin.
+app.controller("AssessmentController",function($scope, $location){
+  alert("Hello");
+  $scope.showStartButton = true;
+  $scope.displayQuestion = false;
+  $scope.finishAssessment = function() {
+    $location.path('/student');
+  }
+
+  $scope.startAssessment = function() {
+    alert("Come Inside");
+    $scope.showStartButton = false;
+    $scope.displayQuestion = true;
+
+  }
+
+}); // Assessment Controller End.
+
+
+
 
 
 })();
