@@ -1,3 +1,4 @@
+
 (function () {
   var app = angular.module("customer_module", ["admin_module","directive_module", "service_module", "authentication_module", 'users_module','angularUtils.directives.dirPagination']);
 
@@ -343,6 +344,7 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
 
 
   })
+
 
 
 })();

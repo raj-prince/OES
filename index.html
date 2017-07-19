@@ -20,7 +20,7 @@
 <meta charset="utf-8" name="viewport" content="width=device-width">
 <!-- <script type="text/javascript" src="app/directive/card.drv.js"></script>   
  --><!-- to include directive  -->
-<script type="text/javascript" src="app/directive/student.card.drv.js"></script> 
+<script type="text/javascript" src="app/directive/student.card.drv.js"></script>
 <script type="text/javascript" src="app/service/services.js"></script>
 <!-- <script type="text/javascript" src="app/service/customer.srv.js"></script> -->
 <!-- <script type="text/javascript" src="app/service/order.srv.js"></script> -->
@@ -31,20 +31,32 @@
 <script type="text/javascript" src="app/service/response.srv.js"></script>
 <script type="text/javascript" src="app/service/question.srv.js"></script>
 <script type="text/javascript" src="app/service/authenticate.srv.js"></script>
+<script type="text/javascript" src="app/service/assessment.srv.js"></script>
 <script type="text/javascript" src="app/controller/customer.v5.ctrl.js"></script>
+<script type="text/javascript" src="app/controller/assessment.v1.ctrl.js"></script>
 <script type="text/javascript" src="app/service/users.srv.js"></script>
 <script type="text/javascript" src="app/config/main.cfg.js"></script>
 </head>
-<body ng-app="main_module">   <!-- to tell the compiler to start compiling from here; creates root scope  -->
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">Online Examination System</a>
-    </div>
-  </div>
-</nav>   
+<body ng-app="main_module">   
+<div class="container-fluid">
 
-<div ng-view ></div>
- 
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class = "col-md-4">
+      <header>
+        <h2>
+        <span class="glyphicon glyphicon-education"></span>
+        Online Examination System
+        </h2>
+      </header>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
+  <div ng-view></div>
+
+
+
+</div> 
 </body>
 </html>

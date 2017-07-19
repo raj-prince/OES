@@ -1,6 +1,6 @@
 (function(){
-var mmodule=angular.module("main_module",["customer_module","authentication_module","ngRoute","ngCookies","angularjs-datetime-picker"]);  //
-mmodule.config(function($routeProvider,$locationProvider){   // no need of a name ;bcz this is the starting point
+angular.module("main_module",["customer_module", "assessmentController_module","authentication_module","ngRoute","ngCookies","angularjs-datetime-picker"]);  //
+angular.module("main_module").config(function($routeProvider,$locationProvider){   // no need of a name ;bcz this is the starting point
     $routeProvider
     .when('/',{
         templateUrl:'app/page/login.html'
@@ -41,6 +41,9 @@ mmodule.config(function($routeProvider,$locationProvider){   // no need of a nam
     })
     .when('/dashboard',{
       templateUrl:'app/page/dashboard.html'
+    })
+    .when('/assessment',{
+      templateUrl:'app/page/assessment.html'
     })
     }).run(check);
     function check($cookieStore,$location,$rootScope,$http){

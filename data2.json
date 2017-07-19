@@ -75,11 +75,15 @@
   "exam": [
     {
       "examName": "Assignment 1",
-      "startDate": 1500402360,
-      "endDate": 1500404160,
-      "duration": 30,
-      "listOfQuestions": [],
-      "id": 1
+      "id": 1,
+      "startDate": 1500287205,
+      "endDate": 1600493255,
+      "duration": 6,
+      "listOfQuestions": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "id": 2,
@@ -87,38 +91,41 @@
       "startDate": 1500287205,
       "endDate": 1500287205,
       "duration": 4,
-      "listOfQuestions": []
+      "listOfQuestions": [
+        0,
+        1
+      ]
     },
     {
       "examName": "Assignment 3",
-      "startDate": 1500445800,
-      "endDate": 1500447000,
-      "duration": 20,
-      "listOfQuestions": [0],
-      "id": 3
+      "startDate": 1500287205,
+      "endDate": 1500287205,
+      "duration": 4,
+      "listOfQuestions": [
+        0,
+        1
+      ]
     },
     {
+      "id": 4,
       "examName": "eXAM1",
       "startDate": 1500287205,
       "endDate": 1600493255,
       "duration": 1,
       "listOfQuestions": [
         0
-      ],
-      "id": 4
+      ]
     }
   ],
   "question": [
     {
-      "id": -1,
+      "id": 1,
       "questionText": "demo",
-      "marks": 0,
+      "marks": 1,
       "correctAnswer": "A",
       "listOfChoices": [
         "a",
-        "b",
-        "c",
-        "d"
+        "b"
       ],
       "type": "Multi"
     },
@@ -133,6 +140,80 @@
       ],
       "type": "Multi",
       "id": 0
+    },
+    {
+      "questionText": "Hello World 2",
+      "marks": "4",
+      "correctAnswer": "c",
+      "listOfChoices": [
+        "opa",
+        "opb",
+        "opc"
+      ],
+      "type": "Multi",
+      "id": 2
+    }
+  ],
+  "responses": [
+    {
+      "id": 0,
+      "userId": 1,
+      "questionId": 3,
+      "responseText": "012"
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "0",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "questionId": 2,
+      "responseText": "",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "0",
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "2",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "questionId": 2,
+      "responseText": "",
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "0",
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "",
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "questionId": 2,
+      "responseText": "",
+      "id": 9
     }
   ],
   "response": [
