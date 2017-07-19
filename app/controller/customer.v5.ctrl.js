@@ -229,7 +229,9 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
           res2=AdminService.addExam($scope.examName, listOfQuestions)
           res2.success(function (data, status, headers, config) {
             UsersService.getUserById(user_id).then(function(result){
-              AdminService.updateAdminExam(result.data, data.id )
+              AdminService.updateAdminExam(result.data, data.id );
+              $rootScope.globals.exam.push(data.id);
+
             })
             
           })

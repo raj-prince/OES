@@ -6,14 +6,20 @@
     $scope.showStartButton = true;
     $scope.displayQuestion = false;
     $scope.showRadioButton = false;
+    $scope.totalQuestions = 0;
+    $scope.totalAnswered = 0;
+    $scope.totalUnanswered = 0;
     $scope.options = [];
 
     var questionIds = [];
+    var totalQuestionIds = [];
     ques_id_idx = 0;
     questionList = [];
     var userId = 1;
     var exameId = 1;
 
+    var prevResponse = "";
+    var currentResponse = "";
     // store (userId * 1000 + quesId) as key
     // response Object as value
     var hash = new Object();
@@ -23,9 +29,69 @@
     $scope.finishAssessment = function() {
       $location.path('/student');
     }
+    // document.getElementById("answered").click(function(){
+
+
+    //   console.log("yo clicked the button");
+    // });
+    $scope.buttonClicked = function(value) {
+     if(value == 1) {
+      showAnswered();
+     }
+     else if(value == 2) {
+      showUnanswered();
+     }
+     else {
+      questionIds = totalQuestionIds;
+     }
+     $scope.showStartButton = false;
+      $scope.displayQuestion = true;
+      $scope.showRadioButton = true;
+      $scope.showNextButton = true;
+      $scope.showPrevButton = false;
+      
+      // currentResponse = "";
+      ques_id_idx = 0;
+      // prevResponse = hash[hashCode(userId, questionIds[ques_id_idx])].responseText;
+      // $scope.question = question = questionList[questionIds[ques_id_idx]];
+      if(questionIds.length > 0){
+     prevResponse =  showCheckedUtil();
+    }
+    else {
+      $scope.displayQuestion = false;
+      $scope.showNextButton = false;
+    }
+    }
+
+    var showAnswered = function() {
+      var temp = [];
+      for(var i =0;i<totalQuestionIds.length;i++) {
+        if(hash[hashCode(userId, totalQuestionIds[i])].responseText.length > 0) {
+          temp.push(totalQuestionIds[i]);
+        }
+
+      }
+      console.log(temp);
+      questionIds = temp;
+    }
+
+    var showUnanswered = function() {
+      var temp = [];
+      for(var i =0;i<totalQuestionIds.length;i++) {
+        if(hash[hashCode(userId, totalQuestionIds[i])].responseText.length == 0) {
+          temp.push(totalQuestionIds[i]);
+        }
+
+      }
+      console.log(temp);
+      questionIds = temp;
+    }
 
     AssessmentService.getExameById(1).then(function(result) {
       questionIds = result.data.listOfQuestions;
+      totalQuestionIds = questionIds;
+      $scope.totalQuestions = questionIds.length;
+      $scope.totalUnanswered = questionIds.length;
     });
 
     // AssessmentService.getQuestionById(1).then(function(result) {
@@ -68,7 +134,6 @@
 
       ques_id_idx = 0;
       $scope.question = question = questionList[questionIds[ques_id_idx]];
-      $scope.options = question.listOfChoices;
       $scope.showPrevButton = false;
       // if (ques_id_idx == 0) {
       //   $scope.showPrevButton = false;
@@ -81,22 +146,36 @@
 
     $scope.loadPrevQues = function() {
       // code for operation on current question
-      updateResponseUtil();
+      currentResponse = updateResponseUtil();
+      updateCount();
       ques_id_idx -= 1;
       // $scope.question = question = questionList[questionIds[ques_id_idx]];
-      showCheckedUtil();
+      prevResponse = showCheckedUtil();
       displayButtonUtil();
     }
 
     $scope.loadNextQues = function() {
 
-      updateResponseUtil();
+      currentResponse = updateResponseUtil();
+      updateCount();
       ques_id_idx += 1;
-      showCheckedUtil();
+      prevResponse = showCheckedUtil();
       
       displayButtonUtil();
     }
 
+    var updateCount = function() {
+      console.log("the previous response is " + prevResponse);
+      console.log("the currentResponse is " + currentResponse);
+      if(currentResponse.length>0 && prevResponse.length==0) {
+        $scope.totalAnswered +=1;
+        $scope.totalUnanswered-=1;
+      }
+      if(currentResponse.length==0 && prevResponse.length >0) {
+        $scope.totalAnswered -=1;
+        $scope.totalUnanswered +=1;
+      }
+    }
     // code for operation on current question
     var updateResponseUtil = function() {
       var responseGiven = "";
@@ -117,13 +196,19 @@
       hash[hashCode(userId, questionIds[ques_id_idx])] = currentResponseObject;
       console.log("the text is "+currentResponseObject.responseText);
       AssessmentService.updateResponse(currentResponseObject.id, currentResponseObject);
+      return responseGiven;
     }
 
     //function to show the checked options
     var showCheckedUtil = function() {
       $scope.question = question = questionList[questionIds[ques_id_idx]];
-      $scope.options = question.listOfChoices;
+      
+      $(document).ready(function() {
 
+      // // await sleep(2000);
+      // for(var i =0;i<1000000000;i++) {
+
+      // }
       var responseObject = hash[hashCode(userId, questionIds[ques_id_idx])];
 
       // first unchecked all checkbox
@@ -145,6 +230,8 @@
 
         }
       }
+    });
+      return hash[hashCode(userId, questionIds[ques_id_idx])].responseText;
     }
     var displayButtonUtil = function() {
       if (ques_id_idx + 1 >= questionIds.length) {
