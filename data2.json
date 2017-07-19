@@ -9,7 +9,8 @@
       "lastName": "bing",
       "exam": [
         1,
-        2
+        2,
+        3
       ]
     },
     {
@@ -21,7 +22,8 @@
       "lastName": "Geller",
       "exam": [
         1,
-        2
+        2,
+        3
       ]
     },
     {
@@ -31,7 +33,9 @@
       "type": "student",
       "firstName": "abhishek",
       "lastName": "sinha",
-      "exam": []
+      "exam": [
+        3
+      ]
     },
     {
       "id": 3,
@@ -63,35 +67,28 @@
   ],
   "exam": [
     {
-      "id": 1,
       "examName": "Assignment 1",
-      "startDate": 1500287205,
-      "endDate": 1600493255,
-      "duration": 6
+      "startDate": 1500402360,
+      "endDate": 1500404160,
+      "duration": 30,
+      "listOfQuestions": [],
+      "id": 1
     },
     {
       "id": 2,
       "examName": "Assignment 2",
       "startDate": 1500287205,
       "endDate": 1500287205,
-      "duration": 4
+      "duration": 4,
+      "listOfQuestions": []
     },
     {
-      "id": 3,
       "examName": "Assignment 3",
-      "startDate": 1500287205,
-      "endDate": 1500287205,
-      "duration": 4
-    },
-    {
-      "examName": "eXAM1",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
-      "listOfQuestions": [
-        0
-      ],
-      "id": 4
+      "startDate": 1499713920,
+      "endDate": 1499715720,
+      "duration": 30,
+      "listOfQuestions": [],
+      "id": 3
     }
   ],
   "question": [

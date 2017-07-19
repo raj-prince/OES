@@ -1,5 +1,5 @@
 (function(){
-	var app=angular.module("customer_module",["directive_module","service_module","authentication_module", 'users_module']);               
+	var app=angular.module("customer_module",["admin_module","directive_module","service_module","authentication_module", 'users_module']);               
 
 app.controller("StudentExamListController",function($scope,$rootScope,StudentService){ 
 
@@ -65,7 +65,7 @@ app.controller("LoginController",function($scope,$location,AuthenticationService
         else {
           $location.path("/student");
         }
-        AuthenticationService.setCredentials(users[i].id,users[i].firstName,users[i].email);
+        AuthenticationService.setCredentials(users[i].id,users[i].firstName,users[i].email,users[i].exam);
       }
 
     });
@@ -88,10 +88,15 @@ app.controller("SignUpController",function($scope,$location,AuthenticationServic
 
 });
 
-app.controller('AdminController', function($scope, $rootScope, UsersService, $http){
+app.controller('AdminController', function($scope, $rootScope, UsersService, AdminService,$http){
   $scope.upload = true;
   $scope.result = false;
   $scope.schedule = false;
+  $scope.adminExams = [];
+  all_users = [];
+  UsersService.getUsers().then(function(result) {
+    all_users = result.data;
+  });
   $scope.uploadQuestion = function() {
     $scope.upload = true;
     $scope.result = false;
@@ -102,16 +107,47 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, $ht
     $scope.upload = false;
     $scope.result = false;
     $scope.schedule = true;
+    var temp = [];
+    AdminService.getExams().then(function(result) {
+      var exams = result.data;
+      console.log("the length is");
+      
+      for(var i =0;i<$rootScope.globals.exam.length;i++)
+      {
+        for(var j = 0;j<exams.length;j++) {
+          if($rootScope.globals.exam[i] == exams[j].id) {
+            temp.push(exams[j]);
+            break;
+          }
+        }
+      }
+
+      $scope.adminExams = temp;
+      // console.log($scope.adminExams);
+    });
   }
 
-  UsersService.getUserById($rootScope.globals.userId).then(function(result) {
-  $scope.firstName= result.data.firstName
-  console.log($scope.firstName)
-  });
+  // UsersService.getUserById($rootScope.globals.userId).then(function(result) {
+  // $scope.firstName= result.data.firstName
+  // console.log($scope.firstName)
+  // });
 
   $scope.Schedule = function() {
-    console.log("yo");
-    alert($scope.examDate);
+    
+    var start_timestamp = Date.parse($scope.examDate)/1000;
+    var end_timestamp = start_timestamp + parseInt($scope.duration)*60;
+    var i;
+    AdminService.updateExam($scope.exam_name,start_timestamp,end_timestamp,$scope.duration);
+
+    AdminService.readExaminees(function(response) {
+      
+      for(i=0;i<response.length;i++){
+        AdminService.updateUser(all_users,response[i],$scope.exam_name.id);
+
+      }
+      
+    });
+
   }
   $scope.add = function() {
     console.log('here')

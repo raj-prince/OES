@@ -52,13 +52,14 @@
       <div class="form-group">
         <label for="exam_Name" class="col-sm-2 control-label">EXAM NAME</label>
         <div class="col-sm-4">
-          <input class="form-control" ng-model="examName" placeholder="Enter the Exam Name" required>
+          <!-- <input class="form-control" ng-model="examName" placeholder="Enter the Exam Name" required> -->
+          <select ng-model="exam_name" ng-options="x.examName for x in adminExams"></select>
         </div>
       </div>
       <div class="form-group">
       <label for="examDate" class="col-sm-2 control-label">EXAM DATE/TIME</label>
       <div class="col-sm-4">
-                <input datetime-picker ng-model="examDate" date-format="yyyy-MM-dd HH:mm:ss" required />
+                <input datetime-picker ng-model="examDate" date-format="dd-MMM-yyyy HH:mm:ss" required />
                 </div>
             </div>
       <div class="form-group">
@@ -70,7 +71,7 @@
       <div class="form-group">
       <label for="notificationDate" class="col-sm-2 control-label">NOTIFICATION DATE/TIME</label>
       <div class="col-sm-4">
-                <input datetime-picker ng-model="notificationDate" date-format="yyyy-MM-dd HH:mm:ss" required/>
+                <input datetime-picker ng-model="notificationDate" date-format="dd-MMM-yyyy HH:mm:ss" required/>
                 </div>
             </div>
       <div class="form-group">

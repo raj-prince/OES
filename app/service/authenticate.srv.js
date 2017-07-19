@@ -45,11 +45,12 @@
 		});	
 		}
 
-		this.setCredentials = function(userId,firstName,emailId) {
+		this.setCredentials = function(userId,firstName,emailId,exam) {
 			$rootScope.globals = {
 							userId : userId,
 							firstName : firstName,
-							email : emailId
+							email : emailId,
+							exam : exam
 			};
 
 			$cookieStore.put('globals', userId); //not angular specific ;instead of cookie jwt (json web token ) can be used ;jwt-one time generation ;keeps timestamps too;jwt is more secure than cookie for session handling 
