@@ -9,7 +9,8 @@
       "lastName": "bing",
       "exam": [
         1,
-        2
+        2,
+        3
       ]
     },
     {
@@ -21,7 +22,13 @@
       "lastName": "Geller",
       "exam": [
         1,
-        2
+        2,
+        3
+      ],
+      "taken": [
+        0,
+        0,
+        1
       ]
     },
     {
@@ -31,7 +38,9 @@
       "type": "student",
       "firstName": "abhishek",
       "lastName": "sinha",
-      "exam": []
+      "exam": [
+        3
+      ]
     },
     {
       "id": 3,
@@ -40,7 +49,9 @@
       "type": "student",
       "firstName": "anjn",
       "lastName": "nsa",
-      "exam": []
+      "exam": [
+        3
+      ]
     },
     {
       "email": "2121",
@@ -63,8 +74,8 @@
   ],
   "exam": [
     {
-      "id": 1,
       "examName": "Assignment 1",
+      "id": 1,
       "startDate": 1500287205,
       "endDate": 1600493255,
       "duration": 6,
@@ -86,7 +97,6 @@
       ]
     },
     {
-      "id": 3,
       "examName": "Assignment 3",
       "startDate": 1500287205,
       "endDate": 1500287205,
@@ -99,9 +109,9 @@
     {
       "id": 4,
       "examName": "eXAM1",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
+      "startDate": 1500287205,
+      "endDate": 1600493255,
+      "duration": 1,
       "listOfQuestions": [
         0
       ]
@@ -186,6 +196,32 @@
       "questionId": 2,
       "responseText": "",
       "id": 6
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "0",
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "",
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "questionId": 2,
+      "responseText": "",
+      "id": 9
+    }
+  ],
+  "response": [
+    {
+      "id": 1,
+      "userId": 1,
+      "responseText": "A",
+      "questionId": 0
     }
   ]
 }

@@ -15,16 +15,6 @@
                 <li>
                 <p>{{globals.email}}</p>
                 </li>
-                
-                <!-- <li>
-                    <a ng-click = "showDashboard()">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Profile</a>
-                </li>
-                 <li>
-                    <a href="#">Exam</a>
-                </li> -->
                 <li>
                     <a ng-click = "showResult()">Result</a>
                 </li>
@@ -34,7 +24,7 @@
 
 <div class="container">
       <!-- {{customers}}-->
-       <div class="row">
+       <div class="row" ng-init="fillTakenExamsArray(exams)">
            <div class="col-md-4 col-lg-4 card" ng-repeat="exam in exams">
               <studentcard-view  
         exam-name="exam.examName"  
@@ -43,7 +33,9 @@
         end-date="exam.endDate"
         duration="exam.duration"
         status="exam.status"
+        taken="exam.taken"
         show-exam-link="showExamLink(exam.endDate)"
+        is-exam-taken="isExamTaken(exam)"
         >
               </studentcard-view>
               
@@ -51,4 +43,33 @@
     </div>
     </div>
     </div>
+
+
+    <div ng-show="result">
+        <table class="table table-striped table-hover">
+  <thead>
+      <tr>
+          <th ng-click="sort('examName')">Exam Name</th>
+            <span class="glyphicon sort-icon" ng-show="sortKey=='examName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':'reverse'}"></span>
+            <th ng-click="sort('startDate')">Date Of Exam </th>
+            <span class="glyphicon sort-icon" ng-show="sortKey=='startDate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':'reverse'}"></span>
+            <th> Result </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr dir-paginate="exam in takenExams|itemsPerPage:2">
+        <td>{{exam.examName}}</td>
+        <td>{{exam.startDate}}</td>
+        <td><a href="#">View Result </a></td>
+        </tr>
+    </tbody>
+    <dir-pagination-controls
+    max-size="5"
+    direction-links="true"
+    boundary-links="true">
+    </dir-pagination-controls>
+    </table>
+            </div>
+
 </div>
+
