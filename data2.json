@@ -284,19 +284,19 @@
     {
       "userId": 1,
       "questionId": 0,
-      "responseText": "1",
+      "responseText": "",
       "id": 1
     },
     {
       "userId": 1,
       "questionId": 1,
-      "responseText": "1",
+      "responseText": "",
       "id": 2
     },
     {
       "userId": 1,
       "questionId": 2,
-      "responseText": "1,2",
+      "responseText": "",
       "id": 3
     }
   ]
