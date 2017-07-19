@@ -68,31 +68,43 @@
       "startDate": 1500287205,
       "endDate": 1600493255,
       "duration": 6,
-      "listOfQuestions" = [1, 2]
+      "listOfQuestions": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "id": 2,
       "examName": "Assignment 2",
       "startDate": 1500287205,
       "endDate": 1500287205,
-      "duration": 4
+      "duration": 4,
+      "listOfQuestions": [
+        0,
+        1
+      ]
     },
     {
       "id": 3,
       "examName": "Assignment 3",
       "startDate": 1500287205,
       "endDate": 1500287205,
-      "duration": 4
+      "duration": 4,
+      "listOfQuestions": [
+        0,
+        1
+      ]
     },
     {
+      "id": 4,
       "examName": "eXAM1",
       "startDate": 0,
       "endDate": 0,
       "duration": 0,
       "listOfQuestions": [
         0
-      ],
-      "id": 4
+      ]
     }
   ],
   "question": [
@@ -103,9 +115,7 @@
       "correctAnswer": "A",
       "listOfChoices": [
         "a",
-        "b",
-        "c",
-        "d"
+        "b"
       ],
       "type": "Multi"
     },
@@ -120,7 +130,62 @@
       ],
       "type": "Multi",
       "id": 0
-
+    },
+    {
+      "questionText": "Hello World 2",
+      "marks": "4",
+      "correctAnswer": "c",
+      "listOfChoices": [
+        "opa",
+        "opb",
+        "opc"
+      ],
+      "type": "Multi",
+      "id": 2
+    }
+  ],
+  "responses": [
+    {
+      "id": 0,
+      "userId": 1,
+      "questionId": 3,
+      "responseText": "012"
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "0",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "questionId": 2,
+      "responseText": "",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "0",
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "2",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "questionId": 2,
+      "responseText": "",
+      "id": 6
     }
   ]
 }

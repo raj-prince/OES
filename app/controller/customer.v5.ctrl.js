@@ -1,5 +1,5 @@
 (function(){
-	var app=angular.module("customer_module",["directive_module","service_module","authentication_module", 'users_module']);               
+	var app=angular.module("customer_module",["directive_module","service_module","authentication_module", "users_module", "assessment_module"]);               
 
 app.controller("StudentExamListController",function($scope,$rootScope,StudentService){ 
 
@@ -183,26 +183,6 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, $ht
   
   
 })
-
-// Assessment Controller Begin.
-app.controller("AssessmentController",function($scope, $location){
-  alert("Hello");
-  $scope.showStartButton = true;
-  $scope.displayQuestion = false;
-  $scope.finishAssessment = function() {
-    $location.path('/student');
-  }
-
-  $scope.startAssessment = function() {
-    alert("Come Inside");
-    $scope.showStartButton = false;
-    $scope.displayQuestion = true;
-
-  }
-
-}); // Assessment Controller End.
-
-
 
 
 
