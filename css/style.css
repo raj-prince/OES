@@ -35,3 +35,7 @@ button["deleteButton"]{
     height:100px;
     margin-left: 600px;
 }
+.control{
+    margin-left:600px;
+    margin-bottom: 10px;
+}

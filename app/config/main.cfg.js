@@ -1,6 +1,6 @@
 (function(){
-angular.module("main_module",["customer_module","authentication_module","ngRoute","ngCookies","angularjs-datetime-picker"]);  //
-angular.module("main_module").config(function($routeProvider,$locationProvider){   // no need of a name ;bcz this is the starting point
+var mmodule=angular.module("main_module",["customer_module","authentication_module","ngRoute","ngCookies","angularjs-datetime-picker"]);  //
+mmodule.config(function($routeProvider,$locationProvider){   // no need of a name ;bcz this is the starting point
     $routeProvider
     .when('/',{
         templateUrl:'app/page/login.html'

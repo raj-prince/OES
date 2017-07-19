@@ -48,26 +48,29 @@
         <table class="table table-striped table-hover">
   <thead>
       <tr>
-          <th ng-click="sort('examName')">Exam Name</th>
-            <span class="glyphicon sort-icon" ng-show="sortKey=='examName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':'reverse'}"></span>
-            <th ng-click="sort('startDate')">Date Of Exam </th>
-            <span class="glyphicon sort-icon" ng-show="sortKey=='startDate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':'reverse'}"></span>
+          <th ng-click="sort('examName')">Exam Name
+            <span class="glyphicon sort-icon" ng-show="sortKey=='examName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+            <th ng-click="sort('startDate')">Date Of Exam 
+            <span class="glyphicon sort-icon" ng-show="sortKey=='startDate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
             <th> Result </th>
         </tr>
     </thead>
     <tbody>
-        <tr dir-paginate="exam in takenExams|itemsPerPage:2">
+        <tr dir-paginate="exam in takenExams|itemsPerPage:2|orderBy:sortKey:reverse">
         <td>{{exam.examName}}</td>
-        <td>{{exam.startDate}}</td>
-        <td><a href="#">View Result </a></td>
+        <td>{{exam.startDate*1000 | date:'yyyy-MM-dd'}}</td>
+        <td><a ng-click="calculateResult(exam)">View Result </a></td>
         </tr>
-    </tbody>
+   </tbody>
+ 
+     </div>
+    </table>
+  <div class="control">
     <dir-pagination-controls
     max-size="5"
     direction-links="true"
     boundary-links="true">
     </dir-pagination-controls>
-    </table>
             </div>
 
 </div>

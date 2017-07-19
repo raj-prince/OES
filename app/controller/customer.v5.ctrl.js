@@ -1,7 +1,7 @@
 (function () {
   var app = angular.module("customer_module", ["admin_module","directive_module", "service_module", "authentication_module", 'users_module','angularUtils.directives.dirPagination']);
 
-  app.controller("StudentExamListController", function ($scope, $rootScope, StudentService,ResponseService) {
+  app.controller("StudentExamListController", function ($scope, $rootScope, StudentService,ResponseService,QuestionService) {
 
     $scope.dashBoard = true;
     $scope.showDashboard = function () {
@@ -26,7 +26,7 @@
       for (var i = 0; i < exams.length; i++) {
         $scope.exams[i].status = "Not registered";
         for (var j = 0; j < examsId.length; j++) {
-          console.log(exams[i].id, examsId[j])
+          //console.log(exams[i].id, examsId[j])
           if (exams[i].id == examsId[j]) {
             $scope.exams[i].status = "Registered";
             if($scope.user.taken[j]==1){
@@ -42,21 +42,83 @@
       }
     });
     $scope.exams=exams;
-    $scope.now = new Date();
-    $scope.now.toISOString();
+
+    $scope.now =now= new Date();
+    $scope.now.toDateString();
     $scope.showExamLink = function (date) {
       var d = new Date(date * 1000);
-      d.toISOString();
-      return (d > $scope.now);
+      var day2=d.getDate();
+      var month2=d.getMonth();
+      var year2=d.getFullYear();
+
+      var day1=now.getDate();
+      var month1=now.getMonth();
+      var year1=now.getFullYear();
+      // console.log(d, $scope.now)
+      // console.log(year1, month1, day1)
+      // console.log(year2, month2, day2)
+      // console.log('here')
+      if(year1<year2)return true;
+      else if(year1==year2){
+        if( month1<month2){
+          return true;
+        }
+        else if(month1==month2)
+        {
+          if(day1<=day2){
+            return true;
+          }
+        }
+      }
+      return false;
     }
 
     $scope.responses = responses = [];
+
     ResponseService.getResponse().then(function (result) {
       $scope.responses = responses = result.data;
     });
 
-    $scope.responses = responses;
-
+$scope.responses = responses;
+$scope.totalMarks=totalMarks=0;
+$scope.obtainedMarks=obtainedMarks=0;
+questions=[]
+$scope.calculateResult=function(exam){
+    for(var i=0;i<responses.length;i++){
+      console.log('here'+ i)
+      if(responses[i].userId==$rootScope.globals.userId && isInListOfQuestions(exam.listOfQuestions,responses[i].questionId)){
+        res=QuestionService.getQuestion(responses[i].questionId,i)
+        res.then(function (result) {
+      // $scope.question = question= result.data;
+       questions.push(result.data)
+        // totalMarks+=parseInt($scope.question.marks);
+        // console.log(responses[i].responseText)
+        // console.log(question.correctAnswer)
+        // console.log(i)
+      // if(responses[i].responseText==question.correctAnswer)
+      // obtainedMarks+=parseInt(question.marks);
+  } 
+  
+   
+    );
+//      res.then(function (result){
+// alert("totalMarks=" +totalMarks + " "+obtainedMarks);
+// totalMarks=0;
+// obtainedMarks=0;
+    //  });
+   
+      }
+    }
+    res.then(function (result){
+      for(var i=0;i<responses.length;i++){
+        totalMarks+=parseInt(questions[i].marks);
+        if(responses[i].responseText==questions[i].correctAnswer) obtainedMarks+=parseInt(questions[i].marks);
+      }
+alert("totalMarks=" +totalMarks + " "+obtainedMarks);
+totalMarks=0;
+obtainedMarks=0;})
+}
+   
     isInListOfQuestions = function (listOfQuestions, questionId) {
       for (var i = 0; i < listOfQuestions.length; i++) {
         if (listOfQuestions[i] == questionId) {

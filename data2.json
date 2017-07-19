@@ -94,7 +94,7 @@
       "startDate": 1500445800,
       "endDate": 1500447000,
       "duration": 20,
-      "listOfQuestions": [],
+      "listOfQuestions": [0],
       "id": 3
     },
     {
@@ -139,7 +139,7 @@
     {
       "id": 1,
       "userId": 1,
-      "responseText": "A",
+      "responseText": "c",
       "questionId": 0
     }
   ]
