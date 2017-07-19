@@ -11,7 +11,9 @@ return {
         endDate:'=',
         duration:'=',
         status:'=' ,
-        showExamLink:'&'//& is used for behavior 
+        showExamLink:'&',//& is used for behavior 
+        isExamTaken:'&',
+        taken:'='
        
     }
 }
