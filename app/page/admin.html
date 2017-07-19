@@ -50,33 +50,34 @@
 
 <form class="form-horizontal" role="form">
       <div class="form-group">
-        <label for="examName" class="col-sm-2 control-label">EXAM NAME</label>
+        <label for="exam_Name" class="col-sm-2 control-label">EXAM NAME</label>
         <div class="col-sm-4">
-          <input class="form-control" id="inputName3" placeholder="Enter the Exam Name" required>
+          <!-- <input class="form-control" ng-model="examName" placeholder="Enter the Exam Name" required> -->
+          <select ng-model="exam_name" ng-options="x.examName for x in adminExams"></select>
         </div>
       </div>
       <div class="form-group">
       <label for="examDate" class="col-sm-2 control-label">EXAM DATE/TIME</label>
       <div class="col-sm-4">
-                <input datetime-picker ng-model="examDate" required />
+                <input datetime-picker ng-model="examDate" date-format="dd-MMM-yyyy HH:mm:ss" required />
                 </div>
             </div>
       <div class="form-group">
-        <label for="examName" class="col-sm-2 control-label">DURATION(MIN)</label>
+        <label for="exam_Duration" class="col-sm-2 control-label">DURATION(MIN)</label>
         <div class="col-sm-4">
-          <input class="form-control" id="inputName3" placeholder="Enter the duration" required>
+          <input class="form-control" ng-model="duration" placeholder="Enter the duration" required>
         </div>
       </div>
       <div class="form-group">
       <label for="notificationDate" class="col-sm-2 control-label">NOTIFICATION DATE/TIME</label>
       <div class="col-sm-4">
-                <input datetime-picker ng-model="notificationDate" required/>
+                <input datetime-picker ng-model="notificationDate" date-format="dd-MMM-yyyy HH:mm:ss" required/>
                 </div>
             </div>
       <div class="form-group">
         <label for="examineesPath" class="col-sm-2 control-label">Upload file containing examinees</label>
         <div class="col-sm-4">
-          <input type="file" id="file" name="file" required/>
+          <input type="file" id="fileExaminnes" name="file" required/>
             <!-- <button ng-click="add()">Add</button> -->
         </div>
       </div>
