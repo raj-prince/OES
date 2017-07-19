@@ -21,7 +21,13 @@
       "lastName": "Geller",
       "exam": [
         1,
-        2
+        2,
+        4
+      ],
+      "taken":[
+        0,
+        0,
+        1
       ]
     },
     {
@@ -67,6 +73,9 @@
       "examName": "Assignment 1",
       "startDate": 1500287205,
       "endDate": 1600493255,
+       "listOfQuestions": [
+        -1
+      ],
       "duration": 6
     },
     {
@@ -74,6 +83,9 @@
       "examName": "Assignment 2",
       "startDate": 1500287205,
       "endDate": 1500287205,
+       "listOfQuestions": [
+        -1
+      ],
       "duration": 4
     },
     {
@@ -81,13 +93,16 @@
       "examName": "Assignment 3",
       "startDate": 1500287205,
       "endDate": 1500287205,
+      "listOfQuestions": [
+        -1
+      ],
       "duration": 4
     },
     {
       "examName": "eXAM1",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
+      "startDate": 1500287205,
+      "endDate": 1600493255,
+      "duration": 1,
       "listOfQuestions": [
         0
       ],
@@ -120,5 +135,11 @@
       "type": "Multi",
       "id": 0
     }
-  ]
+  ],
+  "response":[{
+    "id":1,
+    "userId":1,
+    "responseText":"A",
+    "questionId":0
+  }]
 }

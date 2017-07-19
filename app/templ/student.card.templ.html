@@ -12,7 +12,7 @@
         End Date:{{endDate*1000 | date:'yyyy-MM-dd'}}</br>
         Duration : {{duration}} Hours</br>
         Status : {{status}}</br> 
-        <div ng-show="showExamLink(key) && status=='Registered'">
+        <div ng-show="status=='Registered' && showExamLink(key) && taken=='0'">
            <a href="#" class="card-link">Take Assessment</a>
         </div></li> 
      </ul>
