@@ -45,6 +45,43 @@
 
 		}
 
+
+		this.updateAdminExam = function(user,exam_id) {
+			user.exam.push(exam_id)
+			$http.put("http://localhost:3000/user/"+user.id, user)
+		}
+
+		this.addQuestion = function (qtext, type, marks, correctAnswer, listOfChoices) {
+	      var dataObj = {
+	        "questionText": qtext,
+	        "marks": marks,
+	        "correctAnswer": correctAnswer,
+	        "listOfChoices": listOfChoices,
+	        "type": type
+	      }
+	      var res = $http.post('http://localhost:3000/question/', dataObj);
+	      return res
+  		}
+
+  		this.addExam = function (examName, listOfQuestions) {
+	      var dataObj = {
+	        "examName": examName,
+	        "startDate": 0,
+	        "endDate": 0,
+	        "duration": 0,
+	        "listOfQuestions": listOfQuestions
+	      };
+	      var res = $http.post('http://localhost:3000/exam/', dataObj);
+	      return res
+	      res.success(function (data, status, headers, config) {
+	        console.log(data)
+	        console.log("successfully registered");
+	      });
+	      res.error(function (data, status, headers, config) {
+	        alert("failure message: " + JSON.stringify({ data: data }));
+	      });
+	    }
+
 		this.updateUser = function(users,email_id,exam_id) {
 			for(var i = 0;i<users.length;i++) {
 				if(users[i].email == email_id) {

@@ -201,6 +201,7 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
     var f = document.getElementById('file').files[0],
         r = new FileReader();
       var listOfQuestions = []
+      user_id=$rootScope.globals.userId
       r.onloadend = function (e) {
         var data = e.target.result;
         // console.log(data)
@@ -216,14 +217,20 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
           }
           // qid=
           // console.log('hiodasoi')
-          res = $scope.addQuestion(line[0], line[1], line[2], line[3], options)
+          res = AdminService.addQuestion(line[0], line[1], line[2], line[3], options)
           res.success(function (data, status, headers, config) {
             listOfQuestions.push(data.id)
           })
 
         }
         res.success(function (data, status, headers, config) {
-          $scope.addExam($scope.examName, listOfQuestions)
+          res2=AdminService.addExam($scope.examName, listOfQuestions)
+          res2.success(function (data, status, headers, config) {
+            UsersService.getUserById(user_id).then(function(result){
+              AdminService.updateAdminExam(result.data, data.id )
+            })
+            
+          })
         })
 
         //send your binary data via $http or $resource or do anything else with it
@@ -234,43 +241,43 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
       console.log('read')
     }
 
-    $scope.addExam = function (examName, listOfQuestions) {
-      var dataObj = {
-        "examName": examName,
-        "startDate": 0,
-        "endDate": 0,
-        "duration": 0,
-        "listOfQuestions": listOfQuestions
-      };
-      var res = $http.post('http://localhost:3000/exam/', dataObj);
-      res.success(function (data, status, headers, config) {
-        console.log(data)
-        console.log("successfully registered");
-      });
-      res.error(function (data, status, headers, config) {
-        alert("failure message: " + JSON.stringify({ data: data }));
-      });
-    }
+    // $scope.addExam = function (examName, listOfQuestions) {
+    //   var dataObj = {
+    //     "examName": examName,
+    //     "startDate": 0,
+    //     "endDate": 0,
+    //     "duration": 0,
+    //     "listOfQuestions": listOfQuestions
+    //   };
+    //   var res = $http.post('http://localhost:3000/exam/', dataObj);
+    //   res.success(function (data, status, headers, config) {
+    //     console.log(data)
+    //     console.log("successfully registered");
+    //   });
+    //   res.error(function (data, status, headers, config) {
+    //     alert("failure message: " + JSON.stringify({ data: data }));
+    //   });
+    // }
 
-    $scope.addQuestion = function (qtext, type, marks, correctAnswer, listOfChoices) {
-      var dataObj = {
-        "questionText": qtext,
-        "marks": marks,
-        "correctAnswer": correctAnswer,
-        "listOfChoices": listOfChoices,
-        "type": type
-      }
-      var res = $http.post('http://localhost:3000/question/', dataObj);
-      return res
-      res.success(function (data, status, headers, config) {
-        console.log(data.id + 'hoduahofa')
-        console.log("successfully registered");
-        return data.id
-      });
-      res.error(function (data, status, headers, config) {
-        alert("failure message: " + JSON.stringify({ data: data }));
-      });
-    }
+    // $scope.addQuestion = function (qtext, type, marks, correctAnswer, listOfChoices) {
+    //   var dataObj = {
+    //     "questionText": qtext,
+    //     "marks": marks,
+    //     "correctAnswer": correctAnswer,
+    //     "listOfChoices": listOfChoices,
+    //     "type": type
+    //   }
+    //   var res = $http.post('http://localhost:3000/question/', dataObj);
+    //   return res
+    //   res.success(function (data, status, headers, config) {
+    //     console.log(data.id + 'hoduahofa')
+    //     console.log("successfully registered");
+    //     return data.id
+    //   });
+    //   res.error(function (data, status, headers, config) {
+    //     alert("failure message: " + JSON.stringify({ data: data }));
+    //   });
+    // }
 
 
   })
