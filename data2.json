@@ -108,6 +108,7 @@
       "id": 2
     },
     {
+      "id":3,
       "examName": "Assignment 3",
       "startDate": 1500287205,
       "endDate": 1500287205,
@@ -284,13 +285,13 @@
     {
       "userId": 1,
       "questionId": 0,
-      "responseText": "",
+      "responseText": "A",
       "id": 1
     },
     {
       "userId": 1,
       "questionId": 1,
-      "responseText": "",
+      "responseText": "b",
       "id": 2
     },
     {
