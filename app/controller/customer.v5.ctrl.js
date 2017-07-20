@@ -2,13 +2,16 @@
 (function () {
   var app = angular.module("customer_module", ["admin_module","directive_module", "service_module", "authentication_module", 'users_module','angularUtils.directives.dirPagination','ui.bootstrap']);
 
-  app.controller("StudentExamListController", function ($scope, $rootScope, StudentService,ResponseService,QuestionService,$uibModal) {
+  app.controller("StudentExamListController", function ($scope, $rootScope, StudentService,ResponseService,QuestionService,$uibModal,$location) {
 
     $scope.dashBoard = true;
     $scope.showDashboard = function () {
       console.log($rootScope.globals.userId);
       $scope.dashBoard = true;
 
+    }
+     $rootScope.logout=function(){
+       $location.path("/logout");
     }
     $scope.examsId = examsId = [];
     $scope.user = user = [];
@@ -292,7 +295,7 @@ $scope.setExamId= function(id){
   });
 
 
-app.controller('AdminController', function($scope, $rootScope, UsersService, AdminService,$http){
+app.controller('AdminController', function($scope, $rootScope, UsersService, AdminService,$http,$location){
   $scope.upload = true;
   $scope.result = false;
   $scope.schedule = false;
@@ -417,6 +420,11 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
 
     }
 
+    // $scope.logout=function(){
+    //    $location.path("/logout");
+
+    // }
+
     // $scope.addExam = function (examName, listOfQuestions) {
     //   var dataObj = {
     //     "examName": examName,
@@ -457,6 +465,12 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
 
 
   })
+
+  app.controller('LogoutController', function($location,AuthenticationService) {
+   
+   AuthenticationService.clearCredentials();
+    $location.path('/login');
+})
 
 
 
