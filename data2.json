@@ -31,15 +31,9 @@
         3
       ],
       "taken": [
-<<<<<<< HEAD
         0,
         1,
-        0
-=======
-        1,
-        0,
         1
->>>>>>> b877c25dcd4813b71e28ce6614fdb5e344128ccf
       ]
     },
     {
@@ -360,6 +354,18 @@
       "userId": 1,
       "questionId": 3,
       "responseText": "012"
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "",
+      "id": 2
     }
   ]
 }
