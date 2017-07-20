@@ -20,7 +20,8 @@
         11,
         12,
         13,
-        14
+        14,
+        15
       ]
     },
     {
@@ -34,11 +35,12 @@
         1,
         2,
         3,
-        14
+        15
       ],
       "taken": [
-        1,
-        1,
+        0,
+        0,
+        0,
         1,
         1
       ]
@@ -240,6 +242,18 @@
         26
       ],
       "id": 14
+    },
+    {
+      "examName": "Exam_12",
+      "startDate": 1500550380,
+      "endDate": 1500553980,
+      "duration": 60,
+      "listOfQuestions": [
+        27,
+        28,
+        29
+      ],
+      "id": 15
     }
   ],
   "question": [
@@ -538,6 +552,38 @@
       "listOfChoices": [],
       "type": "fill",
       "id": 26
+    },
+    {
+      "questionText": "question1",
+      "marks": "4",
+      "correctAnswer": "c",
+      "listOfChoices": [
+        "opa",
+        "opb",
+        "opc"
+      ],
+      "type": "Multi",
+      "id": 27
+    },
+    {
+      "questionText": "question2",
+      "marks": "3",
+      "correctAnswer": "b",
+      "listOfChoices": [
+        "dhhdoq",
+        "hdo",
+        "hidq"
+      ],
+      "type": "Single",
+      "id": 28
+    },
+    {
+      "questionText": "ques3",
+      "marks": "3",
+      "correctAnswer": "abc",
+      "listOfChoices": [],
+      "type": "fill",
+      "id": 29
     }
   ],
   "responses": [
@@ -546,6 +592,24 @@
       "userId": 1,
       "questionId": 3,
       "responseText": "012"
+    },
+    {
+      "userId": 1,
+      "questionId": 27,
+      "responseText": "2",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "questionId": 28,
+      "responseText": "1",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "questionId": 29,
+      "responseText": "a",
+      "id": 3
     }
   ]
 }
