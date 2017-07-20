@@ -212,6 +212,12 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
       $scope.schedule = false;
     }
 
+    $scope.viewResult = function() {
+    $scope.upload = false;
+      $scope.result = true;
+      $scope.schedule = false;
+    }
+
 
   $scope.scheduleExam = function() {
     $scope.upload = false;
