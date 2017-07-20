@@ -43,36 +43,84 @@
       }
     });
     $scope.exams=exams;
-
     $scope.now =now= new Date();
     $scope.now.toDateString();
-    $scope.showExamLink = function (date) {
-      var d = new Date(date * 1000);
-      var day2=d.getDate();
-      var month2=d.getMonth();
-      var year2=d.getFullYear();
+     var currentDate=now.getDate();
+     var currentMonth=now.getMonth();
+     var currentYear=now.getFullYear();
 
-      var day1=now.getDate();
-      var month1=now.getMonth();
-      var year1=now.getFullYear();
-      // console.log(d, $scope.now)
-      // console.log(year1, month1, day1)
-      // console.log(year2, month2, day2)
-      // console.log('here')
-      if(year1<year2)return true;
-      else if(year1==year2){
-        if( month1<month2){
+    $scope.showExamLink = function (end,start) {
+      var endDateValue = new Date(end*1000);
+      var startDateValue=new Date(start*1000);
+
+      var endDate=endDateValue.getDate();
+      var endMonth=endDateValue.getMonth();
+      var endYear=endDateValue.getFullYear();
+
+      var startDate=startDateValue.getDate();
+      var startMonth=startDateValue.getMonth();
+      var startYear=startDateValue.getFullYear();
+      
+      var v1=false;
+
+      {
+      if(currentYear<endYear)v1=true;
+      else if(currentYear==endYear){
+        if( currentMonth<endMonth){
+          return v1=true;
+        }
+        else if(currentMonth==endMonth)
+        {
+          if(currentDate<=endDate){
+            v1=true;
+          }
+        }
+      }
+      else
+      v1=false;
+    }
+    var v2=false;
+     {
+      if(currentYear<startYear)v2=true;
+      else if(currentYear==startYear){
+        if( currentMonth<startMonth){
+          return v2=true;
+        }
+        else if(currentMonth==startMonth)
+        {
+          if(currentDate<startDate){
+            v2=true;
+          }
+          else v2=false;
+        }
+      }
+      else
+      v2=false;
+    }
+    
+    return v1 && !v2;
+  
+    }
+
+    $scope.checkDate=function(date,month,year){
+      if(currentYear<year)return true;
+      else if(currentYear==year){
+        if( currentMonth1<month){
           return true;
         }
-        else if(month1==month2)
+        else if(currentMonth==month)
         {
-          if(day1<=day2){
+          if(currentDay<=day){
             return true;
           }
         }
       }
       return false;
     }
+
+    
+    
+
 
     $scope.responses = responses = [];
 
