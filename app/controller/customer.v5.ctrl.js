@@ -43,62 +43,65 @@
       }
     });
     $scope.exams=exams;
-    $scope.now =now= new Date();
-    $scope.now.toDateString();
-     var currentDate=now.getDate();
-     var currentMonth=now.getMonth();
-     var currentYear=now.getFullYear();
+    $scope.now =now= Math.round(new Date().getTime()/1000);
+   //$scope.now.toDateString();
+    //  var currentDate=now.getDate();
+    //  var currentMonth=now.getMonth();
+    //  var currentYear=now.getFullYear();
 
     $scope.showExamLink = function (end,start) {
-      var endDateValue = new Date(end*1000);
-      var startDateValue=new Date(start*1000);
 
-      var endDate=endDateValue.getDate();
-      var endMonth=endDateValue.getMonth();
-      var endYear=endDateValue.getFullYear();
+    //  console.log(parseInt(end)+" "+ parseInt(Math.round(new Date().getTime()/1000))+ " "+ parseInt(start));
+      return (parseInt(end)>parseInt(now) && parseInt(start)<parseInt(now));
+    //   var endDateValue = new Date(end*1000);
+    //   var startDateValue=new Date(start*1000);
 
-      var startDate=startDateValue.getDate();
-      var startMonth=startDateValue.getMonth();
-      var startYear=startDateValue.getFullYear();
+    //   var endDate=endDateValue.getDate();
+    //   var endMonth=endDateValue.getMonth();
+    //   var endYear=endDateValue.getFullYear();
+
+    //   var startDate=startDateValue.getDate();
+    //   var startMonth=startDateValue.getMonth();
+    //   var startYear=startDateValue.getFullYear();
       
-      var v1=false;
+    //   var v1=false;
 
-      {
-      if(currentYear<endYear)v1=true;
-      else if(currentYear==endYear){
-        if( currentMonth<endMonth){
-          return v1=true;
-        }
-        else if(currentMonth==endMonth)
-        {
-          if(currentDate<=endDate){
-            v1=true;
-          }
-        }
-      }
-      else
-      v1=false;
-    }
-    var v2=false;
-     {
-      if(currentYear<startYear)v2=true;
-      else if(currentYear==startYear){
-        if( currentMonth<startMonth){
-          return v2=true;
-        }
-        else if(currentMonth==startMonth)
-        {
-          if(currentDate<startDate){
-            v2=true;
-          }
-          else v2=false;
-        }
-      }
-      else
-      v2=false;
-    }
+    //   {
+    //   if(currentYear<endYear)v1=true;
+    //   else if(currentYear==endYear){
+    //     if( currentMonth<endMonth){
+    //       return v1=true;
+    //     }
+    //     else if(currentMonth==endMonth)
+    //     {
+    //       if(currentDate<=endDate){
+    //         v1=true;
+    //       }
+    //     }
+    //   }
+    //   else
+    //   v1=false;
+    // }
+    // var v2=false;
+    //  {
+    //   if(currentYear<startYear)v2=true;
+    //   else if(currentYear==startYear){
+    //     if( currentMonth<startMonth){
+    //       return v2=true;
+    //     }
+    //     else if(currentMonth==startMonth)
+    //     {
+    //       if(currentDate<startDate){
+    //         v2=true;
+    //       }
+    //       else v2=false;
+    //     }
+    //   }
+    //   else
+    //   v2=false;
+    // }
     
-    return v1 && !v2;
+    // return v1 && !v2;
   
     }
 
