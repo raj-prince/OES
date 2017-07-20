@@ -1,7 +1,7 @@
 (function(){
   var app=angular.module("assessmentController_module",["assessment_module"]);    
     // Assessment Controller Begin.
-  app.controller("AssessmentController",function($scope, $location, AssessmentService){
+  app.controller("AssessmentController",function($scope, $location, AssessmentService,$rootScope){
 
     $scope.showStartButton = true;
     $scope.displayQuestion = false;
@@ -12,6 +12,7 @@
     $scope.showTimer = false;
     $scope.showNextButton = true;
     $scope.showPrevButton = false;
+    $scope.exameHeader = false;
     $scope.totalQuestions = 0;
     $scope.totalAnswered = 0;
     $scope.totalUnanswered = 0;
@@ -19,15 +20,19 @@
     $scope.hours = 0;
     $scope.minutes = 0;
     $scope.seconds = 0;
+    $scope.nameOfExame = "";
 
     var questionIds = [];
     var totalQuestionIds = [];
     ques_id_idx = 0;
     questionList = [];
     var userId = 1;
-    var exameId = 1;
-    var durations = 10;
+    var durations = 10000;
     var userObj;
+
+    // var exameId = $rootScope.id;
+    var exameId = 1;
+
 
     var prevResponse = "";
     var currentResponse = "";
@@ -55,9 +60,10 @@
       $scope.showRadioOption = false;
       $scope.showFillText = false;
       $scope.showTimer = false;
+      $scope.exameHeader = false;
 
       updateExameTaken(userId);
-      // $location.path('/student');
+      $location.path('/student');
     }
 
     var updateExameTaken = function(userId) {
@@ -100,6 +106,7 @@
       if(questionIds.length > 0){
      prevResponse =  showCheckedUtil();
      displayOptionUtil();
+     displayButtonUtil();
     }
     else {
       $scope.displayQuestion = false;
@@ -140,7 +147,8 @@
       totalQuestionIds = questionIds;
       $scope.totalQuestions = questionIds.length;
       $scope.totalUnanswered = questionIds.length;
-      durations = parseInt(result.data.duration) * 60;
+      // durations = parseInt(result.data.duration) * 60;
+      $scope.nameOfExame = result.data.examName;
     });
 
     AssessmentService.getUserById(userId).then(function(result) {
@@ -163,6 +171,7 @@
       $scope.showNextButton = true;
       $scope.showPrevButton = true;
       $scope.showTimer = true;
+      $scope.exameHeader = true;
 
 
 

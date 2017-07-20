@@ -13,7 +13,8 @@ return {
         status:'=' ,
         showExamLink:'&',//& is used for behavior 
         isExamTaken:'&',
-        taken:'='
+        taken:'=',
+        setExamId:'&'
        
     }
 }

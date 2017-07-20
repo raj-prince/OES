@@ -1,23 +1,10 @@
 <div>
 <div class = "container" ng-controller = "AssessmentController">
 
-
 <!-- first row start from here -->
 <div class = "row">
-    <div class = "col-md-2"></div>
-    <div class = "col-md-2" id = "sidebar-wrapper" ng-show = "showRadioButton">
-        <div class="radio">
-          <label><input type="radio" id = "answered" name="optradio" ng-click = "buttonClicked(1)">Answered</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" id = "unanswered" name="optradio" ng-click = "buttonClicked(2)">Unanswered</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" id = "all" name="optradio" ng-click = "buttonClicked(3)" checked>All</label>
-        </div>
-    </div>
-
-    <div class = "col-md-3" ng-show = "showStartButton">
+    <div class = "col-md-4"></div>
+    <div class = "col-md-4" ng-show = "showStartButton">
         <h4>
             Click below to Start!
         </h4>
@@ -26,11 +13,51 @@
             Start
         </button>
     </div>
+    <div class = "col-md-4"></div>
+</div>
 
+<!-- second row start from here -->
+<div class = "row" ng-show = "exameHeader" style="
+    border-style: solid;
+    background-color: darkgray;">
+    <div class = "col-md-4"></div>
+    <div class = "col-md-4">
+        <HEADER>
+            <h2>
+            <span class = "glyphicon glyphicon-pencil"></span>
+            {{nameOfExame}}
+            </h2>
+        </HEADER>
+    </div>
+    <div class = "col-md-4"></div>
+</div>
+
+<!-- first row start from here -->
+<div class = "row">
+    <div class = "col-md-3 pull-left" ng-show = "showRadioButton" style="
+    background: silver;
+    border-style: outset;">
+        <div class="radio">
+          <label><input type="radio" id = "answered" name="optradio" ng-click = "buttonClicked(1)">
+            <b style="
+            color: #57a95e;
+            font-size: large;"> Answered </b></label></br>
+          <label><input type="radio" id = "unanswered" name="optradio" ng-click = "buttonClicked(2)">   <b style="
+             color: brown;
+             font-size: larger;">UnAnswered </b></label></br>
+            <label><input type="radio" id = "all" name="optradio" ng-click = "buttonClicked(3)" checked>  <b style="
+            color: dimgrey;
+            font-size: larger;">All</b></label>
+        </div>
+    </div>
     
-    <div class = "col-md-6" ng-show = "displayQuestion">
+    <div class = "col-md-6" ng-show = "displayQuestion" style="
+        border-style: groove;
+        background-color: honeydew;">
         <div>
-        <h3>
+        <h3 style="
+        border-style: groove;
+        background-color: azure;">
         Total Questions : {{totalQuestions}}, Answered: {{totalAnswered}} , Unanswered : {{totalUnanswered}}
         </h3>
         </div>
@@ -73,7 +100,7 @@
         </button>
     </div>
 
-    <div class = "col-md-2 pull-right" ng-show = "showTimer">
+    <div class = "col-md-3 pull-right" ng-show = "showTimer">
         <HEADER>
             <h4>Time Remaining</h4>
         
@@ -85,7 +112,7 @@
 
 <div class = "row" ng-show = "displayQuestion">
     <div class = "col-md-4"></div>
-    <div class = "col-md-2">
+    <div class = "col-md-4">
         <button type="button" class="btn btn-primary"
          ng-click="confirmAssessmentFinish()" style="margin-top: 20px;">
             Finish Assessment

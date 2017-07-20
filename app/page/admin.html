@@ -8,6 +8,7 @@
       <li><a ng-click = "uploadQuestion()">Upload Questions</a></li>
       <li><a ng-click = "scheduleExam()">Schedule Assesment</a></li>
       <li><a ng-click = "viewResult()">View Results</a></li>
+        <li><a ng-click ="logout()">Logout</a></li>
     </ul>
   </div>
 </nav>
@@ -22,13 +23,13 @@
       <div class="form-group">
         <label for="examName" class="col-sm-2 control-label">Exam Name</label>
         <div class="col-sm-4">
-          <input class="form-control" id="examName" placeholder="Enter the Exam Name" ng-model='examName'>
+          <input class="form-control" id="examName" placeholder="Enter the Exam Name" ng-model='examName' required>
         </div>
       </div>
       <div class="form-group">
         <label for="examPath" class="col-sm-2 control-label">Upload Question Paper in Excel Sheet</label>
         <div class="col-sm-4">
-          <input class="form-control" id="file" type='file'>
+          <input class="form-control" id="file" type='file' required>
         </div>
       </div>
       
@@ -37,6 +38,11 @@
           <button type="submit" class="btn btn-success" ng-show = 'showUploadButton' ng-click='add()'>Upload</button>
         </div>
       </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+        <a href="http://localhost:3000/questionPaper1.csv">TemplateQuestions</a>
+        </div>
+       </div> 
       <div class="form-group" ng-show = "showUploadFinal">
         <div class="col-sm-offset-2 col-sm-10">
         <h2>
@@ -103,4 +109,66 @@
       </div>  
     </form>
 </div>
+
+
+<div class = "view_result " ng-show = "result">
+<center>
+<h2>VIEW EXAMINATION RESULTS</h2>
+</center>
+</br>
+</br>
+<form class="form-horizontal" role="form">
+      
+
+      <div class="form-group">
+      <label for="examDate" class="col-sm-2 control-label">FROM DATE</label>
+      <div class="col-sm-4">
+                <input datetime-picker ng-model="startDate" date-format="dd-MMM-yyyy HH:mm:ss" />
+                </div>
+            </div>
+
+      <div class="form-group">
+      <label for="notificationDate" class="col-sm-2 control-label">TO DATE</label>
+      <div class="col-sm-4">
+                <input datetime-picker ng-model="toDate" date-format="dd-MMM-yyyy HH:mm:ss" />
+                </div>
+            </div>
+
+      <div class="form-group">
+        <label for="exam_Name" class="col-sm-2 control-label">EXAM NAME</label>
+        <div class="col-sm-4">
+          <!-- <input class="form-control" ng-model="examName" placeholder="Enter the Exam Name" required> -->
+          <select ng-model="selectedExam" ng-options="x.examName for x in adminExams"></select>
+        </div>
+      </div>
+</form>
+
+<table class="table2 table-striped table-hover">
+  <thead>
+      <tr>
+          <th ng-click="sort('email')">Student Email
+            <span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+            <th ng-click="sort('firstName')">Student Name 
+            <span class="glyphicon sort-icon" ng-show="sortKey=='firstName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+
+            <th ng-click="sort('obtainedMarks')">Obtained Marks (Max {{totalMarks}})
+            <span class="glyphicon sort-icon" ng-show="sortKey=='obtainedMarks'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+
+            <th> Result </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr dir-paginate="student in usersGivingExam|itemsPerPage:2|orderBy:sortKey:reverse">
+        <td>{{student.email}}</td>
+        <td>{{student.firstName + ' ' +student.lastName}}</td>
+        <td>{{student.obtainedMarks}}
+        <td><a ng-click="calculateResult(student)">View Result </a></td>
+        </tr>
+   </tbody>
+ 
+     </div>
+    </table>
+
+</div>
+
 </div>

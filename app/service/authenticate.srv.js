@@ -45,11 +45,12 @@
 		});	
 		}
 
-		this.setCredentials = function(userId,firstName,emailId,exam) {
+		this.setCredentials = function(userId,firstName,emailId,exam,type) {
 			$rootScope.globals = {
 							userId : userId,
 							firstName : firstName,
 							email : emailId,
+							type : type,
 							exam : exam
 			};
 
