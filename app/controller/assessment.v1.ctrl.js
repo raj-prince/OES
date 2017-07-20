@@ -9,10 +9,14 @@
     $scope.showCheckboxOption = false;
     $scope.showRadioOption = false;
     $scope.showFillText = false;
+    $scope.showTimer = false;
     $scope.totalQuestions = 0;
     $scope.totalAnswered = 0;
     $scope.totalUnanswered = 0;
     $scope.options = [];
+    $scope.hours = 0;
+    $scope.minutes = 0;
+    $scope.seconds = 0;
 
     var questionIds = [];
     var totalQuestionIds = [];
@@ -20,6 +24,7 @@
     questionList = [];
     var userId = 1;
     var exameId = 1;
+    var durations = 10;
 
     var prevResponse = "";
     var currentResponse = "";
@@ -29,8 +34,20 @@
 
     $scope.question = question = {};
 
-    $scope.finishAssessment = function() {
-      $location.path('/student');
+    $scope.confirmAssessmentFinish = function() {
+      if (confirm("Do you really want to Finish Assessment?") == true) {
+          finishAssessment();
+      }
+    }
+
+    var finishAssessment = function() {
+      $scope.displayQuestion = false;
+      $scope.showRadioButton = false;
+      $scope.showCheckboxOption = false;
+      $scope.showRadioOption = false;
+      $scope.showFillText = false;
+      $scope.showTimer = false;
+      // $location.path('/student');
     }
     // document.getElementById("answered").click(function(){
 
@@ -102,6 +119,7 @@
       totalQuestionIds = questionIds;
       $scope.totalQuestions = questionIds.length;
       $scope.totalUnanswered = questionIds.length;
+      // durations = parseInt(result.data.duration) * 60;
     });
 
     // AssessmentService.getQuestionById(1).then(function(result) {
@@ -118,6 +136,7 @@
       $scope.showRadioButton = true;
       $scope.showNextButton = true;
       $scope.showPrevButton = true;
+      $scope.showTimer = true;
 
 
 
@@ -147,6 +166,18 @@
       $scope.showPrevButton = false;
       
       displayOptionUtil();
+
+      var timer = setInterval(function(){
+          durations--;
+          $scope.hours = Math.floor((durations / (60 * 60)));
+          $scope.minutes = Math.floor((durations % (60 * 60)) / (60));
+          $scope.seconds = Math.floor((durations % 60));
+          $scope.$apply();
+          if (durations == 0) {
+            alert("EXAM HAS ENDED!!");
+            finishAssessment();
+          }
+      }, 1000); 
     }
 
     $scope.loadPrevQues = function() {
