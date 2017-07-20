@@ -1,8 +1,8 @@
 
 (function () {
-  var app = angular.module("customer_module", ["admin_module","directive_module", "service_module", "authentication_module", 'users_module','angularUtils.directives.dirPagination']);
+  var app = angular.module("customer_module", ["admin_module","directive_module", "service_module", "authentication_module", 'users_module','angularUtils.directives.dirPagination','ui.bootstrap']);
 
-  app.controller("StudentExamListController", function ($scope, $rootScope, StudentService,ResponseService,QuestionService) {
+  app.controller("StudentExamListController", function ($scope, $rootScope, StudentService,ResponseService,QuestionService,$uibModal) {
 
     $scope.dashBoard = true;
     $scope.showDashboard = function () {
@@ -81,13 +81,17 @@
     });
 
 $scope.responses = responses;
+$scope.isCorrect=isCorrect=[];
 $scope.totalMarks=totalMarks=0;
 $scope.obtainedMarks=obtainedMarks=0;
 questions=[]
+userResponse=[]
+var j=0
 $scope.calculateResult=function(exam){
     for(var i=0;i<responses.length;i++){
       console.log('here'+ i)
       if(responses[i].userId==$rootScope.globals.userId && isInListOfQuestions(exam.listOfQuestions,responses[i].questionId)){
+        userResponse.push(responses[i]);
         res=QuestionService.getQuestion(responses[i].questionId,i)
         res.then(function (result) {
       // $scope.question = question= result.data;
@@ -111,13 +115,43 @@ $scope.calculateResult=function(exam){
       }
     }
     res.then(function (result){
-      for(var i=0;i<responses.length;i++){
+      for(var i=0;i<userResponse.length;i++){
         totalMarks+=parseInt(questions[i].marks);
-        if(responses[i].responseText==questions[i].correctAnswer) obtainedMarks+=parseInt(questions[i].marks);
+        isCorrect[i]=false;
+        if(userResponse[i].responseText==questions[i].correctAnswer){
+           obtainedMarks+=parseInt(questions[i].marks);
+           isCorrect[i]=true;
+        }
       }
-alert("totalMarks=" +totalMarks + " "+obtainedMarks);
+//alert("totalMarks=" +totalMarks + " "+obtainedMarks);
+$scope.totalMarks=totalMarks;
+$scope.obtainedMarks=obtainedMarks;
+$scope.userResponse=userResponse;
+$scope.questions=questions;
+var modalInstance = $uibModal.open({
+templateUrl: 'app/page/viewResult.html',
+controller: 'PopupCont',
+scope: $scope,
+   controllerAs: 'vm',
+   bindToController: true,
+   resolve: {
+        users: function() {
+          return $scope.questions;
+        },
+        response: function(){
+          return $scope.response;
+        }
+
+      }
+});
+ 
+
+
 totalMarks=0;
-obtainedMarks=0;})
+obtainedMarks=0;
+userResponse=[];
+questions=[];
+})
 }
    
     isInListOfQuestions = function (listOfQuestions, questionId) {
@@ -143,6 +177,12 @@ obtainedMarks=0;})
     
 
   });
+
+  app.controller('PopupCont', ['$scope','$modalInstance',function ($scope, $modalInstance) {
+            $scope.close = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        }]);
 
 
 
@@ -296,7 +336,9 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
           res2=AdminService.addExam($scope.examName, listOfQuestions)
           res2.success(function (data, status, headers, config) {
             UsersService.getUserById(user_id).then(function(result){
-              AdminService.updateAdminExam(result.data, data.id )
+              AdminService.updateAdminExam(result.data, data.id );
+              $rootScope.globals.exam.push(data.id);
+
             })
             
           })

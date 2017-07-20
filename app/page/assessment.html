@@ -7,13 +7,13 @@
     <div class = "col-md-2"></div>
     <div class = "col-md-2" id = "sidebar-wrapper" ng-show = "showRadioButton">
         <div class="radio">
-          <label><input type="radio" id = "answered" name="optradio">Answered</label>
+          <label><input type="radio" id = "answered" name="optradio" ng-click = "buttonClicked(1)">Answered</label>
         </div>
         <div class="radio">
-          <label><input type="radio" id = "unanswered" name="optradio">Unanswered</label>
+          <label><input type="radio" id = "unanswered" name="optradio" ng-click = "buttonClicked(2)">Unanswered</label>
         </div>
         <div class="radio">
-          <label><input type="radio" id = "all" name="optradio" checked>All</label>
+          <label><input type="radio" id = "all" name="optradio" ng-click = "buttonClicked(3)" checked>All</label>
         </div>
     </div>
 
@@ -27,7 +27,15 @@
         </button>
     </div>
 
+    
     <div class = "col-md-6" ng-show = "displayQuestion">
+        <div>
+        <h3>
+        Total Questions : {{totalQuestions}}, Answered: {{totalAnswered}} , Unanswered : {{totalUnanswered}}
+        </h3>
+        </div>
+        </br>
+        </br>
         <div>
             <h3>
             <span class="glyphicon glyphicon-question-sign" ng-model = "question"></span>
@@ -35,13 +43,26 @@
             </h3>
         </div>
 
-        <div class = "funkyradio" ng-repeat = "optionText in options track by $index">
+        <div class = "funkyradio" ng-show = "showCheckboxOption" ng-repeat = "optionText in question.listOfChoices track by $index">
             <div class="funkyradio-default">
                 <input type="checkbox" class = "optionCheckBox" name="checkbox" value="{{$index}}"/>
                 <label for="$index">{{optionText}}</label>
             </div>
         </div>
 
+        <div class = "funkyradio" ng-show = "showRadioOption" ng-repeat = "optionText in question.listOfChoices track by $index">
+            <div class="funkyradio-default">
+                <input type="radio" class = "optionRadio"  name="checkbox" value="{{$index}}"/>
+                <label for="$index">{{optionText}}</label>
+            </div>
+        </div>
+
+        <div class = "inputTextBox" ng-show = "showFillText">
+            <label>Your response:
+    <input type="text" name="input" ng-model="optionText"
+           required ng-trim="true">
+
+        </div>
         <button type="button" ng-show = "showPrevButton" class="btn btn-primary pull-left"
          ng-click="loadPrevQues()" style="margin-top: 20px;">
             prev
