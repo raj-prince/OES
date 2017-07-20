@@ -37,7 +37,7 @@
       "startDate": start_time,
       "endDate": end_time,
       "duration": parseInt(duration),
-      "listOfQuestions":[]
+      "listOfQuestions":prev_object.listOfQuestions
       }
       // console.log("the id is " + id);
       $http.put("http://localhost:3000/exam/"+prev_object.id,exam);
