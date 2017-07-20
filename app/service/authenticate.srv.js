@@ -46,15 +46,15 @@
 		}
 
 		this.setCredentials = function(userId,firstName,emailId,exam,type) {
-			$rootScope.globals = {
-							userId : userId,
+			var obj = {userId : userId,
 							firstName : firstName,
 							email : emailId,
 							type : type,
 							exam : exam
-			};
+					};		
+			$rootScope.globals = obj;
 
-			$cookieStore.put('globals', userId); //not angular specific ;instead of cookie jwt (json web token ) can be used ;jwt-one time generation ;keeps timestamps too;jwt is more secure than cookie for session handling 
+			$cookieStore.put('globals', obj); //not angular specific ;instead of cookie jwt (json web token ) can be used ;jwt-one time generation ;keeps timestamps too;jwt is more secure than cookie for session handling 
 		}
 
 		this.clearCredentials = function() {

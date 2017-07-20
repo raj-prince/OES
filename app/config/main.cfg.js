@@ -78,6 +78,24 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
       
     //   $location.path('/');
     // }
+  }
+  console.log(next);
+  if($cookieStore.get('globals')) {
+    $rootScope.globals = $cookieStore.get('globals');
+    if(next == 'http://localhost:3000/') {
+      if($cookieStore.get('globals').type == 'admin') {
+        $location.path('/admin');
+      }
+      else {
+      $location.path('/student');
+      }
+    }
+    else {
+    $http.get(next);
+    }
+  }
+  else {
+    $location.path('/login');
   } 
   });
     }
