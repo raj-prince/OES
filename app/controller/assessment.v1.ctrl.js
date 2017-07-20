@@ -59,7 +59,7 @@
       $scope.showTimer = false;
 
       updateExameTaken(userId);
-      // $location.path('/student');
+      $location.path('/student');
     }
 
     var updateExameTaken = function(userId) {
@@ -102,6 +102,7 @@
       if(questionIds.length > 0){
      prevResponse =  showCheckedUtil();
      displayOptionUtil();
+     displayButtonUtil();
     }
     else {
       $scope.displayQuestion = false;

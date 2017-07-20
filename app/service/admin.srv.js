@@ -10,8 +10,22 @@
       var data = e.target.result;
       // console.log(data)
       // console.log($scope.examName)
-
+      console.log(data);
+      // var temp = [];
+      // for(var i=0;i<data.length;i++)
+      // {
+      // 	if(data[i].trim().length  > 0) {
+      // 		temp
+      // 	}
+      // }
       var lines = data.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
+      var temp = [];
+      for(var i=0;i<lines.length;i++) {
+      	if(lines[i].trim().length >0) {
+      		temp.push(lines[i]);
+      	}
+      }
+      lines = temp;
     	callback(lines);
       //send your binary data via $http or $resource or do anything else with it
     }
@@ -37,7 +51,7 @@
       "startDate": start_time,
       "endDate": end_time,
       "duration": parseInt(duration),
-      "listOfQuestions":[]
+      "listOfQuestions":prev_object.listOfQuestions
       }
       // console.log("the id is " + id);
       $http.put("http://localhost:3000/exam/"+prev_object.id,exam);
@@ -92,6 +106,7 @@
 			}
 			var new_user = users[i];
 			new_user.exam.push(exam_id);
+			new_user.taken.push(0);
 			$http.put("http://localhost:3000/user/"+users[i].id,new_user);
 		}
 

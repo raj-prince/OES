@@ -18,13 +18,15 @@
                 <li>
                     <a ng-click = "showResult()">Result</a>
                 </li>
-              
+               <li>
+                    <a ng-click = "logout()">Logout</a>
+                </li>
             </ul>
         </div></div>
 
 <div class="container">
       <!-- {{customers}}-->
-       <div class="row" ng-init="fillTakenExamsArray(exams)">
+       <div class="row" ng-init="init()">
            <div class="col-md-4 col-lg-4 card" ng-repeat="exam in exams">
               <studentcard-view  
         exam-name="exam.examName"  

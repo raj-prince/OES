@@ -45,6 +45,11 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
     .when('/assessment',{
       templateUrl:'app/page/assessment.html'
     })
+    .when('/logout',{
+        templateUrl:'app/page/login.html',
+        controller: 'LogoutController'
+
+    })
     }).run(check);
     function check($cookieStore,$location,$rootScope,$http){
   //       $rootScope.$on("$locationChangeStart",function(event,next,current){
@@ -58,10 +63,16 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
   // }
   //       });
   $rootScope.$on("$locationChangeStart",function(event,next,current) {
+    // console.log(current);
     if(current == 'http://localhost:3000/') {
     // if($cookieStore.get('globals')) {
       
+    //   if($rootScope.globals.type == 'admin') {
+    //     $location.path('/admin');
+    //   }
+    //   else {
     //   $location.path('/student');
+    // }
     // }
     // else {
       
