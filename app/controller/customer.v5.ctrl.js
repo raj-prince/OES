@@ -10,11 +10,13 @@
       $scope.dashBoard = true;
 
     }
-     $rootScope.logout=function(){
+     $scope.logout=function(){
        $location.path("/logout");
     }
     $scope.examsId = examsId = [];
     $scope.user = user = [];
+
+    $scope.init=function(){
 
     StudentService.getStudent($rootScope.globals.userId).then(function (result) {
       $scope.examsId = examsId = result.data.exam;
@@ -25,7 +27,8 @@
     $scope.user = user;
     $scope.takenExams = takenExams = [];
     $scope.exams = exams = [];
-    StudentService.getExams().then(function (result) {
+    res=StudentService.getExams();
+    res.then(function (result) {
       $scope.exams = exams = result.data;
       for (var i = 0; i < exams.length; i++) {
         $scope.exams[i].status = "Not registered";
@@ -44,6 +47,8 @@
 
       }
     });
+  }
+  $scope.init();
     $scope.exams = exams;
     $scope.now = now = Math.round(new Date().getTime() / 1000);
     $scope.showExamLink = function (end, start) {
@@ -398,7 +403,9 @@
     //   });
     // }
 
-
+   $scope.logout=function(){
+       $location.path("/logout");
+    }
   })
 
   app.controller('LogoutController', function ($location, AuthenticationService) {
