@@ -8,20 +8,7 @@
       "firstName": "chandler",
       "lastName": "bing",
       "exam": [
-        1,
-        2,
-        3,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
+        1
       ]
     },
     {
@@ -32,71 +19,11 @@
       "firstName": "Monica",
       "lastName": "Geller",
       "exam": [
-        1,
-        2,
-        3,
-        15
+        1
       ],
       "taken": [
-        0,
-        0,
-        0,
-        1,
-        1
+        0
       ]
-    },
-    {
-      "id": 2,
-      "email": "som@ad",
-      "password": "1234",
-      "type": "student",
-      "firstName": "abhishek",
-      "lastName": "sinha",
-      "exam": [
-        3,
-        2,
-        2
-      ]
-    },
-    {
-      "id": 3,
-      "email": "a1@adobe.com",
-      "password": "1234",
-      "type": "student",
-      "firstName": "anjn",
-      "lastName": "nsa",
-      "exam": [
-        3,
-        2,
-        2
-      ]
-    },
-    {
-      "email": "2121",
-      "password": "2121212",
-      "type": "student",
-      "firstName": "sa",
-      "lastName": "12",
-      "exam": [],
-      "id": 4
-    },
-    {
-      "email": "dlkfjlsf",
-      "password": "dfslkjfds",
-      "type": "student",
-      "firstName": "prinde",
-      "lastName": "dkjfls",
-      "exam": [],
-      "id": 5
-    },
-    {
-      "email": "abh@adobe.com",
-      "password": "1234",
-      "type": "student",
-      "firstName": "a1",
-      "lastName": "b1",
-      "exam": [],
-      "id": 6
     }
   ],
   "exam": [
@@ -111,149 +38,6 @@
         1,
         2
       ]
-    },
-    {
-      "examName": "Assignment 2",
-      "startDate": 1500535560,
-      "endDate": 1500539760,
-      "duration": 70,
-      "listOfQuestions": [],
-      "id": 2
-    },
-    {
-      "id": 3,
-      "examName": "Assignment 3",
-      "startDate": 1500287205,
-      "endDate": 1600493255,
-      "duration": 4,
-      "listOfQuestions": [
-        0,
-        1
-      ]
-    },
-    {
-      "id": 4,
-      "examName": "eXAM1",
-      "startDate": 1500287205,
-      "endDate": 1600493255,
-      "duration": 1,
-      "listOfQuestions": [
-        0
-      ]
-    },
-    {
-      "examName": "exam_1",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
-      "listOfQuestions": [
-        3,
-        4
-      ],
-      "id": 5
-    },
-    {
-      "examName": "exam_2",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
-      "listOfQuestions": [
-        5,
-        6
-      ],
-      "id": 6
-    },
-    {
-      "examName": "exam_3",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
-      "listOfQuestions": [
-        7,
-        8
-      ],
-      "id": 7
-    },
-    {
-      "examName": "exam_4",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
-      "listOfQuestions": [
-        9,
-        10
-      ],
-      "id": 8
-    },
-    {
-      "examName": "exam_5",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
-      "listOfQuestions": [
-        11,
-        12
-      ],
-      "id": 9
-    },
-    {
-      "examName": "Exam_7",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
-      "listOfQuestions": [
-        13,
-        14
-      ],
-      "id": 10
-    },
-    {
-      "examName": "Exam_8",
-      "startDate": 1500545340,
-      "endDate": 1500552540,
-      "duration": 120,
-      "listOfQuestions": [],
-      "id": 11
-    },
-    {
-      "examName": "exam_9",
-      "startDate": 1500546360,
-      "endDate": 1500558360,
-      "duration": 200,
-      "listOfQuestions": [],
-      "id": 12
-    },
-    {
-      "examName": "Exam_10",
-      "startDate": 1500546540,
-      "endDate": 1500553740,
-      "duration": 120,
-      "listOfQuestions": [],
-      "id": 13
-    },
-    {
-      "examName": "Exam_11",
-      "startDate": 1500546900,
-      "endDate": 1500554100,
-      "duration": 120,
-      "listOfQuestions": [
-        24,
-        25,
-        26
-      ],
-      "id": 14
-    },
-    {
-      "examName": "Exam_12",
-      "startDate": 1500550380,
-      "endDate": 1500553980,
-      "duration": 60,
-      "listOfQuestions": [
-        27,
-        28,
-        29
-      ],
-      "id": 15
     }
   ],
   "question": [
@@ -294,321 +78,31 @@
       ],
       "type": "Multi",
       "id": 2
-    },
-    {
-      "questionText": "hello worl",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 3
-    },
-    {
-      "questionText": "q2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 4
-    },
-    {
-      "questionText": "hello worl",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 5
-    },
-    {
-      "questionText": "q2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 6
-    },
-    {
-      "questionText": "hello worl",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 7
-    },
-    {
-      "questionText": "q2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 8
-    },
-    {
-      "questionText": "hello worl",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 9
-    },
-    {
-      "questionText": "q2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 10
-    },
-    {
-      "questionText": "hello worl",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 11
-    },
-    {
-      "questionText": "q2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 12
-    },
-    {
-      "questionText": "question1\tMulti\t4\tc\topa\topb\topc\t\t\t\t",
-      "listOfChoices": [],
-      "id": 13
-    },
-    {
-      "questionText": "question2\tSingle\t3\tb\tdhhdoq\thdo\thidq\t\t\t\t",
-      "listOfChoices": [],
-      "id": 14
-    },
-    {
-      "questionText": "question1",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 15
-    },
-    {
-      "questionText": "question2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 16
-    },
-    {
-      "questionText": "ques3",
-      "marks": "3",
-      "correctAnswer": "abc",
-      "listOfChoices": [],
-      "type": "fill",
-      "id": 17
-    },
-    {
-      "questionText": "question1",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 18
-    },
-    {
-      "questionText": "question2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 19
-    },
-    {
-      "questionText": "ques3",
-      "marks": "3",
-      "correctAnswer": "abc",
-      "listOfChoices": [],
-      "type": "fill",
-      "id": 20
-    },
-    {
-      "questionText": "question1",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 21
-    },
-    {
-      "questionText": "question2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 22
-    },
-    {
-      "questionText": "ques3",
-      "marks": "3",
-      "correctAnswer": "abc",
-      "listOfChoices": [],
-      "type": "fill",
-      "id": 23
-    },
-    {
-      "questionText": "question1",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 24
-    },
-    {
-      "questionText": "question2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 25
-    },
-    {
-      "questionText": "ques3",
-      "marks": "3",
-      "correctAnswer": "abc",
-      "listOfChoices": [],
-      "type": "fill",
-      "id": 26
-    },
-    {
-      "questionText": "question1",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 27
-    },
-    {
-      "questionText": "question2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 28
-    },
-    {
-      "questionText": "ques3",
-      "marks": "3",
-      "correctAnswer": "abc",
-      "listOfChoices": [],
-      "type": "fill",
-      "id": 29
     }
   ],
   "responses": [
     {
       "id": 0,
-      "userId": 1,
+      "userId": -1,
       "questionId": 3,
       "responseText": "012"
     },
     {
       "userId": 1,
-      "questionId": 27,
-      "responseText": "2",
+      "questionId": 0,
+      "responseText": "",
       "id": 1
     },
     {
       "userId": 1,
-      "questionId": 28,
-      "responseText": "1",
+      "questionId": 1,
+      "responseText": "",
       "id": 2
     },
     {
       "userId": 1,
-      "questionId": 29,
-      "responseText": "a",
+      "questionId": 2,
+      "responseText": "",
       "id": 3
     }
   ]

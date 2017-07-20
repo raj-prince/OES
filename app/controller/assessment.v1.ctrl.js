@@ -59,7 +59,7 @@
       $scope.showTimer = false;
 
       updateExameTaken(userId);
-      // $location.path('/student');
+      $location.path('/student');
     }
 
     var updateExameTaken = function(userId) {

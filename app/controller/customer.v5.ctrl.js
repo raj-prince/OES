@@ -309,7 +309,14 @@
         // console.log($scope.examName)
 
         var lines = data.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
-        for (var i = 1; i < lines.length - 1; i++) {
+        var temp = [];
+        for(var i=0;i<lines.length;i++) {
+          if(lines[i].trim().length >0) {
+            temp.push(lines[i]);
+          }
+        }
+        lines = temp;
+        for (var i = 1; i < lines.length; i++) {
           var line = lines[i].split(',')
           // var endIndex=line.length
           var options = []
