@@ -224,6 +224,10 @@ questions=[];
 
     
 
+$scope.setExamId= function(id){
+  $rootScope.id=id;
+   $location.path("/assessment");
+}
   });
 
   app.controller('PopupCont', ['$scope','$modalInstance',function ($scope, $modalInstance) {

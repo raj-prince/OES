@@ -1,7 +1,7 @@
 (function(){
   var app=angular.module("assessmentController_module",["assessment_module"]);    
     // Assessment Controller Begin.
-  app.controller("AssessmentController",function($scope, $location, AssessmentService){
+  app.controller("AssessmentController",function($scope, $location, AssessmentService,$rootScope){
 
     $scope.showStartButton = true;
     $scope.displayQuestion = false;
@@ -23,8 +23,10 @@
     ques_id_idx = 0;
     questionList = [];
     var userId = 1;
-    var exameId = 1;
     var durations = 10;
+
+    var exameId = $rootScope.id;
+
 
     var prevResponse = "";
     var currentResponse = "";

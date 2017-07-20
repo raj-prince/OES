@@ -14,8 +14,9 @@
         Duration : {{duration}} Hours</br>
         Status : {{status}}</br> 
         <div ng-show="taken=='0' && status=='Registered' && showExamLink(key1,key2)">
-           <a href="#" class="card-link">Take Assessment</a>
-        </div></li> 
+           <a ng-click="setExamId(id)" href="#/assessment" class="card-link">Take Assessment</a>
+        </div>
+        </li> 
      </ul>
   </div>
 
