@@ -10,6 +10,8 @@
     $scope.showRadioOption = false;
     $scope.showFillText = false;
     $scope.showTimer = false;
+    $scope.showNextButton = true;
+    $scope.showPrevButton = false;
     $scope.totalQuestions = 0;
     $scope.totalAnswered = 0;
     $scope.totalUnanswered = 0;
@@ -24,6 +26,7 @@
     questionList = [];
     var userId = 1;
     var durations = 10;
+    var userObj;
 
     var exameId = $rootScope.id;
 
@@ -43,13 +46,31 @@
     }
 
     var finishAssessment = function() {
+      if ($scope.showNextButton == true) {
+        $scope.loadNextQues();
+      } else if ($scope.showPrevButton == true) {
+        $scope.loadPrevQues();
+      }
       $scope.displayQuestion = false;
       $scope.showRadioButton = false;
       $scope.showCheckboxOption = false;
       $scope.showRadioOption = false;
       $scope.showFillText = false;
       $scope.showTimer = false;
+
+      updateExameTaken(userId);
       // $location.path('/student');
+    }
+
+    var updateExameTaken = function(userId) {
+      var exameList = userObj.exam;
+      for (var i = 0; exameList.length; i++) {
+        if (exameList[i] == exameId) {
+          userObj.taken[i] = 1;
+          break;
+        }
+      }
+      AssessmentService.updateUserById(userId, userObj);
     }
     // document.getElementById("answered").click(function(){
 
@@ -121,8 +142,13 @@
       totalQuestionIds = questionIds;
       $scope.totalQuestions = questionIds.length;
       $scope.totalUnanswered = questionIds.length;
-      // durations = parseInt(result.data.duration) * 60;
+      durations = parseInt(result.data.duration) * 60;
     });
+
+    AssessmentService.getUserById(userId).then(function(result) {
+      userObj = result.data;
+    });
+
 
     // AssessmentService.getQuestionById(1).then(function(result) {
     //   $scope.question = question = result.data;

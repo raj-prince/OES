@@ -26,6 +26,23 @@
         return deferred.promise;
     };
 
+
+
+    this.getUserById = function(userId) {
+        var deferred = $q.defer();
+        $http.get("http://localhost:3000/user/" + userId).then(function(result) {
+            deferred.resolve(result);
+        },
+        function(result) {
+            deferred.reject(result);
+        });
+        return deferred.promise;
+    };
+
+    this.updateUserById = function(userId, userObj) {
+      $http.put("http://localhost:3000/user/" + userId, userObj);
+    };
+
     this.getAllQuestions = function() {
         var deferred = $q.defer();
         $http.get("http://localhost:3000/question/").then(function(result) {

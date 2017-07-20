@@ -31,9 +31,15 @@
         3
       ],
       "taken": [
+<<<<<<< HEAD
         0,
         1,
         0
+=======
+        1,
+        0,
+        1
+>>>>>>> b877c25dcd4813b71e28ce6614fdb5e344128ccf
       ]
     },
     {
@@ -1308,6 +1314,60 @@
       "questionId": 2,
       "responseText": "",
       "id": 159
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "1,2",
+      "id": 160
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "2",
+      "id": 161
+    },
+    {
+      "userId": 1,
+      "questionId": 2,
+      "responseText": "",
+      "id": 162
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "2,3",
+      "id": 163
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "1,2",
+      "id": 164
+    },
+    {
+      "userId": 1,
+      "questionId": 2,
+      "responseText": "",
+      "id": 165
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "1",
+      "id": 166
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "2",
+      "id": 167
+    },
+    {
+      "userId": 1,
+      "questionId": 2,
+      "responseText": "1,2,3",
+      "id": 168
     }
   ]
 }
