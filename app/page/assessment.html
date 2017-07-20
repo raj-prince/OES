@@ -59,10 +59,10 @@
 
         <div class = "inputTextBox" ng-show = "showFillText">
             <label>Your response:
-    <input type="text" name="input" ng-model="optionText"
-           required ng-trim="true">
-
+            <input type="text" name="input" ng-model="optionText"
+                   required ng-trim="true">
         </div>
+
         <button type="button" ng-show = "showPrevButton" class="btn btn-primary pull-left"
          ng-click="loadPrevQues()" style="margin-top: 20px;">
             prev
@@ -72,6 +72,26 @@
             next
         </button>
     </div>
+
+    <div class = "col-md-2 pull-right" ng-show = "showTimer">
+        <HEADER>
+            <h4>Time Remaining</h4>
+        
+            <span class = "glyphicon glyphicon-time"></span>
+            {{hours}}h {{minutes}}m {{seconds}}s
+        </HEADER>
+    </div>
+</div>
+
+<div class = "row" ng-show = "displayQuestion">
+    <div class = "col-md-4"></div>
+    <div class = "col-md-2">
+        <button type="button" class="btn btn-primary"
+         ng-click="confirmAssessmentFinish()" style="margin-top: 20px;">
+            Finish Assessment
+        </button>
+    </div>
+    <div class = "col-md-4"></div>
 </div>
 
 
