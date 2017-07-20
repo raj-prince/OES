@@ -2,7 +2,7 @@
 (function () {
   var app = angular.module("customer_module", ["admin_module", "directive_module", "service_module", "authentication_module", 'users_module', 'angularUtils.directives.dirPagination', 'ui.bootstrap']);
 
-  app.controller("StudentExamListController", function ($scope, $rootScope, StudentService, ResponseService, QuestionService, $uibModal, $location) {
+  app.controller("StudentExamListController", function ($scope, $rootScope, StudentService,ResponseService,QuestionService,$uibModal,$location) {
 
     $scope.dashBoard = true;
     $scope.showDashboard = function () {
@@ -10,8 +10,8 @@
       $scope.dashBoard = true;
 
     }
-    $rootScope.logout = function () {
-      $location.path("/logout");
+     $rootScope.logout=function(){
+       $location.path("/logout");
     }
     $scope.examsId = examsId = [];
     $scope.user = user = [];
@@ -224,6 +224,7 @@
 
 
   app.controller('AdminController', function ($scope, $rootScope, UsersService, AdminService, $http, $location) {
+
     $scope.upload = true;
     $scope.result = false;
     $scope.schedule = false;
