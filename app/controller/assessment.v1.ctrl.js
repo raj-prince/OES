@@ -6,6 +6,9 @@
     $scope.showStartButton = true;
     $scope.displayQuestion = false;
     $scope.showRadioButton = false;
+    $scope.showCheckboxOption = false;
+    $scope.showRadioOption = false;
+    $scope.showFillText = false;
     $scope.totalQuestions = 0;
     $scope.totalAnswered = 0;
     $scope.totalUnanswered = 0;
@@ -49,24 +52,30 @@
       $scope.showRadioButton = true;
       $scope.showNextButton = true;
       $scope.showPrevButton = false;
-      
+      $scope.showCheckboxOption = false;
+      $scope.showRadioOption = false;
+      $scope.showFillText = false;
       // currentResponse = "";
       ques_id_idx = 0;
       // prevResponse = hash[hashCode(userId, questionIds[ques_id_idx])].responseText;
       // $scope.question = question = questionList[questionIds[ques_id_idx]];
       if(questionIds.length > 0){
      prevResponse =  showCheckedUtil();
+     displayOptionUtil();
     }
     else {
       $scope.displayQuestion = false;
       $scope.showNextButton = false;
+      
+
     }
     }
 
     var showAnswered = function() {
       var temp = [];
       for(var i =0;i<totalQuestionIds.length;i++) {
-        if(hash[hashCode(userId, totalQuestionIds[i])].responseText.length > 0) {
+        var response_text = hash[hashCode(userId, totalQuestionIds[i])].responseText;
+        if(response_text && response_text.length > 0) {
           temp.push(totalQuestionIds[i]);
         }
 
@@ -78,7 +87,8 @@
     var showUnanswered = function() {
       var temp = [];
       for(var i =0;i<totalQuestionIds.length;i++) {
-        if(hash[hashCode(userId, totalQuestionIds[i])].responseText.length == 0) {
+        var response_text = hash[hashCode(userId, totalQuestionIds[i])].responseText;
+        if(!response_text || response_text.length == 0) {
           temp.push(totalQuestionIds[i]);
         }
 
@@ -87,7 +97,7 @@
       questionIds = temp;
     }
 
-    AssessmentService.getExameById(1).then(function(result) {
+    AssessmentService.getExameById(exameId).then(function(result) {
       questionIds = result.data.listOfQuestions;
       totalQuestionIds = questionIds;
       $scope.totalQuestions = questionIds.length;
@@ -135,22 +145,18 @@
       ques_id_idx = 0;
       $scope.question = question = questionList[questionIds[ques_id_idx]];
       $scope.showPrevButton = false;
-      // if (ques_id_idx == 0) {
-      //   $scope.showPrevButton = false;
-      // }
-      // if (ques_id_idx + 1 == questionIds.length) {
-      //   $scope.showNextButton = false;
-      // }
-
+      
+      displayOptionUtil();
     }
 
     $scope.loadPrevQues = function() {
       // code for operation on current question
+      
       currentResponse = updateResponseUtil();
       updateCount();
       ques_id_idx -= 1;
-      // $scope.question = question = questionList[questionIds[ques_id_idx]];
       prevResponse = showCheckedUtil();
+      displayOptionUtil();
       displayButtonUtil();
     }
 
@@ -160,26 +166,31 @@
       updateCount();
       ques_id_idx += 1;
       prevResponse = showCheckedUtil();
-      
+      displayOptionUtil();
       displayButtonUtil();
     }
 
     var updateCount = function() {
       console.log("the previous response is " + prevResponse);
       console.log("the currentResponse is " + currentResponse);
-      if(currentResponse.length>0 && prevResponse.length==0) {
+      if(currentResponse && currentResponse.length>0 && (!prevResponse || prevResponse.length==0)) {
         $scope.totalAnswered +=1;
         $scope.totalUnanswered-=1;
       }
-      if(currentResponse.length==0 && prevResponse.length >0) {
+      if((!currentResponse || currentResponse.length==0) && (prevResponse && prevResponse.length >0)) {
         $scope.totalAnswered -=1;
         $scope.totalUnanswered +=1;
       }
     }
-    // code for operation on current question
+
+
     var updateResponseUtil = function() {
       var responseGiven = "";
-      var inputElements = document.getElementsByClassName('optionCheckBox');
+      var inputElements = getInputElementsUtil();
+      
+      if(question.type == 'Single' || question.type == 'Multi') {
+
+
       for(var i = 0; inputElements[i]; i++){
         if(inputElements[i].checked){ 
             responseGiven += ",";
@@ -189,6 +200,10 @@
       if(responseGiven.length > 0){
         responseGiven = responseGiven.substr(1,responseGiven.length);
       }
+    }
+    else {
+      responseGiven = $scope.optionText;
+    }
       var currentResponseObject = hash[hashCode(userId, questionIds[ques_id_idx])];
   
       currentResponseObject.responseText = responseGiven;
@@ -205,21 +220,22 @@
       
       $(document).ready(function() {
 
-      // // await sleep(2000);
-      // for(var i =0;i<1000000000;i++) {
-
-      // }
+      
       var responseObject = hash[hashCode(userId, questionIds[ques_id_idx])];
 
+      var existingResponseText = responseObject.responseText;
+
       // first unchecked all checkbox
-      var inputElements = document.getElementsByClassName('optionCheckBox');
-      console.log("hi the length is " + inputElements.length);
+      if(question.type == 'Single' || question.type == 'Multi') {
+      var inputElements = getInputElementsUtil();
+      // var inputElements = document.getElementsByClassName('optionCheckBox');
+      
       for(var i = 0; inputElements[i]; ++i){
         inputElements[i].checked = false;
       }
 
       // check all value which is in responseText
-      var existingResponseText = responseObject.responseText;
+      
 
       if(existingResponseText.length > 0 ) {
         var indices = existingResponseText.split(",");
@@ -230,8 +246,39 @@
 
         }
       }
+    }
+    else {
+      $scope.optionText = existingResponseText;
+    }
     });
       return hash[hashCode(userId, questionIds[ques_id_idx])].responseText;
+    }
+    var displayOptionUtil = function() {
+      if(question.type == 'Multi') {
+        $scope.showRadioOption = false;
+        $scope.showFillText = false;
+    $scope.showCheckboxOption = true;
+      }
+      else if(question.type == 'Single') {
+        $scope.showRadioOption = true;
+        $scope.showFillText = false;
+    $scope.showCheckboxOption = false;
+      }
+      else {
+        $scope.showRadioOption = false;
+    $scope.showCheckboxOption = false;
+    $scope.showFillText = true;
+      }
+    }
+    var getInputElementsUtil = function() {
+      var inputElements;
+      if(question.type == 'Multi') {
+        inputElements = document.getElementsByClassName('optionCheckBox');
+      }
+      else if(question.type == 'Single') {
+        inputElements = document.getElementsByClassName('optionRadio');
+      }
+      return inputElements;
     }
     var displayButtonUtil = function() {
       if (ques_id_idx + 1 >= questionIds.length) {

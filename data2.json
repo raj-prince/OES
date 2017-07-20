@@ -96,7 +96,9 @@
       "listOfQuestions": [
         0,
         1,
-        2
+        2,
+        8,
+        4
       ]
     },
     {
@@ -262,15 +264,11 @@
       "id": 7
     },
     {
-      "questionText": "q2",
+      "questionText": "fill here __ name",
       "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
+      "correctAnswer": "alpha",
+      "listOfChoices": [],
+      "type": "Fill",
       "id": 8
     }
   ],
@@ -280,24 +278,6 @@
       "userId": 1,
       "questionId": 3,
       "responseText": "012"
-    },
-    {
-      "userId": 1,
-      "questionId": 0,
-      "responseText": "",
-      "id": 1
-    },
-    {
-      "userId": 1,
-      "questionId": 1,
-      "responseText": "",
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "questionId": 2,
-      "responseText": "",
-      "id": 3
     }
   ]
 }

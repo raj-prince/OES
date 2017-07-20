@@ -43,13 +43,26 @@
             </h3>
         </div>
 
-        <div class = "funkyradio" ng-repeat = "optionText in question.listOfChoices track by $index">
+        <div class = "funkyradio" ng-show = "showCheckboxOption" ng-repeat = "optionText in question.listOfChoices track by $index">
             <div class="funkyradio-default">
                 <input type="checkbox" class = "optionCheckBox" name="checkbox" value="{{$index}}"/>
                 <label for="$index">{{optionText}}</label>
             </div>
         </div>
 
+        <div class = "funkyradio" ng-show = "showRadioOption" ng-repeat = "optionText in question.listOfChoices track by $index">
+            <div class="funkyradio-default">
+                <input type="radio" class = "optionRadio"  name="checkbox" value="{{$index}}"/>
+                <label for="$index">{{optionText}}</label>
+            </div>
+        </div>
+
+        <div class = "inputTextBox" ng-show = "showFillText">
+            <label>Your response:
+    <input type="text" name="input" ng-model="optionText"
+           required ng-trim="true">
+
+        </div>
         <button type="button" ng-show = "showPrevButton" class="btn btn-primary pull-left"
          ng-click="loadPrevQues()" style="margin-top: 20px;">
             prev
