@@ -8,8 +8,7 @@
       "firstName": "chandler",
       "lastName": "bing",
       "exam": [
-        1,
-        2
+        1
       ]
     },
     {
@@ -20,12 +19,10 @@
       "firstName": "Monica",
       "lastName": "Geller",
       "exam": [
-        1,
-        2
+        1
       ],
       "taken": [
-        0,
-        1
+        0
       ]
     }
   ],
@@ -41,19 +38,6 @@
         1,
         2
       ]
-    },
-    {
-      "examName": "newExam_1",
-      "startDate": 1500551640,
-      "endDate": 1500558840,
-      "duration": 120,
-      "listOfQuestions": [
-        3,
-        4,
-        5,
-        6
-      ],
-      "id": 2
     }
   ],
   "question": [
@@ -94,51 +78,6 @@
       ],
       "type": "Multi",
       "id": 2
-    },
-    {
-      "questionText": "question1",
-      "marks": "4",
-      "correctAnswer": "3",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 3
-    },
-    {
-      "questionText": "question2",
-      "marks": "3",
-      "correctAnswer": "2",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 4
-    },
-    {
-      "questionText": "ques3",
-      "marks": "3",
-      "correctAnswer": "abc",
-      "listOfChoices": [],
-      "type": "fill",
-      "id": 5
-    },
-    {
-      "questionText": "ques4",
-      "marks": "3",
-      "correctAnswer": "1",
-      "listOfChoices": [
-        "alpha",
-        "beta",
-        "gamma",
-        "random"
-      ],
-      "type": "Single",
-      "id": 6
     }
   ],
   "responses": [

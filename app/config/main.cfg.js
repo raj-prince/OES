@@ -45,6 +45,11 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
     .when('/assessment',{
       templateUrl:'app/page/assessment.html'
     })
+    .when('/logout',{
+        templateUrl:'app/page/login.html',
+        controller: 'LogoutController'
+
+    })
     }).run(check);
     function check($cookieStore,$location,$rootScope,$http){
   //       $rootScope.$on("$locationChangeStart",function(event,next,current){
