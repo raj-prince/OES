@@ -241,6 +241,10 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
   $scope.upload = true;
   $scope.result = false;
   $scope.schedule = false;
+  $scope.showScheduleButton = false;
+  $scope.showScheduleFinal = false;
+  $scope.showUploadButton = true;
+  $scope.showUploadFinal = false;
   $scope.adminExams = [];
   all_users = [];
   UsersService.getUsers().then(function(result) {
@@ -250,6 +254,10 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
     $scope.upload = true;
       $scope.result = false;
       $scope.schedule = false;
+      $scope.showUploadButton = true;
+      $scope.showUploadFinal = false;
+      $scope.showScheduleButton = false;
+    $scope.showScheduleFinal = false;
     }
 
 
@@ -257,6 +265,10 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
     $scope.upload = false;
     $scope.result = false;
     $scope.schedule = true;
+    $scope.showScheduleButton = true;
+    $scope.showScheduleFinal = false;
+    $scope.showUploadButton = false;
+      $scope.showUploadFinal = false;
     var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;
@@ -297,7 +309,8 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
       }
       
     });
-
+    $scope.showScheduleButton = false;
+  $scope.showScheduleFinal = true;
   }
   $scope.add = function() {
     console.log('here')
@@ -338,12 +351,15 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
           })
         })
 
+        $scope.showUploadButton = false;
+      $scope.showUploadFinal = true;
         //send your binary data via $http or $resource or do anything else with it
       }
 
       r.readAsText(f);
 
-      console.log('read')
+      console.log('read');
+
     }
 
     // $scope.addExam = function (examName, listOfQuestions) {
