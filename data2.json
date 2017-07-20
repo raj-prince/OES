@@ -13,9 +13,7 @@
         3,
         5,
         6,
-        7,
-        8,
-        9
+        7
       ]
     },
     {
@@ -45,7 +43,6 @@
       "lastName": "sinha",
       "exam": [
         3,
-        2,
         2
       ]
     },
@@ -58,7 +55,6 @@
       "lastName": "nsa",
       "exam": [
         3,
-        2,
         2
       ]
     },
@@ -105,9 +101,9 @@
     },
     {
       "examName": "Assignment 2",
-      "startDate": 1500535560,
-      "endDate": 1500539760,
-      "duration": 70,
+      "startDate": 1500378480,
+      "endDate": 1500380880,
+      "duration": 40,
       "listOfQuestions": [],
       "id": 2
     },
@@ -164,28 +160,6 @@
         8
       ],
       "id": 7
-    },
-    {
-      "examName": "exam_4",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
-      "listOfQuestions": [
-        9,
-        10
-      ],
-      "id": 8
-    },
-    {
-      "examName": "exam_5",
-      "startDate": 0,
-      "endDate": 0,
-      "duration": 0,
-      "listOfQuestions": [
-        11,
-        12
-      ],
-      "id": 9
     }
   ],
   "question": [
@@ -298,54 +272,6 @@
       ],
       "type": "Single",
       "id": 8
-    },
-    {
-      "questionText": "hello worl",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 9
-    },
-    {
-      "questionText": "q2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 10
-    },
-    {
-      "questionText": "hello worl",
-      "marks": "4",
-      "correctAnswer": "c",
-      "listOfChoices": [
-        "opa",
-        "opb",
-        "opc"
-      ],
-      "type": "Multi",
-      "id": 11
-    },
-    {
-      "questionText": "q2",
-      "marks": "3",
-      "correctAnswer": "b",
-      "listOfChoices": [
-        "dhhdoq",
-        "hdo",
-        "hidq"
-      ],
-      "type": "Single",
-      "id": 12
     }
   ],
   "responses": [
@@ -1362,6 +1288,24 @@
       "questionId": 2,
       "responseText": "1,2,3",
       "id": 168
+    },
+    {
+      "userId": 1,
+      "questionId": 0,
+      "responseText": "0,1,2",
+      "id": 169
+    },
+    {
+      "userId": 1,
+      "questionId": 1,
+      "responseText": "",
+      "id": 170
+    },
+    {
+      "userId": 1,
+      "questionId": 2,
+      "responseText": "",
+      "id": 171
     }
   ]
 }
