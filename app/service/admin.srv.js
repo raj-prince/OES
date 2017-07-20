@@ -92,6 +92,7 @@
 			}
 			var new_user = users[i];
 			new_user.exam.push(exam_id);
+			new_user.taken.push(0);
 			$http.put("http://localhost:3000/user/"+users[i].id,new_user);
 		}
 

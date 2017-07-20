@@ -58,10 +58,16 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
   // }
   //       });
   $rootScope.$on("$locationChangeStart",function(event,next,current) {
+    // console.log(current);
     if(current == 'http://localhost:3000/') {
     // if($cookieStore.get('globals')) {
       
+    //   if($rootScope.globals.type == 'admin') {
+    //     $location.path('/admin');
+    //   }
+    //   else {
     //   $location.path('/student');
+    // }
     // }
     // else {
       

@@ -354,18 +354,6 @@
       "userId": 1,
       "questionId": 3,
       "responseText": "012"
-    },
-    {
-      "userId": 1,
-      "questionId": 0,
-      "responseText": "",
-      "id": 1
-    },
-    {
-      "userId": 1,
-      "questionId": 1,
-      "responseText": "",
-      "id": 2
     }
   ]
 }

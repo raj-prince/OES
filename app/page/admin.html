@@ -22,13 +22,13 @@
       <div class="form-group">
         <label for="examName" class="col-sm-2 control-label">Exam Name</label>
         <div class="col-sm-4">
-          <input class="form-control" id="examName" placeholder="Enter the Exam Name" ng-model='examName'>
+          <input class="form-control" id="examName" placeholder="Enter the Exam Name" ng-model='examName' required>
         </div>
       </div>
       <div class="form-group">
         <label for="examPath" class="col-sm-2 control-label">Upload Question Paper in Excel Sheet</label>
         <div class="col-sm-4">
-          <input class="form-control" id="file" type='file'>
+          <input class="form-control" id="file" type='file' required>
         </div>
       </div>
       
@@ -37,6 +37,11 @@
           <button type="submit" class="btn btn-success" ng-show = 'showUploadButton' ng-click='add()'>Upload</button>
         </div>
       </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+        <a href="http://localhost:3000/questionPaper1.csv">TemplateQuestions</a>
+        </div>
+       </div> 
       <div class="form-group" ng-show = "showUploadFinal">
         <div class="col-sm-offset-2 col-sm-10">
         <h2>

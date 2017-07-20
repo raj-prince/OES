@@ -265,7 +265,7 @@ $scope.setExamId= function(id){
             $location.path("/student");
           }
           // AuthenticationService.setCredentials(users[i].id, users[i].firstName, users[i].email);
-          AuthenticationService.setCredentials(users[i].id,users[i].firstName,users[i].email,users[i].exam);
+          AuthenticationService.setCredentials(users[i].id,users[i].firstName,users[i].email,users[i].exam,users[i].type);
       
         }
 
