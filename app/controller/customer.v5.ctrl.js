@@ -246,6 +246,61 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
   UsersService.getUsers().then(function(result) {
     all_users = result.data;
   });
+  $scope.selectedExam;
+  $scope.usersGivingExam;
+  $scope.$watch('selectedExam', function(newValue, oldValue){
+    $scope.usersGivingExam=[]
+    for(user in all_users){
+      if(user.exam.indexOf(selectedExam.id)>0 ){
+        $scope.usersGivingExam.push(user)
+      }
+    }
+    
+
+  })
+
+  $scope.startDate;
+  $scope.toDate
+
+  $scope.$watchGroup(["startDate","toDate"], function(newValue, oldValue) { 
+    console.log("I've changed : ", $scope.startDate);
+    var temp = [];
+    AdminService.getExams().then(function(result) {
+      var exams = result.data;
+      // console.log("the length is");
+      for(var i =0;i<$rootScope.globals.exam.length;i++)
+      {
+        for(var j = 0;j<exams.length;j++) {
+          if($rootScope.globals.exam[i] == exams[j].id) {
+            temp.push(exams[j]);
+            break;
+          }
+        }
+      }
+
+      $scope.adminExams = temp;
+      console.log($scope.adminExams)
+    fromDate=Date.parse($scope.startDate)/1000
+    toDate=Date.parse($scope.toDate)/1000
+    console.log($scope.adminExams.length)
+    removalExamsIdx=[]
+    for(var i=0;i<$scope.adminExams.length;i++){
+      console.log($scope.adminExams)
+      console.log($scope.adminExams[i].examName,$scope.adminExams[i].startDate, fromDate, toDate)
+      if (($scope.adminExams[i].startDate<fromDate)||($scope.adminExams[i].startDate>toDate)){
+        removalExamsIdx.push(i)
+      }
+    }
+    console.log(removalExamsIdx)
+    for(var i=removalExamsIdx.length-1;i>=0;i--){
+      $scope.adminExams.splice(removalExamsIdx[i],1)
+    }
+    console.log('filter exam started')
+    });
+    
+  });
+
+
   $scope.uploadQuestion = function() {
     $scope.upload = true;
       $scope.result = false;
@@ -256,9 +311,61 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
     $scope.upload = false;
       $scope.result = true;
       $scope.schedule = false;
+      var temp = [];
+    AdminService.getExams().then(function(result) {
+      var exams = result.data;
+      console.log("the length is");
+      
+      for(var i =0;i<$rootScope.globals.exam.length;i++)
+      {
+        for(var j = 0;j<exams.length;j++) {
+          if($rootScope.globals.exam[i] == exams[j].id) {
+            temp.push(exams[j]);
+            break;
+          }
+        }
+      }
+
+      $scope.adminExams = temp;
+      // console.log($scope.adminExams);
+    });
     }
 
+  $scope.filterExamList=function(){
+    // temp=[]
+    var temp = [];
+    AdminService.getExams().then(function(result) {
+      var exams = result.data;
+      console.log("the length is");
+      
+      for(var i =0;i<$rootScope.globals.exam.length;i++)
+      {
+        for(var j = 0;j<exams.length;j++) {
+          if($rootScope.globals.exam[i] == exams[j].id) {
+            temp.push(exams[j]);
+            break;
+          }
+        }
+      }
 
+      $scope.adminExams = temp;
+
+      fromDate=Date.parse($scope.fromDate)/1000
+    toDate=Date.parse($scope.toDate)/1000
+    for(var i=0;i<$scope.adminExams.length;i++){
+      console.log($scope.adminExams[i].examName,$scope.adminExams[i].startDate, fromDate, toDate)
+      if (($scope.adminExams[i].startDate<fromDate)||($scope.adminExams[i].startDate>toDate)){
+        
+        $scope.adminExams.splice(i, 1);
+      }
+    }
+    // $scope.adminExams=temp
+
+    console.log('filter exam started')
+      // console.log($scope.adminExams);
+    });
+    
+  }
   $scope.scheduleExam = function() {
     $scope.upload = false;
     $scope.result = false;

@@ -98,11 +98,27 @@
 </br>
 </br>
 <form class="form-horizontal" role="form">
+      
+
+      <div class="form-group">
+      <label for="examDate" class="col-sm-2 control-label">FROM DATE</label>
+      <div class="col-sm-4">
+                <input datetime-picker ng-model="startDate" date-format="dd-MMM-yyyy HH:mm:ss" />
+                </div>
+            </div>
+
+      <div class="form-group">
+      <label for="notificationDate" class="col-sm-2 control-label">TO DATE</label>
+      <div class="col-sm-4">
+                <input datetime-picker ng-model="toDate" date-format="dd-MMM-yyyy HH:mm:ss" />
+                </div>
+            </div>
+
       <div class="form-group">
         <label for="exam_Name" class="col-sm-2 control-label">EXAM NAME</label>
         <div class="col-sm-4">
           <!-- <input class="form-control" ng-model="examName" placeholder="Enter the Exam Name" required> -->
-          <select ng-model="exam_name" ng-options="x.examName for x in adminExams"></select>
+          <select ng-model="selectedExam" ng-options="x.examName for x in adminExams"></select>
         </div>
       </div>
 </form>
