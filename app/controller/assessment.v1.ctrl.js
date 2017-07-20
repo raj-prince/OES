@@ -102,6 +102,7 @@
       if(questionIds.length > 0){
      prevResponse =  showCheckedUtil();
      displayOptionUtil();
+     displayButtonUtil();
     }
     else {
       $scope.displayQuestion = false;
