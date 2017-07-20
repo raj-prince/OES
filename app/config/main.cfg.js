@@ -52,32 +52,25 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
     })
     }).run(check);
     function check($cookieStore,$location,$rootScope,$http){
-  //       $rootScope.$on("$locationChangeStart",function(event,next,current){
-  // var user=$cookieStore.get('globals');
-  // var restrictedPage=$.inArray($location.path(),['/login','/register'])===-1;
-  // if(restrictedPage && !user){
-  //    $location.path("/login");
-  // }
-  // else{
-  //     $http.get(next);
-  // }
-  //       });
+ 
   $rootScope.$on("$locationChangeStart",function(event,next,current) {
-    // console.log(current);
-    if(current == 'http://localhost:3000/') {
-    // if($cookieStore.get('globals')) {
-      
-    //   if($rootScope.globals.type == 'admin') {
-    //     $location.path('/admin');
-    //   }
-    //   else {
-    //   $location.path('/student');
-    // }
-    // }
-    // else {
-      
-    //   $location.path('/');
-    // }
+  console.log(next);
+  if($cookieStore.get('globals')) {
+    $rootScope.globals = $cookieStore.get('globals');
+    if(next == 'http://localhost:3000/') {
+      if($cookieStore.get('globals').type == 'admin') {
+        $location.path('/admin');
+      }
+      else {
+      $location.path('/student');
+      }
+    }
+    else {
+    $http.get(next);
+    }
+  }
+  else {
+    $location.path('/login');
   } 
   });
     }
