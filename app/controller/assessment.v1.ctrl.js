@@ -38,7 +38,8 @@
     var hash = new Object();
 
     $scope.question = question = {};
-
+    $scope.questionId = ques_id_idx + 1;
+    
     $scope.confirmAssessmentFinish = function() {
       if (confirm("Do you really want to Finish Assessment?") == true) {
           finishAssessment();
@@ -95,10 +96,10 @@
       $scope.showCheckboxOption = false;
       $scope.showRadioOption = false;
       $scope.showFillText = false;
-      // currentResponse = "";
+      
       ques_id_idx = 0;
-      // prevResponse = hash[hashCode(userId, questionIds[ques_id_idx])].responseText;
-      // $scope.question = question = questionList[questionIds[ques_id_idx]];
+      $scope.questionId = ques_id_idx + 1;
+      
       if(questionIds.length > 0){
      prevResponse =  showCheckedUtil();
      displayOptionUtil();
@@ -191,6 +192,8 @@
       }
 
       ques_id_idx = 0;
+      $scope.questionId = ques_id_idx + 1;
+
       $scope.question = question = questionList[questionIds[ques_id_idx]];
       $scope.showPrevButton = false;
       
@@ -277,6 +280,7 @@
     //function to show the checked options
     var showCheckedUtil = function() {
       $scope.question = question = questionList[questionIds[ques_id_idx]];
+      $scope.questionId = ques_id_idx + 1;
       
       $(document).ready(function() {
 
