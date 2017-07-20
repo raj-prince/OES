@@ -1,0 +1,30 @@
+<div class="modal-header">
+<h3 class="modal-title">Result</h3>
+</div>
+<div class="modal-body">
+<table class="table">
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Your Response</th>
+        <th>Correct Answer</th>
+        <th> Marks Obtained</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="ques in questions" ng-class="{'success':isCorrect[$index],'danger':!isCorrect[$index]}">
+            <td>{{ques.questionText}}</td>
+            <td>{{userResponse[$index].responseText}}</td>
+            <td>{{ques.correctAnswer}}</td>
+            <td ng-show="isCorrect[$index]">{{ques.marks}}</td>
+            <td ng-show="!isCorrect[$index]">0</td>
+      </tr>
+    </tbody>
+  </table>
+  Total Marks : {{totalMarks}} </br >
+  Obtained Marks : {{obtainedMarks}}
+
+</div>
+<div class="modal-footer">
+<button class="btn btn-warning" type="button" ng-click="close()">Cancel</button>
+</div>
