@@ -137,6 +137,32 @@
       </div>
 </form>
 
+<table class="table2 table-striped table-hover">
+  <thead>
+      <tr>
+          <th ng-click="sort('email')">Student Email
+            <span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+            <th ng-click="sort('firstName')">Student Name 
+            <span class="glyphicon sort-icon" ng-show="sortKey=='firstName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+
+            <th ng-click="sort('obtainedMarks')">Obtained Marks (Max {{totalMarks}})
+            <span class="glyphicon sort-icon" ng-show="sortKey=='obtainedMarks'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+
+            <th> Result </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr dir-paginate="student in usersGivingExam|itemsPerPage:2|orderBy:sortKey:reverse">
+        <td>{{student.email}}</td>
+        <td>{{student.firstName + ' ' +student.lastName}}</td>
+        <td>{{student.obtainedMarks}}
+        <td><a ng-click="calculateResult(student)">View Result </a></td>
+        </tr>
+   </tbody>
+ 
+     </div>
+    </table>
+
 </div>
 
 </div>

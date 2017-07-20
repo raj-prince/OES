@@ -35,6 +35,12 @@ button["deleteButton"]{
     height:100px;
     margin-left: 600px;
 }
+
+.table2{
+    width:600px;
+    height:100px;
+    /*margin-left: 600px;*/
+}
 .control{
     margin-left:600px;
     margin-bottom: 10px;

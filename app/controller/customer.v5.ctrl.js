@@ -31,23 +31,23 @@
           if (exams[i].id == examsId[j]) {
             $scope.exams[i].status = "Registered";
             if($scope.user.taken[j]==1){
-            $scope.exams[i].taken=true;
-            $scope.takenExams.push(exams[i]);
-          }
-          else{
-            $scope.exams[i].taken=false;
-          }
+              $scope.exams[i].taken=true;
+              $scope.takenExams.push(exams[i]);
+            }
+            else{
+              $scope.exams[i].taken=false;
+            }
           }
         }
-       
+
       }
     });
     $scope.exams=exams;
     $scope.now =now= new Date();
     $scope.now.toDateString();
-     var currentDate=now.getDate();
-     var currentMonth=now.getMonth();
-     var currentYear=now.getFullYear();
+    var currentDate=now.getDate();
+    var currentMonth=now.getMonth();
+    var currentYear=now.getFullYear();
 
     $scope.showExamLink = function (end,start) {
       var endDateValue = new Date(end*1000);
@@ -64,42 +64,42 @@
       var v1=false;
 
       {
-      if(currentYear<endYear)v1=true;
-      else if(currentYear==endYear){
-        if( currentMonth<endMonth){
-          return v1=true;
-        }
-        else if(currentMonth==endMonth)
-        {
-          if(currentDate<=endDate){
-            v1=true;
+        if(currentYear<endYear)v1=true;
+        else if(currentYear==endYear){
+          if( currentMonth<endMonth){
+            return v1=true;
+          }
+          else if(currentMonth==endMonth)
+          {
+            if(currentDate<=endDate){
+              v1=true;
+            }
           }
         }
+        else
+          v1=false;
       }
-      else
-      v1=false;
-    }
-    var v2=false;
-     {
-      if(currentYear<startYear)v2=true;
-      else if(currentYear==startYear){
-        if( currentMonth<startMonth){
-          return v2=true;
-        }
-        else if(currentMonth==startMonth)
-        {
-          if(currentDate<startDate){
-            v2=true;
+      var v2=false;
+      {
+        if(currentYear<startYear)v2=true;
+        else if(currentYear==startYear){
+          if( currentMonth<startMonth){
+            return v2=true;
           }
-          else v2=false;
+          else if(currentMonth==startMonth)
+          {
+            if(currentDate<startDate){
+              v2=true;
+            }
+            else v2=false;
+          }
         }
+        else
+          v2=false;
       }
-      else
-      v2=false;
-    }
-    
-    return v1 && !v2;
-  
+
+      return v1 && !v2;
+
     }
 
     $scope.checkDate=function(date,month,year){
@@ -128,80 +128,69 @@
       $scope.responses = responses = result.data;
     });
 
-$scope.responses = responses;
-$scope.isCorrect=isCorrect=[];
-$scope.totalMarks=totalMarks=0;
-$scope.obtainedMarks=obtainedMarks=0;
-questions=[]
-userResponse=[]
-var j=0
-$scope.calculateResult=function(exam){
-    for(var i=0;i<responses.length;i++){
-      console.log('here'+ i)
-      if(responses[i].userId==$rootScope.globals.userId && isInListOfQuestions(exam.listOfQuestions,responses[i].questionId)){
-        userResponse.push(responses[i]);
-        res=QuestionService.getQuestion(responses[i].questionId,i)
-        res.then(function (result) {
-      // $scope.question = question= result.data;
-       questions.push(result.data)
-        // totalMarks+=parseInt($scope.question.marks);
-        // console.log(responses[i].responseText)
-        // console.log(question.correctAnswer)
-        // console.log(i)
-      // if(responses[i].responseText==question.correctAnswer)
-      // obtainedMarks+=parseInt(question.marks);
-  } 
-  
-   
-    );
-//      res.then(function (result){
-// alert("totalMarks=" +totalMarks + " "+obtainedMarks);
-// totalMarks=0;
-// obtainedMarks=0;
-    //  });
-   
+    $scope.responses = responses;
+    $scope.isCorrect=isCorrect=[];
+    $scope.totalMarks=totalMarks=0;
+    $scope.obtainedMarks=obtainedMarks=0;
+    questions=[]
+    userResponse=[]
+    var j=0
+    $scope.calculateResult=function(exam){
+      for(var i=0;i<responses.length;i++){
+        console.log('here'+ i)
+        if(responses[i].userId==$rootScope.globals.userId && isInListOfQuestions(exam.listOfQuestions,responses[i].questionId)){
+          userResponse.push(responses[i]);
+          res=QuestionService.getQuestion(responses[i].questionId,i)
+          res.then(function (result) {
+
+            questions.push(result.data)
+          } 
+
+
+          );
+
+        }
       }
-    }
-    res.then(function (result){
-      for(var i=0;i<userResponse.length;i++){
-        totalMarks+=parseInt(questions[i].marks);
-        isCorrect[i]=false;
-        if(userResponse[i].responseText==questions[i].correctAnswer){
+      res.then(function (result){
+        for(var i=0;i<userResponse.length;i++){
+          totalMarks+=parseInt(questions[i].marks);
+          isCorrect[i]=false;
+          if(userResponse[i].responseText==questions[i].correctAnswer){
            obtainedMarks+=parseInt(questions[i].marks);
            isCorrect[i]=true;
+         }
+       }
+
+       $scope.totalMarks=totalMarks;
+       $scope.obtainedMarks=obtainedMarks;
+       $scope.userResponse=userResponse;
+       $scope.questions=questions;
+       var modalInstance = $uibModal.open({
+        templateUrl: 'app/page/viewResult.html',
+        controller: 'PopupCont',
+        scope: $scope,
+        controllerAs: 'vm',
+        bindToController: true,
+        resolve: {
+          users: function() {
+            return $scope.questions;
+          },
+          response: function(){
+            return $scope.response;
+          }
+
         }
-      }
-//alert("totalMarks=" +totalMarks + " "+obtainedMarks);
-$scope.totalMarks=totalMarks;
-$scope.obtainedMarks=obtainedMarks;
-$scope.userResponse=userResponse;
-$scope.questions=questions;
-var modalInstance = $uibModal.open({
-templateUrl: 'app/page/viewResult.html',
-controller: 'PopupCont',
-scope: $scope,
-   controllerAs: 'vm',
-   bindToController: true,
-   resolve: {
-        users: function() {
-          return $scope.questions;
-        },
-        response: function(){
-          return $scope.response;
-        }
-
-      }
-});
- 
+      });
 
 
-totalMarks=0;
-obtainedMarks=0;
-userResponse=[];
-questions=[];
-})
-}
-   
+
+       totalMarks=0;
+       obtainedMarks=0;
+       userResponse=[];
+       questions=[];
+     })
+    }
+
     isInListOfQuestions = function (listOfQuestions, questionId) {
       for (var i = 0; i < listOfQuestions.length; i++) {
         if (listOfQuestions[i] == questionId) {
@@ -222,37 +211,37 @@ questions=[];
       $scope.result=!$scope.result;
     }
 
-    
 
-$scope.setExamId= function(id){
-  $rootScope.id=id;
-   $location.path("/assessment");
-}
+
+    $scope.setExamId= function(id){
+      $rootScope.id=id;
+      $location.path("/assessment");
+    }
   });
 
-  app.controller('PopupCont', ['$scope','$modalInstance',function ($scope, $modalInstance) {
-            $scope.close = function () {
-                $modalInstance.dismiss('cancel');
-            };
-        }]);
+app.controller('PopupCont', ['$scope','$modalInstance',function ($scope, $modalInstance) {
+  $scope.close = function () {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
 
 
 
-  app.controller("LoginController", function ($scope, $location, AuthenticationService) {
-    $scope.login = function () {
-      AuthenticationService.getUsers().then(function (result) {
-        var users = result.data;
-        var i = 0;
-        for (i = 0; i < users.length; i++) {
-          if (users[i].email == $scope.username && users[i].password == $scope.password) {
-            break;
-          }
+app.controller("LoginController", function ($scope, $location, AuthenticationService) {
+  $scope.login = function () {
+    AuthenticationService.getUsers().then(function (result) {
+      var users = result.data;
+      var i = 0;
+      for (i = 0; i < users.length; i++) {
+        if (users[i].email == $scope.username && users[i].password == $scope.password) {
+          break;
         }
-        if (i == users.length) {
-          alert("INCORRECT EMAIL OR PASSWORD!!");
+      }
+      if (i == users.length) {
+        alert("INCORRECT EMAIL OR PASSWORD!!");
 
-        }
-        else {
+      }
+      else {
           // alert("logging in ")
           if (users[i].type == "admin") {
             // console.log("admin");
@@ -263,33 +252,33 @@ $scope.setExamId= function(id){
           }
           // AuthenticationService.setCredentials(users[i].id, users[i].firstName, users[i].email);
           AuthenticationService.setCredentials(users[i].id,users[i].firstName,users[i].email,users[i].exam);
-      
+
         }
 
         
 
       });
-    }
+  }
 
-    $scope.signUp = function () {
-      $location.path("/signup");
-    }
+  $scope.signUp = function () {
+    $location.path("/signup");
+  }
 
-  });
+});
 
-  app.controller("SignUpController", function ($scope, $location, AuthenticationService) {
-    $scope.register = function () {
-      AuthenticationService.registerUser($scope.email, $scope.password, $scope.firstName, $scope.lastName);
-      $location.path('/');
+app.controller("SignUpController", function ($scope, $location, AuthenticationService) {
+  $scope.register = function () {
+    AuthenticationService.registerUser($scope.email, $scope.password, $scope.firstName, $scope.lastName);
+    $location.path('/');
 
-    }
-
-
-
-  });
+  }
 
 
-app.controller('AdminController', function($scope, $rootScope, UsersService, AdminService,$http){
+
+});
+
+
+app.controller('AdminController', function($scope, $rootScope, UsersService, AdminService,$http, ResponseService, QuestionService,$uibModal){
   $scope.upload = true;
   $scope.result = false;
   $scope.schedule = false;
@@ -304,17 +293,28 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
   });
   $scope.selectedExam;
   $scope.usersGivingExam;
+  var flag=1
   $scope.$watch('selectedExam', function(newValue, oldValue){
     $scope.usersGivingExam=[]
     for(user in all_users){
-      if(user.exam.indexOf(selectedExam.id)>0 ){
+      user=all_users[user]
+      idx=user.exam.indexOf($scope.selectedExam.id)
+      if((user.type=='student')&&(idx>=0 )&&(user.taken[idx]==1)){
+        flag=0
+        $scope.calculateResult(user)
+        user['obtainedMarks']=$scope.obtainedMarks
+        flag=1
         $scope.usersGivingExam.push(user)
       }
     }
+    console.log($scope.usersGivingExam)
     
 
   })
-
+  $scope.sort=function(keyName){
+    $scope.sortKey=keyName;
+    $scope.reverse=!$scope.reverse;
+  }
   $scope.startDate;
   $scope.toDate
 
@@ -335,23 +335,23 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
       }
 
       $scope.adminExams = temp;
-      console.log($scope.adminExams)
-    fromDate=Date.parse($scope.startDate)/1000
-    toDate=Date.parse($scope.toDate)/1000
-    console.log($scope.adminExams.length)
-    removalExamsIdx=[]
-    for(var i=0;i<$scope.adminExams.length;i++){
-      console.log($scope.adminExams)
-      console.log($scope.adminExams[i].examName,$scope.adminExams[i].startDate, fromDate, toDate)
-      if (($scope.adminExams[i].startDate<fromDate)||($scope.adminExams[i].startDate>toDate)){
-        removalExamsIdx.push(i)
+      // console.log($scope.adminExams)
+      fromDate=Date.parse($scope.startDate)/1000
+      toDate=Date.parse($scope.toDate)/1000
+      // console.log($scope.adminExams.length)
+      removalExamsIdx=[]
+      for(var i=0;i<$scope.adminExams.length;i++){
+        // console.log($scope.adminExams)
+        // console.log($scope.adminExams[i].examName,$scope.adminExams[i].startDate, fromDate, toDate)
+        if (($scope.adminExams[i].startDate<fromDate)||($scope.adminExams[i].startDate>toDate)){
+          removalExamsIdx.push(i)
+        }
       }
-    }
-    console.log(removalExamsIdx)
-    for(var i=removalExamsIdx.length-1;i>=0;i--){
-      $scope.adminExams.splice(removalExamsIdx[i],1)
-    }
-    console.log('filter exam started')
+      // console.log(removalExamsIdx)
+      for(var i=removalExamsIdx.length-1;i>=0;i--){
+        $scope.adminExams.splice(removalExamsIdx[i],1)
+      }
+      // console.log('filter exam started')
     });
     
   });
@@ -359,19 +359,19 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
 
   $scope.uploadQuestion = function() {
     $scope.upload = true;
-      $scope.result = false;
-      $scope.schedule = false;
-      $scope.showUploadButton = true;
-      $scope.showUploadFinal = false;
-      $scope.showScheduleButton = false;
+    $scope.result = false;
+    $scope.schedule = false;
+    $scope.showUploadButton = true;
+    $scope.showUploadFinal = false;
+    $scope.showScheduleButton = false;
     $scope.showScheduleFinal = false;
-    }
+  }
 
-    $scope.viewResult = function() {
+  $scope.viewResult = function() {
     $scope.upload = false;
-      $scope.result = true;
-      $scope.schedule = false;
-      var temp = [];
+    $scope.result = true;
+    $scope.schedule = false;
+    var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;
       console.log("the length is");
@@ -389,7 +389,7 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
       $scope.adminExams = temp;
       // console.log($scope.adminExams);
     });
-    }
+  }
 
   $scope.filterExamList=function(){
     // temp=[]
@@ -411,14 +411,14 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
       $scope.adminExams = temp;
 
       fromDate=Date.parse($scope.fromDate)/1000
-    toDate=Date.parse($scope.toDate)/1000
-    for(var i=0;i<$scope.adminExams.length;i++){
-      console.log($scope.adminExams[i].examName,$scope.adminExams[i].startDate, fromDate, toDate)
-      if (($scope.adminExams[i].startDate<fromDate)||($scope.adminExams[i].startDate>toDate)){
-        
-        $scope.adminExams.splice(i, 1);
+      toDate=Date.parse($scope.toDate)/1000
+      for(var i=0;i<$scope.adminExams.length;i++){
+        console.log($scope.adminExams[i].examName,$scope.adminExams[i].startDate, fromDate, toDate)
+        if (($scope.adminExams[i].startDate<fromDate)||($scope.adminExams[i].startDate>toDate)){
+
+          $scope.adminExams.splice(i, 1);
+        }
       }
-    }
     // $scope.adminExams=temp
 
     console.log('filter exam started')
@@ -433,7 +433,7 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
     $scope.showScheduleButton = true;
     $scope.showScheduleFinal = false;
     $scope.showUploadButton = false;
-      $scope.showUploadFinal = false;
+    $scope.showUploadFinal = false;
     var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;
@@ -460,14 +460,14 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
   // });
 
   $scope.Schedule = function() {
-    
+
     var start_timestamp = Date.parse($scope.examDate)/1000;
     var end_timestamp = start_timestamp + parseInt($scope.duration)*60;
     var i;
     AdminService.updateExam($scope.exam_name,start_timestamp,end_timestamp,$scope.duration);
 
     AdminService.readExaminees(function(response) {
-      
+
       for(i=0;i<response.length;i++){
         AdminService.updateUser(all_users,response[i],$scope.exam_name.id);
 
@@ -475,16 +475,16 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
       
     });
     $scope.showScheduleButton = false;
-  $scope.showScheduleFinal = true;
+    $scope.showScheduleFinal = true;
   }
   $scope.add = function() {
     console.log('here')
     var f = document.getElementById('file').files[0],
-        r = new FileReader();
-      var listOfQuestions = []
-      user_id=$rootScope.globals.userId
-      r.onloadend = function (e) {
-        var data = e.target.result;
+    r = new FileReader();
+    var listOfQuestions = []
+    user_id=$rootScope.globals.userId
+    r.onloadend = function (e) {
+      var data = e.target.result;
         // console.log(data)
         // console.log($scope.examName)
 
@@ -517,7 +517,7 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
         })
 
         $scope.showUploadButton = false;
-      $scope.showUploadFinal = true;
+        $scope.showUploadFinal = true;
         //send your binary data via $http or $resource or do anything else with it
       }
 
@@ -525,6 +525,100 @@ app.controller('AdminController', function($scope, $rootScope, UsersService, Adm
 
       console.log('read');
 
+    }
+
+
+    //start 
+    $scope.responses =responses= [];
+
+    ResponseService.getResponse().then(function (result) {
+      $scope.responses=responses = result.data;
+    });
+
+    $scope.responses = responses;
+    $scope.isCorrect=isCorrect=[];
+    $scope.totalMarks=totalMarks=0;
+    $scope.obtainedMarks=obtainedMarks=0;
+    questions=[]
+    userResponse=[]
+    var j=0
+    var allQuestions;
+    QuestionService.getQuestions().then(function(result){
+      allQuestions=result.data
+    })
+
+    $scope.calculateResult=function(student){
+      exam=$scope.selectedExam
+      for(var i=0;i<responses.length;i++){
+        console.log('here'+ i)
+        if(responses[i].userId==student.id && isInListOfQuestions(exam.listOfQuestions,responses[i].questionId)){
+          userResponse.push(responses[i]);
+          // res=QuestionService.getQuestion(responses[i].questionId,i)
+          for (ques in allQuestions){
+
+            if(allQuestions[ques].id== responses[i].questionId){
+              questions.push(allQuestions[ques])              
+            }
+          }
+          console.log(questions)
+          // res.then(function (result) {
+
+          //   questions.push(result.data)
+
+          // } 
+          // );
+        }
+      }
+      // res.then(function (result){
+        for(var i=0;i<userResponse.length;i++){
+          totalMarks+=parseInt(questions[i].marks);
+          isCorrect[i]=false;
+          if(userResponse[i].responseText==questions[i].correctAnswer){
+           obtainedMarks+=parseInt(questions[i].marks);
+           isCorrect[i]=true;
+         }
+       }
+
+       $scope.totalMarks=totalMarks;
+       $scope.obtainedMarks=obtainedMarks;
+       $scope.userResponse=userResponse;
+       $scope.questions=questions;
+       console.log(totalMarks, obtainedMarks, userResponse, questions)
+       if(flag==1){
+        var modalInstance = $uibModal.open({
+          templateUrl: 'app/page/viewResult.html',
+          controller: 'PopupCont',
+          scope: $scope,
+          controllerAs: 'vm',
+          bindToController: true,
+          resolve: {
+            users: function() {
+              return $scope.questions;
+            },
+            response: function(){
+              return $scope.response;
+            }
+
+          }
+        });
+      }
+
+
+      totalMarks=0;
+      obtainedMarks=0;
+      userResponse=[];
+      questions=[];
+// return [$scope.obtainedMarks, $scope.totalMarks]
+// })
+    }
+
+    isInListOfQuestions = function (listOfQuestions, questionId) {
+      for (var i = 0; i < listOfQuestions.length; i++) {
+        if (listOfQuestions[i] == questionId) {
+          return true;
+        }
+      }
+      return false;
     }
 
     // $scope.addExam = function (examName, listOfQuestions) {
