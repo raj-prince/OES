@@ -78,11 +78,14 @@
 
 
     $scope.responses = responses = [];
-
+    var allQuestions = [];
     ResponseService.getResponse().then(function (result) {
       $scope.responses = responses = result.data;
     });
 
+    QuestionService.getQuestions().then(function (result) {
+      allQuestions = result.data;
+    });
     $scope.responses = responses;
 
     $scope.isCorrect = isCorrect = [];
@@ -96,15 +99,12 @@
         if (responses[i].userId == $rootScope.globals.userId && isInListOfQuestions(exam.listOfQuestions, responses[i].questionId)) {
           userResponse.push(responses[i]);
           res = QuestionService.getQuestion(responses[i].questionId, i)
-          res.then(function (result) {
-            questions.push(result.data)
-          }
-
-
-          );
+          questions.push(allQuestions[responses[i].questionId]);
+         
+          
         }
       }
-      res.then(function (result) {
+      // res.then(function (result) {
         for (var i = 0; i < userResponse.length; i++) {
           totalMarks += parseInt(questions[i].marks);
           isCorrect[i] = false;
@@ -141,7 +141,7 @@
         obtainedMarks = 0;
         userResponse = [];
         questions = [];
-      })
+      // })
     }
 
     isInListOfQuestions = function (listOfQuestions, questionId) {
