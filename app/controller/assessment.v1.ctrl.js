@@ -24,7 +24,7 @@
     var totalQuestionIds = [];
     ques_id_idx = 0;
     questionList = [];
-    var userId = 1;
+    var userId = $rootScope.globals.userId;
     var durations = 10;
     var userObj;
 
@@ -256,7 +256,7 @@
 
       for(var i = 0; inputElements[i]; i++){
         if(inputElements[i].checked){ 
-            responseGiven += ",";
+            responseGiven += "$";
           responseGiven += i;
         }
       }
@@ -302,7 +302,7 @@
       
 
       if(existingResponseText.length > 0 ) {
-        var indices = existingResponseText.split(",");
+        var indices = existingResponseText.split("$");
       
         for (var i = 0; i < indices.length; i++) {
           var idx = parseInt(indices[i]);

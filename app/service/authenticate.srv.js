@@ -33,7 +33,8 @@
       "type": "student",
       "firstName":firstName,
       "lastName":lastName,
-      "exam":[]
+      "exam":[],
+      "taken":[]
 		};	
 		var res = $http.post('http://localhost:3000/user/', dataObj);
 		res.success(function(data, status, headers, config) {
