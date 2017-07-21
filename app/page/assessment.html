@@ -2,18 +2,27 @@
 <div class = "container" ng-controller = "AssessmentController">
 
 <!-- first row start from here -->
-<div class = "row">
-    <div class = "col-md-4"></div>
-    <div class = "col-md-4" ng-show = "showStartButton">
-        <h4>
-            Click below to Start!
-        </h4>
-        <span class="glyphicon glyphicon-pencil"></span>&nbsp; &nbsp;
-        <button type="button" class="btn btn-primary" ng-click="startAssessment()">
-            Start
+<div class = "row" style="
+    border-style: solid;
+    background-color: darkgray;
+    height: 200px;
+    margin-top: 30px"  ng-show = "showStartButton">
+    <div class = "col-md-3"></div>
+    <div class = "col-md-8">
+        <h3 style="
+        margin-top: 25px;">
+            <span class="glyphicon glyphicon-pencil"></span>
+            Click Below To Start The Assessment of <b>{{nameOfExame}}!</b>
+        </h3>
+        
+        <button type="button" class="btn btn-primary" ng-click="startAssessment()" style="
+        margin-left: 235px;
+        margin-top: 70px;
+        height: 41px;
+        width: 76px">
+            Go
         </button>
     </div>
-    <div class = "col-md-4"></div>
 </div>
 
 <!-- second row start from here -->
@@ -32,39 +41,42 @@
     <div class = "col-md-4"></div>
 </div>
 
-<!-- first row start from here -->
-<div class = "row">
-    <div class = "col-md-3 pull-left" ng-show = "showRadioButton" style="
-    background: silver;
-    border-style: outset;">
+<!-- third row start from here -->
+<div class = "row" style="
+    border-style: double;">
+    <div class = "col-md-3 pull-left" ng-show = "showRadioButton">
         <div class="radio">
-          <label><input type="radio" id = "answered" name="optradio" ng-click = "buttonClicked(1)">
+          <label style="
+            margin-top: 30px;"><input type="radio" id = "answered" name="optradio" ng-click = "buttonClicked(1)">
             <b style="
             color: #57a95e;
-            font-size: large;"> Answered </b></label></br>
-          <label><input type="radio" id = "unanswered" name="optradio" ng-click = "buttonClicked(2)">   <b style="
+            font-size: large;"> ANSWERED </b></label></br>
+            <label style="
+            margin-top: 30px;"><input type="radio" id = "unanswered" name="optradio" ng-click = "buttonClicked(2)">
+            <b style="
              color: brown;
-             font-size: larger;">UnAnswered </b></label></br>
-            <label><input type="radio" id = "all" name="optradio" ng-click = "buttonClicked(3)" checked>  <b style="
+             font-size: larger;">UNSWERED </b></label></br>
+            <label style="
+            margin-top: 30px;"><input type="radio" id = "all" name="optradio" ng-click = "buttonClicked(3)" checked>  <b style="
             color: dimgrey;
-            font-size: larger;">All</b></label>
+            font-size: larger;">ALL</b></label>
         </div>
     </div>
     
-    <div class = "col-md-6" ng-show = "displayQuestion" style="
+    <div class = "col-md-7" ng-show = "displayQuestion" style="
         border-style: groove;
-        background-color: honeydew;">
+        background-color: aliceblue;">
         <div>
         <h3 style="
         border-style: groove;
         background-color: azure;">
         Total Questions : {{totalQuestions}}, Answered: {{totalAnswered}} , Unanswered : {{totalUnanswered}}
         </h3>
-        </div>
-        </br>
-        </br>
+        </div></br>
         <div>
-            <h3>
+            <h3 style="
+                font-size: x-large;
+                maring-bottom: 30px">
             <span class = "questionText" ng-model = "questionId"></span>
                 {{questionId}}) 
             <span class = "questionText" ng-model = "question"></span>
@@ -72,17 +84,18 @@
             </h3>
         </div>
 
-        <div class = "funkyradio" ng-show = "showCheckboxOption" ng-repeat = "optionText in question.listOfChoices track by $index">
-            <div class="funkyradio-default">
+        <div class = "funkyradio" ng-show = "showCheckboxOption" ng-repeat = "optionText in question.listOfChoices track by $index" style="padding-bottom: 15px;">
+            <div class="funkyradio-default" style="
+                padding-bottom: 15px;">
                 <input type="checkbox" class = "optionCheckBox" name="checkbox" value="{{$index}}"/>
-                <label for="$index">{{optionText}}</label>
+                <label style = "font-size: x-large;" for="$index">{{optionText}}</label>
             </div>
         </div>
 
         <div class = "funkyradio" ng-show = "showRadioOption" ng-repeat = "optionText in question.listOfChoices track by $index">
             <div class="funkyradio-default">
                 <input type="radio" class = "optionRadio"  name="checkbox" value="{{$index}}"/>
-                <label for="$index">{{optionText}}</label>
+                <label style = "font-size: x-large;" for="$index">{{optionText}}</label>
             </div>
         </div>
 
@@ -97,23 +110,26 @@
             prev
         </button>
         <button type="button" ng-show = "showNextButton" class="btn btn-primary pull-right"
-         ng-click="loadNextQues()" style="margin-top: 30px;">
+         ng-click="loadNextQues()" style="margin-top: 20px;">
             next
         </button>
     </div>
 
-    <div class = "col-md-3 pull-right" ng-show = "showTimer">
+    <div class = "col-md-2 pull-right" ng-show = "showTimer">
         <HEADER>
-            <h4>Time Remaining</h4>
+            <h4 style="
+            font-size: larger;
+            color: tomato;
+            margin-top: 30px;">Time Remaining</h4>
         
             <span class = "glyphicon glyphicon-time"></span>
-            {{hours}}h {{minutes}}m {{seconds}}s
+            <b>{{hours}}h {{minutes}}m {{seconds}}s</b>
         </HEADER>
     </div>
 </div>
 
 <div class = "row" ng-show = "displayQuestion">
-    <div class = "col-md-4"></div>
+    <div class = "col-md-5"></div>
     <div class = "col-md-4">
         <button type="button" class="btn btn-primary"
          ng-click="confirmAssessmentFinish()" style="margin-top: 20px;">
