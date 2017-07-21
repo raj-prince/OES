@@ -6,8 +6,7 @@
 
     $scope.dashBoard = true;
     $scope.showDashboard = function () {
-      console.log($rootScope.globals.userId);
-      $scope.dashBoard = true;
+            $scope.dashBoard = true;
 
     }
      $scope.logout=function(){
@@ -22,19 +21,16 @@
       $scope.examsId = examsId = result.data.exam;
       $scope.user = result.data;
 
-    
-    // $scope.examsId = examsId;
-    // $scope.user = user;
+
     $scope.takenExams = takenExams = [];
     $scope.exams = exams = [];
-    // res=StudentService.getExams();
+
     StudentService.getExams().then(function (result) {
       $scope.exams = exams = result.data;
       for (var i = 0; i < exams.length; i++) {
         $scope.exams[i].status = "Not registered";
         for (var j = 0; j < examsId.length; j++) {
-          console.log(exams[i].id, examsId[j]);
-          if (exams[i].id == examsId[j]) {
+                    if (exams[i].id == examsId[j]) {
             $scope.exams[i].status = "Registered";
 
             if ($scope.user.taken[j] == 1) {
@@ -104,7 +100,6 @@
           
         }
       }
-      // res.then(function (result) {
         for (var i = 0; i < userResponse.length; i++) {
           totalMarks += parseInt(questions[i].marks);
           isCorrect[i] = false;
@@ -195,16 +190,14 @@ app.controller("LoginController", function ($scope, $location, AuthenticationSer
 
       }
       else {
-          // alert("logging in ")
+         
           if (users[i].type == "admin") {
-            // console.log("admin");
-            $location.path('/admin')
+            
           }
           else {
             $location.path("/student");
           }
-          // AuthenticationService.setCredentials(users[i].id, users[i].firstName, users[i].email);
-
+          
           AuthenticationService.setCredentials(users[i].id, users[i].firstName, users[i].email, users[i].exam, users[i].type);
 
         }
@@ -266,8 +259,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
     if(newValue!=oldValue){
       $scope.studentResult=true  
     }
-    console.log($scope.usersGivingExam)
-    
+        
 
   })
   $scope.sort=function(keyName){
@@ -278,12 +270,10 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
   $scope.toDate
 
   $scope.$watchGroup(["startDate","toDate"], function(newValue, oldValue) { 
-    console.log("I've changed : ", $scope.startDate);
-    var temp = [];
+        var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;
-      // console.log("the length is");
-      for(var i =0;i<$rootScope.globals.exam.length;i++)
+      
       {
         for(var j = 0;j<exams.length;j++) {
           if($rootScope.globals.exam[i] == exams[j].id) {
@@ -294,25 +284,15 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
       }
 
       $scope.adminExams = temp;
-      // console.log($scope.adminExams)
-      fromDate=Date.parse($scope.startDate)/1000
+     
       toDate=Date.parse($scope.toDate)/1000
-      // console.log($scope.adminExams.length)
-      removalExamsIdx=[]
       for(var i=0;i<$scope.adminExams.length;i++){
-        // console.log($scope.adminExams)
-        // console.log($scope.adminExams[i].examName,$scope.adminExams[i].startDate, fromDate, toDate)
-        if (($scope.adminExams[i].startDate<fromDate)||($scope.adminExams[i].startDate>toDate)){
           removalExamsIdx.push(i)
         }
       }
-      // console.log(removalExamsIdx)
-      for(var i=removalExamsIdx.length-1;i>=0;i--){
         $scope.adminExams.splice(removalExamsIdx[i],1)
       }
-      // console.log('filter exam started')
-    });
-    
+      
   });
 
 
@@ -335,8 +315,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
     var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;
-      console.log("the length is");
-      
+            
       for(var i =0;i<$rootScope.globals.exam.length;i++)
       {
         for(var j = 0;j<exams.length;j++) {
@@ -348,8 +327,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
       }
 
       $scope.adminExams = temp;
-      // console.log($scope.adminExams);
-    });
+      //     });
   }
 
   $scope.filterExamList=function(){
@@ -357,8 +335,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
     var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;
-      console.log("the length is");
-      
+            
       for(var i =0;i<$rootScope.globals.exam.length;i++)
       {
         for(var j = 0;j<exams.length;j++) {
@@ -375,18 +352,13 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
       fromDate=Date.parse($scope.fromDate)/1000
       toDate=Date.parse($scope.toDate)/1000
       for(var i=0;i<$scope.adminExams.length;i++){
-        console.log($scope.adminExams[i].examName,$scope.adminExams[i].startDate, fromDate, toDate)
-        if (($scope.adminExams[i].startDate<fromDate)||($scope.adminExams[i].startDate>toDate)){
+                if (($scope.adminExams[i].startDate<fromDate)||($scope.adminExams[i].startDate>toDate)){
 
 
           $scope.adminExams.splice(i, 1);
         }
       }
-    // $scope.adminExams=temp
 
-    console.log('filter exam started')
-      // console.log($scope.adminExams);
-    });
     
   }
   $scope.scheduleExam = function() {
@@ -401,8 +373,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
     var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;
-      console.log("the length is");
-      
+            
       for(var i =0;i<$rootScope.globals.exam.length;i++)
       {
         for(var j = 0;j<exams.length;j++) {
@@ -413,14 +384,9 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
         }
       }
         $scope.adminExams = temp;
-        // console.log($scope.adminExams);
-      });
+
     }
 
-    // UsersService.getUserById($rootScope.globals.userId).then(function(result) {
-    // $scope.firstName= result.data.firstName
-    // console.log($scope.firstName)
-    // });
 
 
     $scope.Schedule = function () {
@@ -442,15 +408,12 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
       $scope.showScheduleFinal = true;
     }
     $scope.add = function () {
-      console.log('here')
-      var f = document.getElementById('file').files[0],
+            var f = document.getElementById('file').files[0],
         r = new FileReader();
       var listOfQuestions = []
       user_id = $rootScope.globals.userId
       r.onloadend = function (e) {
         var data = e.target.result;
-        // console.log(data)
-        // console.log($scope.examName)
 
         var lines = data.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
         var temp = [];
@@ -462,13 +425,11 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
         lines = temp;
         for (var i = 1; i < lines.length; i++) {
           var line = lines[i].split(',')
-          // var endIndex=line.length
+          
           var options = []
           for (var j = 4; j < line.length; j++) {
             if (line[j].length > 0) options.push(line[j])
           }
-          // qid=
-          // console.log('hiodasoi')
           res = AdminService.addQuestion(line[0], line[1], line[2], line[3], options)
           res.success(function (data, status, headers, config) {
             listOfQuestions.push(data.id)
@@ -494,8 +455,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
 
       r.readAsText(f);
 
-      console.log('read');
-
+      
     }
 
 
@@ -522,26 +482,19 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
     $scope.calculateResult=function(student){
       exam=$scope.selectedExam
       for(var i=0;i<responses.length;i++){
-        console.log('here'+ i)
-        if(responses[i].userId==student.id && isInListOfQuestions(exam.listOfQuestions,responses[i].questionId)){
+                if(responses[i].userId==student.id && isInListOfQuestions(exam.listOfQuestions,responses[i].questionId)){
           userResponse.push(responses[i]);
-          // res=QuestionService.getQuestion(responses[i].questionId,i)
+
           for (ques in allQuestions){
 
             if(allQuestions[ques].id== responses[i].questionId){
               questions.push(allQuestions[ques])              
             }
           }
-          console.log(questions)
-          // res.then(function (result) {
 
-          //   questions.push(result.data)
-
-          // } 
-          // );
         }
       }
-      // res.then(function (result){
+
         for(var i=0;i<userResponse.length;i++){
           totalMarks+=parseInt(questions[i].marks);
           isCorrect[i]=false;
@@ -555,8 +508,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
        $scope.obtainedMarks=obtainedMarks;
        $scope.userResponse=userResponse;
        $scope.questions=questions;
-       console.log(totalMarks, obtainedMarks, userResponse, questions)
-       if(flag==1){
+              if(flag==1){
         var modalInstance = $uibModal.open({
           templateUrl: 'app/page/viewResult.html',
           controller: 'PopupCont',
@@ -580,8 +532,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
       obtainedMarks=0;
       userResponse=[];
       questions=[];
-// return [$scope.obtainedMarks, $scope.totalMarks]
-// })
+
     }
 
     isInListOfQuestions = function (listOfQuestions, questionId) {
@@ -593,43 +544,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
       return false;
     }
 
-    // $scope.addExam = function (examName, listOfQuestions) {
-    //   var dataObj = {
-    //     "examName": examName,
-    //     "startDate": 0,
-    //     "endDate": 0,
-    //     "duration": 0,
-    //     "listOfQuestions": listOfQuestions
-    //   };
-    //   var res = $http.post('http://localhost:3000/exam/', dataObj);
-    //   res.success(function (data, status, headers, config) {
-    //     console.log(data)
-    //     console.log("successfully registered");
-    //   });
-    //   res.error(function (data, status, headers, config) {
-    //     alert("failure message: " + JSON.stringify({ data: data }));
-    //   });
-    // }
-
-    // $scope.addQuestion = function (qtext, type, marks, correctAnswer, listOfChoices) {
-    //   var dataObj = {
-    //     "questionText": qtext,
-    //     "marks": marks,
-    //     "correctAnswer": correctAnswer,
-    //     "listOfChoices": listOfChoices,
-    //     "type": type
-    //   }
-    //   var res = $http.post('http://localhost:3000/question/', dataObj);
-    //   return res
-    //   res.success(function (data, status, headers, config) {
-    //     console.log(data.id + 'hoduahofa')
-    //     console.log("successfully registered");
-    //     return data.id
-    //   });
-    //   res.error(function (data, status, headers, config) {
-    //     alert("failure message: " + JSON.stringify({ data: data }));
-    //   });
-    // }
+    
 
    $scope.logout=function(){
        $location.path("/logout");
