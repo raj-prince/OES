@@ -26,12 +26,13 @@
     var totalQuestionIds = [];
     ques_id_idx = 0;
     questionList = [];
-    var userId = 1;
-    var durations = 10000;
+
+    var userId = $rootScope.globals.userId;
+    var durations = 10;
+
     var userObj;
 
-    // var exameId = $rootScope.id;
-    var exameId = 1;
+    var exameId = $rootScope.id;
 
 
     var prevResponse = "";
@@ -148,7 +149,7 @@
       totalQuestionIds = questionIds;
       $scope.totalQuestions = questionIds.length;
       $scope.totalUnanswered = questionIds.length;
-      // durations = parseInt(result.data.duration) * 60;
+      durations = parseInt(result.data.duration) * 60;
       $scope.nameOfExame = result.data.examName;
     });
 
@@ -262,7 +263,7 @@
 
       for(var i = 0; inputElements[i]; i++){
         if(inputElements[i].checked){ 
-            responseGiven += ",";
+            responseGiven += "$";
           responseGiven += i;
         }
       }
@@ -308,7 +309,7 @@
       
 
       if(existingResponseText.length > 0 ) {
-        var indices = existingResponseText.split(",");
+        var indices = existingResponseText.split("$");
       
         for (var i = 0; i < indices.length; i++) {
           var idx = parseInt(indices[i]);

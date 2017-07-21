@@ -70,7 +70,13 @@ angular.module("main_module").config(function($routeProvider,$locationProvider){
     }
   }
   else {
-    $location.path('/login');
+    console.log(next);
+    if(next == 'http://localhost:3000/#/signup') {
+      $location.path('/signup');
+    }
+    else {
+      $location.path('/login');
+    }
   } 
   });
     }
