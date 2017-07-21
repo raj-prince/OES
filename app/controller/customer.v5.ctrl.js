@@ -241,6 +241,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
   $scope.showScheduleFinal = false;
   $scope.showUploadButton = true;
   $scope.showUploadFinal = false;
+  $scope.studentResult=false;
   $scope.adminExams = [];
   all_users = [];
   UsersService.getUsers().then(function(result) {
@@ -261,6 +262,9 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
         flag=1
         $scope.usersGivingExam.push(user)
       }
+    }
+    if(newValue!=oldValue){
+      $scope.studentResult=true  
     }
     console.log($scope.usersGivingExam)
     
@@ -320,12 +324,14 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
     $scope.showUploadFinal = false;
     $scope.showScheduleButton = false;
     $scope.showScheduleFinal = false;
+    $scope.studentResult=false;
   }
 
   $scope.viewResult = function() {
     $scope.upload = false;
     $scope.result = true;
     $scope.schedule = false;
+    $scope.studentResult=false;
     var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;
@@ -391,6 +397,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
     $scope.showScheduleFinal = false;
     $scope.showUploadButton = false;
     $scope.showUploadFinal = false;
+    $scope.studentResult=false;
     var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;
