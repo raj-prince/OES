@@ -166,6 +166,9 @@
       questionList = result.data;
     });
 
+    $scope.getBack = function() {
+      $location.path('/student');
+    }
     $scope.startAssessment = function() {
       $scope.showStartButton = false;
       $scope.displayQuestion = true;

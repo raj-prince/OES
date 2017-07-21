@@ -135,7 +135,7 @@
             </div>
 
       <div class="form-group">
-        <label for="exam_Name" class="col-sm-2 control-label">EXAM NAME</label>
+        <label for="exam_Name" class="col-sm-2 control-label">SELECT EXAM</label>
         <div class="col-sm-4">
           <!-- <input class="form-control" ng-model="examName" placeholder="Enter the Exam Name" required> -->
           <select ng-model="selectedExam" ng-options="x.examName for x in adminExams"></select>
@@ -143,7 +143,7 @@
       </div>
 </form>
 
-<table class="table2 table-striped table-hover">
+<table class="table2 table-striped table-hover" ng-show='studentResult'>
   <thead>
       <tr>
           <th ng-click="sort('email')">Student Email

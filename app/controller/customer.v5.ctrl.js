@@ -78,11 +78,14 @@
 
 
     $scope.responses = responses = [];
-
+    var allQuestions = [];
     ResponseService.getResponse().then(function (result) {
       $scope.responses = responses = result.data;
     });
 
+    QuestionService.getQuestions().then(function (result) {
+      allQuestions = result.data;
+    });
     $scope.responses = responses;
 
     $scope.isCorrect = isCorrect = [];
@@ -96,15 +99,12 @@
         if (responses[i].userId == $rootScope.globals.userId && isInListOfQuestions(exam.listOfQuestions, responses[i].questionId)) {
           userResponse.push(responses[i]);
           res = QuestionService.getQuestion(responses[i].questionId, i)
-          res.then(function (result) {
-            questions.push(result.data)
-          }
-
-
-          );
+          questions.push(allQuestions[responses[i].questionId]);
+         
+          
         }
       }
-      res.then(function (result) {
+      // res.then(function (result) {
         for (var i = 0; i < userResponse.length; i++) {
           totalMarks += parseInt(questions[i].marks);
           isCorrect[i] = false;
@@ -141,7 +141,7 @@
         obtainedMarks = 0;
         userResponse = [];
         questions = [];
-      })
+      // })
     }
 
     isInListOfQuestions = function (listOfQuestions, questionId) {
@@ -241,6 +241,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
   $scope.showScheduleFinal = false;
   $scope.showUploadButton = true;
   $scope.showUploadFinal = false;
+  $scope.studentResult=false;
   $scope.adminExams = [];
   all_users = [];
   UsersService.getUsers().then(function(result) {
@@ -261,6 +262,9 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
         flag=1
         $scope.usersGivingExam.push(user)
       }
+    }
+    if(newValue!=oldValue){
+      $scope.studentResult=true  
     }
     console.log($scope.usersGivingExam)
     
@@ -320,12 +324,14 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
     $scope.showUploadFinal = false;
     $scope.showScheduleButton = false;
     $scope.showScheduleFinal = false;
+    $scope.studentResult=false;
   }
 
   $scope.viewResult = function() {
     $scope.upload = false;
     $scope.result = true;
     $scope.schedule = false;
+    $scope.studentResult=false;
     var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;
@@ -391,6 +397,7 @@ app.controller('AdminController', function($location,$scope, $rootScope, UsersSe
     $scope.showScheduleFinal = false;
     $scope.showUploadButton = false;
     $scope.showUploadFinal = false;
+    $scope.studentResult=false;
     var temp = [];
     AdminService.getExams().then(function(result) {
       var exams = result.data;

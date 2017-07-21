@@ -1,24 +1,29 @@
 <div class="col-md-6 col-md-offset-3" ng-controller="LoginController">
-    <h2>Login</h2>
-    <form name="form" ng-submit="login()">
+    <div >
+    <h2 style="font-style: oblique;font-size: xx-large;">Login</h2>
+    </div>
+    </br>
+    </br>
+    <form name="form">
         <div class="form-group">
-            <label for="username">Username</label>
+            <label for="username" style="font-size: large;">Username</label>
             <input type="text" 
                 name="username" id="username" class="form-control"
                  ng-model="username" required /> <!-- bcz vm is an object-->
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password" style="font-size: large;">Password</label>
             <input type="password" 
                 name="password" id="password" class="form-control" 
                 ng-model="password" required />
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary" ng-click="login()" style="color: cyan;">Login</button>
+            <button type="button" class="btn btn-primary pull-right" ng-click="signUp()" style="color: yellowgreen;">SignUp</button>
         </div>
 
-        <div class="pull-right">
-            <button type="button" class="btn btn-primary" ng-click="signUp()">SignUp</button>
-        </div>
+       <!--  <div class="pull-right">
+            <button type="button" class="btn btn-primary" ng-click="signUp()" style="color: yellowgreen;">SignUp</button>
+        </div> -->
     </form>
 </div>
