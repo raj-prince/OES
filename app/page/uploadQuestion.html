@@ -1,59 +1,44 @@
 <div id="wrapper">
-   <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <img src="image/user.png" class="img">
-                </li>
-                <li  ng-controller="AdminController">
-                    <!-- <p>{{usr.firstName}}</p> -->
-                </li>
-                <!-- <li>
-                    <a href="#/">Dashboard</a>
-                </li> -->
-                <li>
-                    <a href="#/uploadQuestions/">Upload Questions</a>
-                </li>
-                 <li>
-                    <a href="#">Schedule Assesment</a>
-                </li>
-                <li>
-                    <a href="#">View Results</a>
-                </li>
-                
-              
-            </ul>
-        </div></div>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <img src="image/user.png" class="img">
+            </li>
+            <li ng-controller="AdminController">
 
-<!-- <html lang="en" ng-app="myApp">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/app.css" />
-  </head>
-  <body>
- -->    <form class="form-horizontal" role="form" ng-submit='addQP()'>
-      <div class="form-group">
+            </li>
+            <li>
+                <a href="#/uploadQuestions/">Upload Questions</a>
+            </li>
+            <li>
+                <a href="#">Schedule Assesment</a>
+            </li>
+            <li>
+                <a href="#">View Results</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<form class="form-horizontal" role="form" ng-submit='addQP()'>
+    <div class="form-group">
         <label for="examName" class="col-sm-2 control-label">Exam Name</label>
         <div class="col-sm-4">
-          <input class="form-control" id="examName" placeholder="Enter the Exam Name" ng-model='examName'>
+            <input class="form-control" id="examName" placeholder="Enter the Exam Name" ng-model='examName'>
         </div>
-      </div>
-      <div class="form-group">
+    </div>
+    <div class="form-group">
         <label for="examPath" class="col-sm-2 control-label">Upload Question Paper <br>in Excel Sheet</label>
         <div class="col-sm-4">
-          <!-- <input type="file" id="file" name="file"/> -->
-          <input class="form-control" id="filePath" type="file">
-			<!-- <button ng-click="add()">Add</button> -->
+            <input class="form-control" id="filePath" type="file">
         </div>
-      </div>
-      
-      <div class="form-group">
+    </div>
+
+    <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button >Upload</button>
+            <button>Upload</button>
         </div>
-      </div>
-    </form>
+    </div>
+</form>

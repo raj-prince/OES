@@ -1,22 +1,21 @@
-<div class="card" style="width: 25rem;" >
-  
+<div class="card col-md-4"style="width: 25rem;">
+
   <div class="card-block">
     <div class="cardHeader">
       {{examName}}
-    <img  class="card-img-top"  id="statusImg" class="close" ng-src="image/{{taken}}.png" alt="Card image cap"></div>
-    <!--<img ng-show="status=='Registered'" class="card-img-top"  id="statusImg" class="close" ng-src="image/notApplicable.png" alt="Card image cap"></div>-->
+      <img ng-show="status=='Registered'"class="card-img-top" id="statusImg" class="close" ng-src="image/{{taken}}.png" alt="Card image cap"></div>
   </div>
   <ul class="list-group list-group-flush">
-     <li class="list-group-item"> {{examDetail}}</li> 
-      <li class="list-group-item"> 
-        Start Date : {{startDate*1000 | date:'yyyy-MM-dd'}}</br>
-        End Date:{{endDate*1000 | date:'yyyy-MM-dd'}}</br>
-        Duration : {{duration}} Minutes</br>
-        Status : {{status}}</br> 
-        <div ng-show="taken=='0' && status=='Registered' && showExamLink(key1,key2)">
-           <a ng-click="setExamId(id)" href="#/assessment" class="card-link">Take Assessment</a>
-        </div>
-        </li> 
-     </ul>
-  </div>
-
+    <li class="list-group-item">
+      Start Date : {{startDate*1000 | date:'yyyy-MM-dd'}}</br>
+      End Date:{{endDate*1000 | date:'yyyy-MM-dd'}}</br>
+      Duration : {{duration}} Minutes</br>
+      Status : {{status}}</br>
+      <div ng-show="taken=='0' && status=='Registered' && showExamLink(key1,key2)">
+        <a ng-click="setExamId(id)" href="#/assessment" class="card-link">Take Assessment</a>
+      </div>
+      <br />
+      
+    </li>
+  </ul>
+</div>
