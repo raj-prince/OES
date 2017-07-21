@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="examPath" class="col-sm-2 control-label">Upload Question Paper in Excel Sheet</label>
+        <label for="examPath" class="col-sm-2 control-label">Upload Question Paper in Excel Template</label>
         <div class="col-sm-4">
           <input class="form-control" id="file" type='file' required>
         </div>
@@ -40,7 +40,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-        <a href="http://localhost:3000/questionPaper1.csv">TemplateQuestions</a>
+        <a href="http://localhost:3000/questionPaper1.csv">Download Questions Template</a>
         </div>
        </div> 
       <div class="form-group" ng-show = "showUploadFinal">
@@ -121,14 +121,14 @@
       
 
       <div class="form-group">
-      <label for="examDate" class="col-sm-2 control-label">FROM DATE</label>
+      <label for="examDate" class="col-sm-2 control-label">FROM DATE/TIME</label>
       <div class="col-sm-4">
                 <input datetime-picker ng-model="startDate" date-format="dd-MMM-yyyy HH:mm:ss" />
                 </div>
             </div>
 
       <div class="form-group">
-      <label for="notificationDate" class="col-sm-2 control-label">TO DATE</label>
+      <label for="notificationDate" class="col-sm-2 control-label">TO DATE/TIME</label>
       <div class="col-sm-4">
                 <input datetime-picker ng-model="toDate" date-format="dd-MMM-yyyy HH:mm:ss" />
                 </div>
