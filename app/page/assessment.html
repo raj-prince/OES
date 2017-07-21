@@ -7,21 +7,31 @@
     background-color: darkgray;
     height: 200px;
     margin-top: 30px"  ng-show = "showStartButton">
-    <div class = "col-md-3"></div>
+    <div class = "col-md-1"></div>
     <div class = "col-md-8">
         <h3 style="
-        margin-top: 25px;">
+        margin-top: 25px;
+        margin-left: 175px;"">
             <span class="glyphicon glyphicon-pencil"></span>
             Click Below To Start The Assessment of <b>{{nameOfExame}}!</b>
         </h3>
         
         <button type="button" class="btn btn-primary" ng-click="startAssessment()" style="
-        margin-left: 235px;
-        margin-top: 70px;
+        margin-left: 325px;
+        margin-top: 55px;
         height: 41px;
         width: 76px">
             Go
         </button>
+
+        <button type="button" class="btn btn-primary pull-left" ng-click="getBack()" style="
+        margin-left: 175px;
+        margin-top: 55px;
+        height: 41px;
+        width: 76px">
+            Back
+        </button>
+        
     </div>
 </div>
 
